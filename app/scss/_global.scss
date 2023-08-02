@@ -1,11 +1,13 @@
 html {
     height: 100%;
 }
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
+    color: $text;
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
@@ -29,4 +31,28 @@ body {
     overflow: hidden;
 }
 
+.title {
+    font-size: 172px;
+    font-weight: 800;
+    
+    background: linear-gradient(180deg, #000 0%, rgba(141, 141, 141, 0.20) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left: 30px;
+    position: relative;
 
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 13px;
+        height: 111px;
+        border-radius: 20px;
+        background-color: $accent;
+       
+        box-shadow: 0px 0px 9.989999771118164px 0px #FB6201, 0px 0px 19.979999542236328px 0px #FB6201, 0px 0px 69.93000030517578px 0px #FB6201, 0px 0px 139.86000061035156px 0px #FB6201, 0px 0px 239.75999450683594px 0px #FB6201, 0px 0px 419.5799865722656px 0px #FB6201;
+
+    }
+}

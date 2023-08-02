@@ -1,0 +1,30 @@
+.advantages {
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    &__list-number {
+        color: $text;
+        font-size: 62px;
+        font-weight: 400;
+        margin-right: 15px;
+    }
+
+    &__list-title {
+        display: inline-block;
+        font-size: 30px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    &__list-text {
+        p {
+            font-size: 20px;
+            font-weight: 400;
+        }
+    }
+
+}
