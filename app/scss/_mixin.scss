@@ -1,0 +1,46 @@
+$xs: 560;
+$sm: 780;
+$md: 990;
+$lg: 1150;
+
+@mixin mxw($width) {
+    @media (max-width: #{$width}px) {
+        @content;
+    }
+}
+
+@mixin line-clamp($lines: 1) {
+    @if $lines <=1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    @else {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+    }
+}
+
+body {
+    @media screen and (max-width: 18in) {
+        zoom: 80%;
+    }
+    @media screen and (max-width: 13in) {
+        zoom: 90%;
+    }
+    @media screen and (max-width: 10in) {
+        zoom: 100%;
+    }
+}
+
+input {
+    &:focus {
+        @include mxw($sm) {
+            font-size: 17px;
+        }
+    }
+}
