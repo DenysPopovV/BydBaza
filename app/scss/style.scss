@@ -1,5 +1,6 @@
 @import 'vars';
 @import 'reset';
+@import 'libs';
 @import 'global';
 @import 'mixin';
 
@@ -8,6 +9,8 @@
 @import './sections/hero.scss';
 @import './sections/services.scss';
 @import './sections/advantages.scss';
+@import './sections/new-product.scss';
+@import './sections/partners.scss';
 @import './sections/contacts.scss';
 @import './components/footer.scss';
 
