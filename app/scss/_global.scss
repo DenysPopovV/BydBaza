@@ -31,6 +31,43 @@ body {
     overflow: hidden;
 }
 
+section {
+    margin-bottom: 100px;
+}
+
+.media {
+    &__item {
+        &:first-child {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__btn {
+        position: relative;
+        display: block;
+        width: 35px;
+        height: 35px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        &--inst::after {
+            background-image: url('../images/sprite.svg#inst');
+        }
+
+        &--facebook::after {
+            background-image: url('../images/sprite.svg#facebook');
+        }
+    }
+}
+
 .copy {
     z-index: 1;
     width: 100%;
@@ -116,4 +153,13 @@ body {
         box-shadow: 0px 0px 9.989999771118164px 0px #FB6201, 0px 0px 19.979999542236328px 0px #FB6201, 0px 0px 69.93000030517578px 0px #FB6201, 0px 0px 139.86000061035156px 0px #FB6201, 0px 0px 239.75999450683594px 0px #FB6201, 0px 0px 419.5799865722656px 0px #FB6201;
 
     }
+}
+
+
+.form-error {
+    border-color: red;
+}
+
+.form-success {
+    border-color: green;
 }

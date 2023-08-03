@@ -60,6 +60,8 @@ select {
     outline: transparent;
     background-color: transparent;
     cursor: pointer;
+    transition: border .3s linear,background-color 5000s ease-in-out;
+
 }
 
 label {
