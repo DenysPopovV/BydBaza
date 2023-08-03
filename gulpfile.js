@@ -67,12 +67,6 @@ function scripts () {
     .pipe(browserSync.stream())
 }
 
-// function images() {
-//     return src('app/images/**/*.*')
-//     .pipe(imagemin())
-//     .pipe(dest('dist/images'))
-// }
-
 function build (){
     return src([
         'app/**/*.html',
@@ -101,7 +95,6 @@ exports.scripts = scripts;
 exports.browsersync = browsersync;
 exports.htmlInclude = htmlInclude;
 exports.watching = watching;
-// exports.images = images;
 exports.svgSprites = svgSprites;
 exports.cleanDist = cleanDist;
 exports.build = series(cleanDist, build);
