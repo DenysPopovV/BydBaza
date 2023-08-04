@@ -4,7 +4,59 @@
     &__top {
         padding-top: 80px;
     }
-    &__logo-box{
+
+    &__logo-box {
         width: 160px;
+    }
+
+    &__contacts {
+        display: flex;
+        justify-content: end;
+        transform: translateY(-35px);
+    }
+
+    &__conect {
+        font-size: 22px;
+        font-weight: 300;
+        color: $white;
+        max-width: 430px;
+        margin:55px 90px 0 0;
+
+    }
+
+    &__item {
+        &:first-child {
+            margin-right: 15px;
+        }
+    }
+
+    &__media {
+        margin: 35px 0 25px 0;
+        display: flex;
+    }
+
+    &__location {
+        display: inline-block;
+    }
+
+    &__map {
+        iframe {
+            width: 450px;
+            height: 365px;
+        }
+    }
+
+    &__sub {
+        transform: translateY(-95px);
+    }
+
+    &__sub-text {
+        font-size: 18px;
+        font-weight: 300;
+        color: $white;
+
+        &:first-child {
+            margin-right: 200px;
+        }
     }
 }

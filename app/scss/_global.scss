@@ -31,6 +31,43 @@ body {
     overflow: hidden;
 }
 
+section {
+    margin-bottom: 100px;
+}
+
+.media {
+    &__item {
+        &:first-child {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__btn {
+        position: relative;
+        display: block;
+        width: 35px;
+        height: 35px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        &--inst::after {
+            background-image: url('../images/sprite.svg#inst');
+        }
+
+        &--facebook::after {
+            background-image: url('../images/sprite.svg#facebook');
+        }
+    }
+}
+
 .copy {
     z-index: 1;
     width: 100%;
