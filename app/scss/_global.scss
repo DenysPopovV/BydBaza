@@ -10,6 +10,7 @@ body {
     color: $text;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    background-image: url('../images/bg.png');
 }
 
 .container {
@@ -31,9 +32,7 @@ body {
     overflow: hidden;
 }
 
-section {
-    margin-bottom: 100px;
-}
+
 
 .media {
     &__item {
@@ -75,15 +74,22 @@ section {
     padding-top: 35px;
 
     &__top {
-        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: start;
+
+        @include mxw($md) {
+            align-items: center;
+        }
     }
 
     &__logo-box {
-        max-width: 310px;
+        max-width: 210px;
         width: 100%;
+
+        @include mxw($md) {
+            max-width: 180px;
+        }
     }
 
     &__logo {
@@ -91,11 +97,18 @@ section {
         height: 40px;
         object-fit: cover;
         margin-bottom: 30px;
+
+        @include mxw($xs) {
+            margin-bottom: 0;
+        }
     }
 
     &__menu {
         display: flex;
-        padding-top: 15px;
+
+        @include mxw($sm) {
+            display: none;
+        }
     }
 
     &__item {
@@ -110,8 +123,19 @@ section {
         color: $white;
         text-transform: uppercase;
         font-size: 19px;
+        line-height: 60px;
     }
+}
 
+.contact-btn {
+    padding: 15px 60px 15px 61px;
+    border-radius: 10px;
+    border: 2px solid $accent;
+    color: $white;
+
+    @include mxw($md) {
+        padding: 5px 11px 6px 10px;
+    }
 }
 
 .catalog-btn {
@@ -121,14 +145,13 @@ section {
     border-radius: 10px;
     background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
     color: $white;
+
+    @include mxw($xs) {
+        display: none;
+    }
 }
 
-.contact-btn {
-    padding: 15px 60px 15px 61px;
-    border-radius: 10px;
-    border: 2px solid $accent;
-    color: $white;
-}
+
 
 .title {
     font-size: 172px;
@@ -150,7 +173,34 @@ section {
         border-radius: 20px;
         background-color: $accent;
 
-        box-shadow: 0px 0px 9.989999771118164px 0px #FB6201, 0px 0px 19.979999542236328px 0px #FB6201, 0px 0px 69.93000030517578px 0px #FB6201, 0px 0px 139.86000061035156px 0px #FB6201, 0px 0px 239.75999450683594px 0px #FB6201, 0px 0px 419.5799865722656px 0px #FB6201;
+        box-shadow: 0px 0px 9.989999771118164px 0px #FB6201,
+            0px 0px 19.979999542236328px 0px #FB6201,
+            0px 0px 69.93000030517578px 0px #FB6201,
+            0px 0px 139.86000061035156px 0px #FB6201,
+            0px 0px 239.75999450683594px 0px #FB6201,
+            0px 0px 419.5799865722656px 0px #FB6201;
 
+        @include mxw($md) {
+            height: 90px;
+            top: 32px;
+        }
+        @include mxw($sm) {
+            height: 90px;
+            top: -40px;
+            transform: translateX(-50%) rotate(90deg);
+            left: 50%;
+        }
+    }
+
+    @include mxw($md) {
+        font-size: 120px;
+    }
+
+    @include mxw($sm) {
+        font-size: 55px;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+        margin-bottom: 40px;
     }
 }
