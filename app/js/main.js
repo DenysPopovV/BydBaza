@@ -43,8 +43,6 @@ function addFormValidation(formName) {
   }
 }
 
-
-
 function checkFieldOnFocus(input) {
   if (input.value.length < 1) {
     input.closest(".contacts__form-group").classList.add("error");
@@ -93,7 +91,7 @@ function checkButtonDisabled() {
   contactsForm.addEventListener("input", () => {
     if (checkFormSuccess(".contacts__form-group")) {
       contactsForm.contactsBtn.removeAttribute("disabled");
-      contactsForm.contactsBtn.classList.add('success')
+      contactsForm.contactsBtn.classList.add("success");
     } else {
       contactsForm.contactsBtn.setAttribute("disabled", "disabled");
     }
@@ -110,65 +108,91 @@ document.addEventListener("click", (e) => {
 addFormValidation(contactsForm);
 checkButtonDisabled();
 
-const InfoSwiper = new Swiper('.swiper-products', {
-    direction: 'horizontal',
-    spaceBetween: 132,
-    slidesPerView: 3,
-    loop: false,
-    freeMode: true,
-  
-    navigation: {
-      nextEl: '.new-products__arrow-next',
-      prevEl: '.new-products__arrow-prev',
+const InfoSwiper = new Swiper(".swiper-products", {
+  direction: "horizontal",
+  spaceBetween: 132,
+  slidesPerView: 3,
+  loop: false,
+  freeMode: true,
+
+  navigation: {
+    nextEl: ".new-products__arrow-next",
+    prevEl: ".new-products__arrow-prev",
+  },
+
+  breakpoints: {
+    360: {
+      slidesPerView: 1.5,
+      centeredSlides: true,
+      initialSlide: 1,
+      spaceBetween: 20,
     },
-  
-    breakpoints: {
-      360: {
-        slidesPerView: 1.5,
-        centeredSlides: true,
-        initialSlide: 1,
-        spaceBetween: 20,
-      },
-      380: {
-        slidesPerView: 1.8,
-        spaceBetween: 20,
-        centeredSlides: true,
-        initialSlide: 1,
-      },
-      460: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      500: {
-        slidesPerView: 2.3,
-        spaceBetween: 30,
-      },
-      560: {
-        slidesPerView: 2.2,
-        spaceBetween: 30,
-      },
-      660: {
-        slidesPerView: 2.5,
-        spaceBetween: 30,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 60,
-      },
-      800: {
-        slidesPerView: 2.2,
-        spaceBetween: 60,
-      },
-      900: {
-        slidesPerView: 2.5,
-        spaceBetween: 60,
-      },
-      1000: {
-        slidesPerView: 3,
-        spaceBetween: 60,
-      },
-      1200: {
-        slidesPerView: 3,
+    380: {
+      slidesPerView: 1.8,
+      spaceBetween: 20,
+      centeredSlides: true,
+      initialSlide: 1,
+    },
+    460: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    500: {
+      slidesPerView: 2.3,
+      spaceBetween: 30,
+    },
+    560: {
+      slidesPerView: 2.2,
+      spaceBetween: 30,
+    },
+    660: {
+      slidesPerView: 2.5,
+      spaceBetween: 30,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 60,
+    },
+    800: {
+      slidesPerView: 2.2,
+      spaceBetween: 60,
+    },
+    900: {
+      slidesPerView: 2.5,
+      spaceBetween: 60,
+    },
+    1000: {
+      slidesPerView: 3,
+      spaceBetween: 60,
+    },
+    1200: {
+      slidesPerView: 3,
+    },
+  },
+});
+
+const tabBtn = document.querySelectorAll(".question__plus");
+const tabAnswer = document.querySelectorAll(".question__answer");
+
+tabBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const target = e.target;
+    const answerEl = target.parentElement.parentElement.lastElementChild;
+    if (target.id === answerEl.id) {
+      if (answerEl.classList.contains("active")) {
+        answerEl.classList.remove("active");
+        target.classList.remove("active");
+      } else {
+        tabAnswer.forEach((answer) => {
+          answer.classList.remove("active");
+        });
+        tabBtn.forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        answerEl.classList.add("active");
+        target.classList.add("active");
       }
     }
   });
+});
