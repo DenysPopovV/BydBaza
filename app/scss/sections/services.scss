@@ -46,23 +46,23 @@
         }
 
         &--order::after {
-            background-image: url('../images/sprite.svg#order');
+            background-image: url('../images/icons/order.svg');
         }
 
         &--clock::after {
-            background-image: url('../images/sprite.svg#clock');
+            background-image: url('../images/icons/clock.svg');
         }
 
         &--phone::after {
-            background-image: url('../images/sprite.svg#phone');
+            background-image: url('../images/icons/phone.svg');
         }
 
         &--backet::after {
-            background-image: url('../images/sprite.svg#backet-services');
+            background-image: url('../images/icons/backet-services.svg');
         }
 
         &--card::after {
-            background-image: url('../images/sprite.svg#card-services');
+            background-image: url('../images/icons/card-services.svg');
         }
     }
 
