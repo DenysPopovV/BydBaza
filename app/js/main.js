@@ -52,6 +52,7 @@ function checkFieldOnFocus(input) {
       messages.errorRequired;
   }
 }
+
 function checkFieldOnBlur(input) {
   if (input.closest(".contacts__form-group").classList.contains("success")) {
     input
@@ -87,53 +88,47 @@ function checkFormSuccess(groupClass) {
   return true;
 }
 
-function checkButtonDisabled() {
+function checkButtonDisabled(btnName) {
   contactsForm.addEventListener("input", () => {
     if (checkFormSuccess(".contacts__form-group")) {
-      contactsForm.contactsBtn.removeAttribute("disabled");
-      contactsForm.contactsBtn.classList.add("success");
+      btnName.removeAttribute("disabled");
+      btnName.classList.add("success");
     } else {
-      contactsForm.contactsBtn.setAttribute("disabled", "disabled");
+      btnName.setAttribute("disabled", "disabled");
     }
   });
+}
+
+function removeInputValue(formName) {
+  for (const input of formName.elements) {
+    if (input.type !== "submit") {
+      input.value = "";
+    }
+  }
+}
+
+function removeActiveGroupClass(groupClass) {
+  const formGroup = contactsForm.querySelectorAll(groupClass);
+  for (const group of formGroup) {
+    if (group.classList.contains("success")) {
+      group.classList.remove("success");
+    }
+  }
 }
 
 document.addEventListener("click", (e) => {
   const target = e.target;
   if (target.classList.contains("contacts__form-btn")) {
     e.preventDefault();
+    target.setAttribute("disabled", "disabled");
+    target.classList.remove("success");
+    removeActiveGroupClass(".contacts__form-group");
+    removeInputValue(contactsForm);
   }
 });
 
 addFormValidation(contactsForm);
-checkButtonDisabled();
-
-const tabBtn = document.querySelectorAll(".question__plus");
-const tabAnswer = document.querySelectorAll(".question__answer");
-
-// tabBtn.forEach((btn) => {
-//   btn.addEventListener("click", (e) => {
-//     const target = e.target;
-//     const answerEl = target.parentElement.parentElement.lastElementChild;
-//     if (target.id === answerEl.id) {
-//       if (answerEl.classList.contains("active")) {
-//         answerEl.classList.remove("active");
-//         target.classList.remove("active");
-//       } else {
-//         tabAnswer.forEach((answer) => {
-//           answer.classList.remove("active");
-//         });
-//         tabBtn.forEach((btn) => {
-//           btn.classList.remove("active");
-//         });
-
-//         answerEl.classList.add("active");
-//         target.classList.add("active");
-//       }
-//     }
-//   });
-// });
-
+checkButtonDisabled(contactsForm.contactsBtn);
 
 const InfoSwiper = new Swiper(".swiper-products", {
   direction: "horizontal",
@@ -200,4 +195,33 @@ const InfoSwiper = new Swiper(".swiper-products", {
       slidesPerView: 3,
     },
   },
+});
+
+const tabBtn = document.querySelectorAll(".question__plus");
+const tabAnswer = document.querySelectorAll(".question__answer");
+
+function tabsAction(target) {
+  const answerEl = target.parentElement.parentElement.lastElementChild;
+  if (target.id === answerEl.id) {
+    if (answerEl.classList.contains("active")) {
+      answerEl.classList.remove("active");
+      target.classList.remove("active");
+    } else {
+      tabAnswer.forEach((answer) => {
+        answer.classList.remove("active");
+      });
+      tabBtn.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+      answerEl.classList.add("active");
+      target.classList.add("active");
+    }
+  }
+}
+
+tabBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const target = e.target;
+    tabsAction(target);
+  });
 });
