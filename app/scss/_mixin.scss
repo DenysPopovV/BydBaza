@@ -2,6 +2,7 @@ $xs: 560;
 $sm: 780;
 $md: 990;
 $lg: 1150;
+$vlg: 1400;
 
 @mixin mxw($width) {
     @media (max-width: #{$width}px) {

@@ -108,6 +108,33 @@ document.addEventListener("click", (e) => {
 addFormValidation(contactsForm);
 checkButtonDisabled();
 
+const tabBtn = document.querySelectorAll(".question__plus");
+const tabAnswer = document.querySelectorAll(".question__answer");
+
+// tabBtn.forEach((btn) => {
+//   btn.addEventListener("click", (e) => {
+//     const target = e.target;
+//     const answerEl = target.parentElement.parentElement.lastElementChild;
+//     if (target.id === answerEl.id) {
+//       if (answerEl.classList.contains("active")) {
+//         answerEl.classList.remove("active");
+//         target.classList.remove("active");
+//       } else {
+//         tabAnswer.forEach((answer) => {
+//           answer.classList.remove("active");
+//         });
+//         tabBtn.forEach((btn) => {
+//           btn.classList.remove("active");
+//         });
+
+//         answerEl.classList.add("active");
+//         target.classList.add("active");
+//       }
+//     }
+//   });
+// });
+
+
 const InfoSwiper = new Swiper(".swiper-products", {
   direction: "horizontal",
   spaceBetween: 132,
@@ -138,61 +165,39 @@ const InfoSwiper = new Swiper(".swiper-products", {
       spaceBetween: 20,
     },
     500: {
-      slidesPerView: 2.3,
+      slidesPerView: 2,
       spaceBetween: 30,
     },
     560: {
-      slidesPerView: 2.2,
+      slidesPerView: 2,
       spaceBetween: 30,
     },
     660: {
-      slidesPerView: 2.5,
+      slidesPerView: 1.5,
       spaceBetween: 30,
     },
     768: {
-      slidesPerView: 2,
+      slidesPerView: 1,
       spaceBetween: 60,
     },
     800: {
-      slidesPerView: 2.2,
+      slidesPerView: 2,
       spaceBetween: 60,
     },
     900: {
-      slidesPerView: 2.5,
+      slidesPerView: 2,
       spaceBetween: 60,
     },
     1000: {
-      slidesPerView: 3,
+      slidesPerView: 2.5,
       spaceBetween: 60,
     },
     1200: {
       slidesPerView: 3,
+      spaceBetween: 30,
+    },
+    1400: {
+      slidesPerView: 3,
     },
   },
-});
-
-const tabBtn = document.querySelectorAll(".question__plus");
-const tabAnswer = document.querySelectorAll(".question__answer");
-
-tabBtn.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const target = e.target;
-    const answerEl = target.parentElement.parentElement.lastElementChild;
-    if (target.id === answerEl.id) {
-      if (answerEl.classList.contains("active")) {
-        answerEl.classList.remove("active");
-        target.classList.remove("active");
-      } else {
-        tabAnswer.forEach((answer) => {
-          answer.classList.remove("active");
-        });
-        tabBtn.forEach((btn) => {
-          btn.classList.remove("active");
-        });
-
-        answerEl.classList.add("active");
-        target.classList.add("active");
-      }
-    }
-  });
 });

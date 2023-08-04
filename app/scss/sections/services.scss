@@ -1,11 +1,24 @@
 .services {
+    margin-bottom: 150px;
+
+    @include mxw($sm) {
+        margin-bottom: 100px;
+    }
     &__container{
         border-top: 1px solid $text;
         border-bottom: 1px solid $text;
         transform: translateY(-50px);
+
+        @include mxw($md) {
+            border: transparent;
+        }
+        @include mxw($xs) {
+            padding: 0 5px;
+        }
     }
     &__box {
         max-width: 1331px;
+        width: 100%;
         margin: 0 auto;
         padding-top: 55px;
         display: flex;
@@ -13,6 +26,10 @@
         justify-content: center;
         border-left: 1px solid $text;
         border-right: 1px solid $text;
+
+        @include mxw($md) {
+            border: transparent;
+        }
     }
 
     &__item {
@@ -27,6 +44,16 @@
         &:last-child {
             margin-bottom: 95px;
         }
+
+        &:last-child,
+        &:first-child,
+        & {
+            @include mxw($md) {
+                margin-bottom: 55px;
+            }
+        }
+
+        
 
         &::after {
             content: '';
@@ -73,5 +100,9 @@
         font-size: 20px;
         display: block;
         text-align: center;
+
+        @include mxw($xs) {
+            font-size: 16px;
+        }
     }
 }
