@@ -164,32 +164,30 @@ const InfoSwiper = new Swiper(".swiper-products", {
       spaceBetween: 30,
     },
     560: {
-      slidesPerView: 2,
+      slidesPerView: 2.2,
       spaceBetween: 30,
     },
     660: {
-      slidesPerView: 1.5,
-      spaceBetween: 30,
+      slidesPerView: 2.5,
+      spaceBetween: 50,
     },
     768: {
-      slidesPerView: 1,
-      spaceBetween: 60,
+      slidesPerView: 2,
     },
     800: {
-      slidesPerView: 2,
+      slidesPerView: 2.5,
       spaceBetween: 60,
     },
     900: {
-      slidesPerView: 2,
-      spaceBetween: 60,
+      slidesPerView: 3,
     },
     1000: {
-      slidesPerView: 2.5,
+      slidesPerView: 3,
       spaceBetween: 60,
     },
     1200: {
       slidesPerView: 3,
-      spaceBetween: 30,
+
     },
     1400: {
       slidesPerView: 3,

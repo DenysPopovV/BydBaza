@@ -1,6 +1,8 @@
 .new-products {
-    margin-bottom: 180px;
-
+    margin-bottom: 100px;
+    @include mxw($sm) {
+        margin-bottom: 0;
+    }
     &__title {
         margin-bottom: 90px;
 
@@ -8,6 +10,7 @@
             text-align: center;
             padding-left: 0;
             line-height: 1;
+
             &::after {
                 top: -50px;
                 transform: translateX(-50%) rotate(90deg);
@@ -15,48 +18,37 @@
             }
         }
     }
-    
+
     .swiper-products {
         overflow-x: hidden;
         margin-bottom: 60px;
 
         @include mxw($vlg) {
-            // display: flex;
-            // justify-content: center;
-           width: 100%;
+            width: 100%;
         }
     }
 
     &__list {
         display: flex;
+
         @include mxw($vlg) {
-            width: 1000px;
+            max-width: 1000px;
         }
+
         @include mxw($lg) {
-            width: 800px;
+            width: 900px;
         }
+
         @include mxw($md) {
             width: 700px;
         }
+
         @include mxw($sm) {
             width: 500px;
         }
+
         @include mxw($xs) {
             width: 340px;
-        }
-    }
-
-    .swiper-slide {
-        @include mxw($lg) {
-            max-width: 340px;
-        }
-
-        @include mxw($sm) {
-            max-width: 260px;
-        }
-
-        @include mxw($xs) {
-            max-width: 204px;
         }
     }
 
@@ -108,6 +100,11 @@
         height: 379px;
         background-color: #4E4E4E;
         margin-bottom: 18px;
+
+        @include mxw($sm) {
+            height: 256px;
+            margin-bottom: 15px;
+        }
     }
 
     &__flex {
@@ -122,6 +119,10 @@
         font-weight: 700;
         font-size: 22px;
         line-height: 27px;
+
+        @include mxw($sm) {
+            font-size: 17px;
+        }
     }
 
     &__description {
@@ -139,6 +140,10 @@
             left: 0;
             background-color: $accent;
         }
+
+        @include mxw($sm) {
+            font-size: 16px;
+        }
     }
 
     &__price {
@@ -149,6 +154,10 @@
         line-height: 27px;
         font-weight: 500;
         margin-bottom: 20px;
+
+        @include mxw($sm) {
+            font-size: 17px;
+        }
     }
 
     &__btn {
@@ -182,8 +191,17 @@
             background-repeat: no-repeat;
             background-size: contain;
             background-image: url('../images/icons/backet-for-btn.svg');
+
+            @include mxw($sm) {
+                display: none;
+            }
         }
-       
+
+        @include mxw($sm) {
+            padding: 15px 40px 13px 40px;
+            font-size: 17px;
+        }
+
     }
 
     &__swiper-arrow {
@@ -201,15 +219,27 @@
         background-repeat: no-repeat;
         background-size: contain;
         background-image: url('../images/icons/arrow-swiper.svg');
+
+        @include mxw($md) {
+            display: none;
+        }
     }
 
     &__arrow-prev {
         left: 30%;
+
+        @include mxw($lg) {
+            left: 10%;
+        }
     }
-    
+
     &__arrow-next {
-        transform: translateY( -6px) rotate(180deg);
+        transform: translateY(-6px) rotate(180deg);
         right: 30%;
+
+        @include mxw($lg) {
+            right: 10%;
+        }
     }
 
 }
