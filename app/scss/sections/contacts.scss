@@ -5,6 +5,13 @@
         display: flex;
         flex-wrap: wrap;
         margin: 0 0 50px 40px;
+
+        @include mxw($md) {
+            margin: 0 0 50px 0;
+        }
+        @include mxw($sm) {
+            justify-content: end;
+        }
     }
 
     &__form {
@@ -12,12 +19,28 @@
         flex-direction: column;
         align-items: end;
         margin-right: 120px;
+
+        @include mxw($md) {
+            margin: 0;
+        }
+
+        @include mxw($sm) {
+            margin: 0 auto;
+            align-items: center;
+            margin-bottom: 90px;
+        }
     }
 
     &__form-group {
         position: relative;
         display: block;
         padding-bottom: 35px;
+
+        @include mxw($sm) {
+            &:nth-of-type(3) {
+                padding-bottom: 70px;
+            }
+        }
     }
 
     &__form-input {
@@ -28,12 +51,23 @@
         padding: 0 0 4px 15px;
         z-index: 1;
         border-bottom: 1px solid #ababab;
+
+        @include mxw($sm) {
+            width: 500px;
+        }
+
+        @include mxw($xs) {
+            width: 300px;
+        }
     }
 
     &__form-msg {
         position: absolute;
         font-size: 14px;
         font-weight: 300;
+        @include mxw($xs) {
+            font-size: 10px;
+        }
     }
 
     &__form-btn {
@@ -46,20 +80,52 @@
         background-color: $text;
         border: 6px solid $accent;
         box-shadow: 0px 0px 100px 10px #FB6201;
-        transition: all 0.8s ;
+        transition: all 0.8s;
+        @include mxw($xs) {
+            padding: 15px 75px;
+            
+        }
     }
 
     &__conect {
         max-width: 440px;
         color: $text;
         font-size: 22px;
+
+        @include mxw($sm) {
+            position: relative;
+            
+        }
+        @include mxw($xs) {
+            padding-left: 110px;
+            font-size: 12px;
+            
+        }
     }
 
     &__media {
         display: flex;
         margin: 25px 0 35px 0;
+
+        @include mxw($sm) {
+            position: absolute;
+            left: -120px;
+            top: 50%;
+            transform: translateY(-90%);
+
+        }
+        @include mxw($xs) {
+            left: 0;
+            width: 300px;
+        }
     }
 
+    &__tell {
+        @include mxw($sm) {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
     &__item {
         margin-right: 10px;
 
@@ -76,6 +142,11 @@
 
     &__map {
         margin: 0 auto;
+        object-fit: cover;
+
+        @include mxw($sm) {
+           display: none;
+        }
     }
 }
 
@@ -95,7 +166,7 @@
     border-color: red;
 }
 
-.contacts__form-btn.success{
+.contacts__form-btn.success {
     background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
-   
+
 }
