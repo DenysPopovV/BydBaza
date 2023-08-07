@@ -3,16 +3,31 @@
 
     &__top {
         padding-top: 80px;
+
+        @include mxw($xs) {
+            padding-top: 40px;
+        }
     }
 
     &__logo-box {
         width: 160px;
     }
 
+    &__catalog {
+        @include mxw($md) {
+            display: none;
+        }
+    }
+
     &__contacts {
         display: flex;
         justify-content: end;
         transform: translateY(-35px);
+
+        @include mxw($md) {
+            transform: translateY(0);
+            justify-content: center;
+        }
     }
 
     &__conect {
@@ -20,8 +35,27 @@
         font-weight: 300;
         color: $white;
         max-width: 430px;
-        margin:55px 90px 0 0;
+        margin: 55px 90px 0 0;
 
+        @include mxw($md) {
+            position: relative;
+            max-width: 100%;
+            margin: 0 0 70px;
+        }
+
+        @include mxw($xs) {
+            font-size: 16px;
+        }
+    }
+
+    &__tell {
+
+        @include mxw($md) {
+            position: absolute;
+
+            left: 150px;
+            top: 40px;
+        }
     }
 
     &__item {
@@ -43,11 +77,24 @@
         iframe {
             width: 450px;
             height: 365px;
+
+            @include mxw($md) {
+                display: none;
+            }
         }
+
     }
 
     &__sub {
+
         transform: translateY(-95px);
+
+        @include mxw($md) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateY(0);
+        }
     }
 
     &__sub-text {
@@ -57,6 +104,22 @@
 
         &:first-child {
             margin-right: 200px;
+
+            @include mxw($lg) {
+                margin-right: 50px;
+            }
+
+            @include mxw($md) {
+                margin-right: 0;
+            }
+        }
+
+        @include mxw($md) {
+            margin-bottom: 10px;
+        }
+
+        @include mxw($xs) {
+            font-size: 14px;
         }
     }
 }

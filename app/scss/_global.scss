@@ -133,7 +133,8 @@ body {
     border: 2px solid $accent;
     color: $white;
 
-    @include mxw($md) {
+    @include mxw($xs) {
+        font-size: 12px;
         padding: 5px 11px 6px 10px;
     }
 }

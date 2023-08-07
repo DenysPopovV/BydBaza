@@ -1,5 +1,25 @@
 .question {
     margin-bottom: 360px;
+
+    @include mxw($vlg) {
+        margin-bottom: 300px;
+    }
+
+    @include mxw($lg) {
+        margin-bottom: 250px;
+    }
+
+    @include mxw($md) {
+        margin-bottom: 200px;
+    }
+
+    @include mxw($sm) {
+        margin-bottom: 150px;
+    }
+
+    @include mxw($xs) {
+        margin-bottom: 100px;
+    }
     &__title {
         text-transform: uppercase;
         font-size: 62px;
@@ -9,6 +29,10 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 35px;
+
+        @include mxw($xs) {
+            text-align: center;
+        }
     }
 
     &__container {
@@ -29,11 +53,32 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-left: 15px;
     }
 
     &__text {
         display: block;
         font-size: 32px;
+
+        @include mxw($vlg) {
+            font-size: 30px;
+        }
+
+        @include mxw($lg) {
+            font-size: 24px;
+        }
+
+        @include mxw($md) {
+            font-size: 20px;
+        }
+
+        @include mxw($sm) {
+            font-size: 18px;
+        }
+
+        @include mxw($xs) {
+            font-size: 12px;
+        }
     }
 
     &__plus {
@@ -42,7 +87,7 @@
         height: 35px;
 
         &::after,
-        &::before{
+        &::before {
             content: '';
             position: absolute;
             width: 35px;
@@ -50,27 +95,40 @@
             left: 0;
             background-color: #000;
             transition: transform .3s linear;
+
+            @include mxw($xs) {
+                width: 25px;
+                height: 3px;
+            }
         }
 
         &::after {
-           height: 6px;
+            height: 6px;
+
+            @include mxw($xs) {
+                height: 3px;
+            }
         }
 
         &::before {
-           transform: rotate(90deg);
+            transform: rotate(90deg);
         }
 
-        &.active::before{
+        &.active::before {
             transform: rotate(0);
         }
     }
 
     &__answer {
         display: none;
-        padding-top: 35px;
+        padding: 35px 0 0 15px;
 
         span {
             font-size: 16px;
+
+            @include mxw($xs) {
+                font-size: 10px;
+            }
         }
 
         &.active {
