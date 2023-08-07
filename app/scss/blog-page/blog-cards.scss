@@ -1,0 +1,323 @@
+.blog-cards {
+    position: relative;
+
+    &__title {
+        padding-left: 25px;
+        color: $text;
+        font-size: 62px;
+        margin-bottom: 62px;
+        @include mxw($sm) {
+            padding-left: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 42px;
+        }
+        @include mxw($xs) {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__container {
+        border-top: 1px solid $text;
+        border-bottom: 1px solid $text;
+        margin-bottom: 60px;
+        @include mxw($xs) {
+            border: transparent;
+        }
+    }
+
+    &__list {
+        max-width: 1331px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        @include mxw($vlg) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        @include mxw($sm) {
+            gap: 0;
+        }
+        @include mxw($xs) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: none;
+        padding: 35px 15px;
+
+        &:nth-child(3n-1) {
+            border-right: 1px solid $text;
+            border-left: 1px solid $text;
+        }
+
+        &.active {
+            display: block;
+        }
+
+        @include mxw($vlg) {
+            padding: 35px 15px 100px;
+            max-width: 550px;
+
+            &:nth-child(3n-1) {
+                border: transparent;
+            }
+        }
+
+        @include mxw($sm) {
+            padding: 35px 15px 70px;
+        }
+    }
+
+    &__name {
+        display: block;
+        color: $text;
+        font-size: 42px;
+        margin-bottom: 10px;
+
+        @include mxw($vlg) {
+            text-align: center;
+        }
+
+        @include mxw($sm) {
+            font-size: 32px;
+        }
+        @include mxw($xs) {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__text {
+
+        @include line-clamp(12);
+        margin-bottom: 41px;
+
+        @include mxw($vlg) {
+            text-align: center;
+        }
+
+        @include mxw($sm) {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        @include mxw($xs) {
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__btn {
+        color: $white;
+        font-size: 19px;
+        padding: 14px 105px;
+        background-color: #000;
+        transition: none;
+        border-radius: 15px;
+        border: 6px solid $accent;
+        box-shadow: 0px 0px 9.989999771118164px 0px #FB6201,
+            0px 0px 19.979999542236328px 0px #FB6201,
+            0px 0px 69.93000030517578px 0px #FB6201,
+            0px 0px 139.86000061035156px 0px #FB6201,
+            0px 0px 239.75999450683594px 0px #FB6201,
+            0px 0px 419.5799865722656px 0px #FB6201;
+        transform: translateX(100px);
+
+        @include mxw($vlg) {
+            transform: translateX(0);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        @include mxw($sm) {
+            font-size: 16px;
+            padding: 12px 85px;
+        }
+        @include mxw($xs) {
+            box-shadow: 0px 0px 80px 0px #FB6201;
+        }
+    }
+
+    ;
+
+    &__load {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 66px;
+
+    }
+
+    &__content-btn {
+        color: $text;
+        font-size: 20px;
+        padding: 13px 143px;
+        border-radius: 15px;
+        border: 6px solid $accent;
+        @include mxw($sm) {
+            font-size: 18px;
+            padding: 13px 103px;
+        }
+        @include mxw($xs) {
+            font-size: 12px;
+            padding: 13px 83px;
+        }
+    }
+
+    &__popup-bg {
+        display: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        background: rgba(58, 58, 58, .7);
+        z-index: 10000;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    &__popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 1331px;
+        width: 100%;
+        height: 100vh;
+        padding: 138px 125px;
+        background-image: url('../images/bg.png');
+        background-color: $white;
+
+        @include mxw($md) {
+            padding: 30px 15px;
+            margin: 0 auto;
+        }
+        @include mxw($sm) {
+            padding: 10px 15px;
+            margin: 0 auto;
+        }
+    }
+
+    &__popup-close {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        right: 50px;
+        top: 50px;
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 4px;
+            left: 0;
+            background-color: #000;
+            transition: transform .3s linear;
+            transform: rotate(45deg);
+        }
+
+        &::before {
+            transform: rotate(-45deg);
+        }
+
+        @include mxw($xs) {
+            width: 20px;
+            height: 20px;
+            right: 10px;
+            top: 10px; 
+            &::after,
+            &::before {
+                width: 20px;
+            height: 2px;
+             }
+
+        }
+    }
+
+    &__popup-name {
+        display: block;
+        color: $text;
+        font-size: 48px;
+        font-weight: 500;
+        margin-bottom: 42px;
+
+        @include mxw($sm) {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        @include mxw($xs) {
+            text-align: center;
+        }
+    }
+
+    &__popup-info {
+        display: flex;
+        justify-content: space-between;
+        @include mxw($md) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__popup-img {
+        width: 350px;
+        height: 375px;
+        object-fit: cover;
+        background-color: #aaa;
+        margin-right: 60px;
+        @include mxw($md) {
+            margin-bottom: 40px;
+            margin-right: 0;
+        }
+        @include mxw($xs) {
+            font-size: 20px;
+            margin-bottom: 20px;
+            width: 300px;
+            height: 325px;
+            margin: 0 auto 15px;
+        }
+    }
+
+    &__popup-text {
+        max-height: 600px;
+        overflow-y: auto;
+        max-width: 680px;
+        width: 100%;
+
+        p {
+            margin-bottom: 40px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            @include mxw($vlg) {
+                margin-bottom: 20px;
+            }
+            @include mxw($xs) {
+                margin-bottom: 10px;
+            }
+        }
+
+        @include mxw($vlg) {
+            max-height: 400px;
+            max-width: 580px;
+        }
+        @include mxw($lg) {
+            max-width: 480px;
+        }
+        @include mxw($lg) {
+            max-width: 100%;
+        }
+        @include mxw($xs) {
+            font-size: 12px;
+            max-height: 250px;
+        }
+    }
+}

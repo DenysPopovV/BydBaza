@@ -116,19 +116,10 @@ function removeActiveGroupClass(groupClass) {
   }
 }
 
-document.addEventListener("click", (e) => {
-  const target = e.target;
-  if (target.classList.contains("contacts__form-btn")) {
-    e.preventDefault();
-    target.setAttribute("disabled", "disabled");
-    target.classList.remove("success");
-    removeActiveGroupClass(".contacts__form-group");
-    removeInputValue(contactsForm);
-  }
-});
-
-addFormValidation(contactsForm);
-checkButtonDisabled(contactsForm.contactsBtn);
+if (contactsForm != undefined) {
+  addFormValidation(contactsForm);
+  checkButtonDisabled(contactsForm.contactsBtn);
+}
 
 const InfoSwiper = new Swiper(".swiper-products", {
   direction: "horizontal",
@@ -187,7 +178,6 @@ const InfoSwiper = new Swiper(".swiper-products", {
     },
     1200: {
       slidesPerView: 3,
-
     },
     1400: {
       slidesPerView: 3,
@@ -199,7 +189,7 @@ const tabBtn = document.querySelectorAll(".question__plus");
 const tabAnswer = document.querySelectorAll(".question__answer");
 
 function tabsAction(target) {
-  const answerEl = target.parentElement.parentElement.lastElementChild;
+  const answerEl = document.querySelector(`div#${target.id}`);
   if (target.id === answerEl.id) {
     if (answerEl.classList.contains("active")) {
       answerEl.classList.remove("active");
@@ -222,4 +212,65 @@ tabBtn.forEach((btn) => {
     const target = e.target;
     tabsAction(target);
   });
+});
+
+const blogCardParent = document.querySelector(".blog-cards__list");
+const blogCardsItems = blogCardParent.children;
+const loadMoreBtn = document.getElementById("loadMore");
+let scrollDownHeight;
+
+function addBlogCardsOnLoad(item) {
+  for (let i = 0; i < 3; i++) {
+    item[i].classList.add("active");
+  }
+  scrollDownHeight = document.querySelector(".blog-cards").offsetHeight;
+}
+
+function addCardsOnClick() {
+  const hiddenItems = Array.from(blogCardsItems).filter(
+    (item) => !item.classList.contains("active")
+  );
+
+  if (hiddenItems.length > 0) {
+    for (let i = 0; i < 3; i++) {
+      if (hiddenItems[i]) {
+        hiddenItems[i].classList.add("active");
+        window.scrollTo({
+          top: scrollDownHeight * 3,
+          behavior: "smooth",
+        });
+      } else {
+        loadMoreBtn.textContent = "Очікуйте згодом";
+      }
+    }
+  }
+}
+
+addBlogCardsOnLoad(blogCardsItems);
+
+loadMoreBtn.addEventListener("click", function (e) {
+  addCardsOnClick(e);
+});
+
+const cardBtns = document.querySelectorAll(".blog-cards__btn");
+
+cardBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const target = e.target;
+    tabsAction(target);
+  });
+});
+
+document.addEventListener("click", (e) => {
+  const target = e.target;
+  if (target.classList.contains("contacts__form-btn")) {
+    e.preventDefault();
+    target.setAttribute("disabled", "disabled");
+    target.classList.remove("success");
+    removeActiveGroupClass(".contacts__form-group");
+    removeInputValue(contactsForm);
+  }
+  if (target.classList.contains("blog-cards__popup-close")) {
+    target.closest(".blog-cards__popup-bg").classList.remove("active");
+  }
 });
