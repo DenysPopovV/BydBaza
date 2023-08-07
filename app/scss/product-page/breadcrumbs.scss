@@ -1,0 +1,54 @@
+.breadcrumbs {
+    padding: 200px 0 120px;
+
+    @include mxw($sm) {
+        padding: 120px 0 60px;
+    }
+
+    &--style {
+        font-size: 20px;
+        font-weight: 500;
+        padding-right: 60px;
+        position: relative;
+
+        @include mxw($sm) {
+            font-size: 16px;
+        }
+
+        @include mxw($xs) {
+            font-size: 14px;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            width: 21px;
+            height: 25px;
+            right: 11px;
+            background-image: url('../images/icons/arrow-breadcrumbs.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            @include mxw($sm) {
+                width: 10px;
+                height: 15px;
+                top: 1px;
+                // top: 2px;
+                right: 20px;
+            }
+        }
+
+        &:last-child {
+            padding-right: 0;
+            background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: default;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}

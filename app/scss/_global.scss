@@ -11,6 +11,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     background-image: url('../images/bg.png');
+    overflow-x: hidden;
 }
 
 .container {
@@ -31,6 +32,7 @@ body {
     clip: rect(0 0 0 0);
     overflow: hidden;
 }
+
 
 
 
@@ -127,6 +129,54 @@ body {
     }
 }
 
+.accent-product-btn {
+    display: block;
+    position: relative;
+    z-index: 1;
+    color: $white;
+    border-radius: 10px;
+    background-color: #171717;
+    padding: 10px 116px 10px 116px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 300;
+    border-radius: 10px;
+    border: 6px solid $accent;
+    box-shadow: 0px 0px 31px 0px #FB6101,
+        0px 0px 63px 0px #FB6101,
+        0px 0px 223px 0px #FB6101,
+        0px 0px 447px 0px #FB6101,
+        0px 0px 766px 0px #FB6101,
+        0px 0px 1341px 0px #FB6101;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 30px;
+        top: 10px;
+        width: 40px;
+        height: 36px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('../images/icons/backet-for-btn.svg');
+
+        @include mxw($sm) {
+            display: none;
+        }
+    }
+
+    @include mxw($lg) {
+        box-shadow: 0px 0px 0px 0px #fb6101,
+    }
+
+    @include mxw($sm) {
+        padding: 15px 40px 13px 40px;
+        font-size: 17px;
+    }
+
+}
+
 .contact-btn {
     padding: 15px 60px 15px 61px;
     border-radius: 10px;
@@ -152,7 +202,20 @@ body {
     }
 }
 
+.accent-button-arrow {
+    cursor: pointer;
+    position: absolute;
+    height: 30px;
+    width: 220px;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../images/icons/arrow-swiper.svg');
 
+    @include mxw($md) {
+        display: none;
+    }
+}
 
 .title {
     font-size: 172px;
@@ -185,6 +248,7 @@ body {
             height: 90px;
             top: 32px;
         }
+
         @include mxw($sm) {
             height: 90px;
             top: -40px;
