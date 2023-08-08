@@ -1,10 +1,6 @@
 .partners {
 	overflow-x: hidden;
-	margin-bottom: 80px;
 	padding-top: 80px;
-	@include mxw($sm) {
-        margin-bottom: 20px;
-    }
 }
 
 .scroll-full-width {

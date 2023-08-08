@@ -1,5 +1,6 @@
 .contacts {
-    margin-bottom: 50px;
+    padding-top: 20px;
+    margin-bottom: 80px;
 
     &__top {
         display: flex;
@@ -116,7 +117,7 @@
         }
         @include mxw($xs) {
             left: 0;
-            width: 300px;
+            width: 90px;
         }
     }
 

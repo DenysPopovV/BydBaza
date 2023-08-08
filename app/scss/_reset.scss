@@ -67,3 +67,10 @@ select {
 label {
     cursor: pointer;
 }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+  border-radius: 0;
+}

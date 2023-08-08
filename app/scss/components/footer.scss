@@ -7,6 +7,10 @@
         @include mxw($xs) {
             padding-top: 40px;
         }
+        @include mxw($md) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__logo-box {
@@ -14,6 +18,18 @@
     }
 
     &__catalog {
+        @include mxw($md) {
+            display: none;
+        }
+    }
+    &__menu{
+
+        @include mxw($md) {
+           display: flex;
+        }
+    }
+
+    &__contact-btn{
         @include mxw($md) {
             display: none;
         }
