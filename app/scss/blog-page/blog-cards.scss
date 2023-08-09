@@ -167,23 +167,10 @@
         }
     }
 
-    &__popup-bg {
-        display: none;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: fixed;
-        background: rgba(58, 58, 58, .7);
-        z-index: 10000;
-
-        &.active {
-            display: block;
-        }
-    }
 
     &__popup {
-        position: absolute;
+        display: none;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -192,6 +179,10 @@
         padding: 138px 125px;
         background-image: url('../images/bg.png');
         background-color: $white;
+        z-index: 100;
+        &.active {
+            display: block;
+        }
 
         @include mxw($md) {
             padding: 30px 15px;
