@@ -563,11 +563,22 @@ function resetForm() {
   document.querySelectorAll('.first-stage__msg').forEach(msg => {
     msg.textContent = messages.errorRequired
   })
+  document.querySelectorAll('.form-order__stage').forEach(stage => {
+    stage.classList.remove('show')
+  })
+  document.querySelector('.first-stage').classList.add('show');
   document.querySelector('.second-stage__msg-input').textContent = messages.errorRequired;
   closeFormOrder(".product-form");
   closeFormOrder(".last-stage");
   openFormOrder(".first-stage");
 } 
+
+function renameHeroTitleBlogPage() {
+  if(document.querySelector('.blog-cards')){
+    document.querySelector('.hero__name').textContent = 'Буд Блог'
+  }
+}
+renameHeroTitleBlogPage()
 
 document.addEventListener("click", (e) => {
   const target = e.target;
@@ -596,6 +607,7 @@ document.addEventListener("click", (e) => {
 
   if (target.classList.contains("js-form__submit")) {
     e.preventDefault();
+    bodyLock.classList.remove('lock')
     resetForm() 
   }
 });
