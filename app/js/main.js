@@ -10,6 +10,7 @@ const patterns = {
   textPattern: /[а-яА-ЯЁё]{2,}/,
   namePattern: /^[а-яА-ЯҐґЄєІіЇї'-]{2,}$/,
   phonePattern: /^0\d{9}$/,
+  emailPattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
 };
 
 const messages = {
@@ -17,6 +18,7 @@ const messages = {
   errorText: "Не менше двох символів, лише кирилиця",
   errorName: "Від двох символів, лише кирилиця, без пробілів",
   errorPhone: "Починайте з нуля, введіть 10 символів",
+  errorMail: "Не менше 6 символів, знак @ та домен пошти",
   correct: "Все правильно, заповнюйте далі!",
 };
 
@@ -25,13 +27,13 @@ function addFormValidation(formName) {
     const target = e.target;
     switch (target.name) {
       case "formQuestion":
-        checkFieldOnInput(target, patterns.textPattern, messages.errorText);
+        checkFieldOnInput(target, patterns.textPattern, messages.errorText, ".contacts__form-group", ".contacts__form-msg");
         break;
       case "firstName":
-        checkFieldOnInput(target, patterns.namePattern, messages.errorName);
+        checkFieldOnInput(target, patterns.namePattern, messages.errorName, ".contacts__form-group", ".contacts__form-msg");
         break;
       case "phoneNumber":
-        checkFieldOnInput(target, patterns.phonePattern, messages.errorPhone);
+        checkFieldOnInput(target, patterns.phonePattern, messages.errorPhone, ".contacts__form-group", ".contacts__form-msg");
         break;
       default:
         break;
@@ -40,51 +42,51 @@ function addFormValidation(formName) {
   for (const input of formName.elements) {
     if (input.type !== "submit") {
       input.addEventListener("focus", (e) => {
-        checkFieldOnFocus(e.target);
+        checkFieldOnFocus(e.target, ".contacts__form-group", ".contacts__form-msg");
       });
       input.addEventListener("blur", (e) => {
-        checkFieldOnBlur(e.target);
+        checkFieldOnBlur(e.target, ".contacts__form-group", ".contacts__form-msg");
       });
     }
   }
 }
 
-function checkFieldOnFocus(input) {
+function checkFieldOnFocus(input, parentClassName, msgClassName) {
   if (input.value.length < 1) {
-    input.closest(".contacts__form-group").classList.add("error");
+    input.closest(parentClassName).classList.add("error");
     input
-      .closest(".contacts__form-group")
-      .querySelector(".contacts__form-msg").textContent =
+      .closest(parentClassName)
+      .querySelector(msgClassName).textContent =
       messages.errorRequired;
   }
 }
 
-function checkFieldOnBlur(input) {
-  if (input.closest(".contacts__form-group").classList.contains("success")) {
+function checkFieldOnBlur(input, parentClassName, msgClassName) {
+  if (input.closest(parentClassName).classList.contains("success")) {
     input
-      .closest(".contacts__form-group")
-      .querySelector(".contacts__form-msg").textContent = "";
+      .closest(parentClassName)
+      .querySelector(msgClassName).textContent = "";
   }
 }
 
-function checkFieldOnInput(input, pattern, message) {
+function checkFieldOnInput(input, pattern, message, parentClassName, msgClassName) {
   if (!input.value.match(pattern)) {
-    input.closest(".contacts__form-group").classList.remove("success");
-    input.closest(".contacts__form-group").classList.add("error");
+    input.closest(parentClassName).classList.remove("success");
+    input.closest(parentClassName).classList.add("error");
     input
-      .closest(".contacts__form-group")
-      .querySelector(".contacts__form-msg").textContent = message;
+      .closest(parentClassName)
+      .querySelector(msgClassName).textContent = message;
   } else {
-    input.closest(".contacts__form-group").classList.remove("error");
-    input.closest(".contacts__form-group").classList.add("success");
+    input.closest(parentClassName).classList.remove("error");
+    input.closest(parentClassName).classList.add("success");
     input
-      .closest(".contacts__form-group")
-      .querySelector(".contacts__form-msg").textContent = messages.correct;
+      .closest(parentClassName)
+      .querySelector(msgClassName).textContent = messages.correct;
   }
 }
 
-function checkFormSuccess(groupClass) {
-  const formGroup = contactsForm.querySelectorAll(groupClass);
+function checkFormSuccess(groupClass, formName) {
+  const formGroup = formName.querySelectorAll(groupClass);
 
   for (const group of formGroup) {
     if (!group.classList.contains("success")) {
@@ -96,7 +98,7 @@ function checkFormSuccess(groupClass) {
 
 function checkButtonDisabled(btnName) {
   contactsForm.addEventListener("input", () => {
-    if (checkFormSuccess(".contacts__form-group")) {
+    if (checkFormSuccess(".contacts__form-group", contactsForm)) {
       btnName.removeAttribute("disabled");
       btnName.classList.add("success");
     } else {
@@ -253,7 +255,7 @@ function addBlogCardsOnLoad(item) {
 }
 
 function addCardsOnClick() {
-  const hiddenItems = Array.from(blogCardsItems).filter(
+  const hiddenItems = Array.from(blogCardParent.children).filter(
     (item) => !item.classList.contains("active")
   );
 
@@ -272,13 +274,11 @@ function addCardsOnClick() {
   }
 }
 
-if(loadMoreBtn !== null){
+if (loadMoreBtn !== null) {
   loadMoreBtn.addEventListener("click", function (e) {
     addCardsOnClick(e);
   });
 }
-
-
 
 const cardBtns = document.querySelectorAll(".blog-cards__btn");
 
@@ -287,20 +287,6 @@ cardBtns.forEach((btn) => {
     const target = e.target;
     tabsAction(target);
   });
-});
-
-document.addEventListener("click", (e) => {
-  const target = e.target;
-  if (target.classList.contains("contacts__form-btn")) {
-    e.preventDefault();
-    target.setAttribute("disabled", "disabled");
-    target.classList.remove("success");
-    removeActiveGroupClass(".contacts__form-group");
-    removeInputValue(contactsForm);
-  }
-  if (target.classList.contains("blog-cards__popup-close")) {
-    target.closest(".blog-cards__popup-bg").classList.remove("active");
-  }
 });
 
 function productTabs(target) {
@@ -420,3 +406,96 @@ function changeHeaderTextColor() {
   }
 }
 changeHeaderTextColor();
+
+/////form-order
+function openFormOrder(parentElClassName) {
+  document.querySelector(parentElClassName).classList.add("show");
+}
+function closeFormOrder(parentElClassName) {
+  document.querySelector(parentElClassName).classList.remove("show");
+}
+
+function validationLocationInput(target) {
+  if(target.value.length < 1) {
+    document.querySelector('.second-stage__msg-input').textContent = 'Від двох символів і більше!';
+    target.closest('.second-stage__group').classList.remove('success')
+    target.closest('.second-stage__group').classList.add('error')
+  } else {
+    document.querySelector('.second-stage__msg-input').textContent = messages.correct;
+    target.closest('.second-stage__group').classList.remove('error')
+    target.closest('.second-stage__group').classList.add('success')
+  }
+}
+
+function orderFormValidation(formName) {
+  formName.addEventListener("input", (e) => {
+    const target = e.target;
+    switch (target.name) {
+      case "firstName":
+        checkFieldOnInput(target, patterns.textPattern, messages.errorName, ".first-stage__group", ".first-stage__msg");
+        break;
+      case "lastName":
+        checkFieldOnInput(target, patterns.namePattern, messages.errorName, ".first-stage__group", ".first-stage__msg");
+        break;
+      case "phoneNumber":
+        checkFieldOnInput(target, patterns.phonePattern, messages.errorPhone, ".first-stage__group", ".first-stage__msg");
+        break;
+      case "email":
+        checkFieldOnInput(target, patterns.emailPattern, messages.errorMail, ".first-stage__group", ".first-stage__msg");
+        break;
+      case 'location':
+        // validationLocationInput(target)
+      break;
+    }
+
+    if(checkFormSuccess('.first-stage__group', document.forms.orderForm)) {
+      closeFormOrder('.first-stage')
+      openFormOrder('.second-stage')
+      document.querySelector('.product-form__stages').children[0].classList.add('success')
+    }
+
+    if(target.classList.contains('second-stage__checkbox')) {
+      target.closest('.second-stage__group').classList.add('success')
+    }
+    if(checkFormSuccess('.second-stage__group', document.forms.orderForm)){
+      closeFormOrder('.second-stage')
+      openFormOrder('.last-stage')
+      document.querySelector('.product-form__stages').children[1].classList.add('success');
+    }
+  });
+
+  for (const input of formName.elements) {
+    if (input.type !== "radio" && !input.classList.contains('second-stage__input')) {
+        input.addEventListener("focus", (e) => {
+          checkFieldOnFocus(e.target, ".first-stage__group", ".first-stage__msg");
+        });
+        input.addEventListener("blur", (e) => {
+          checkFieldOnBlur(e.target, ".first-stage__group", ".first-stage__msg");
+        });
+      } 
+    }
+  }
+  
+
+
+document.addEventListener("click", (e) => {
+  const target = e.target;
+  if (target.classList.contains("contacts__form-btn")) {
+    e.preventDefault();
+    target.setAttribute("disabled", "disabled");
+    target.classList.remove("success");
+    removeActiveGroupClass(".contacts__form-group");
+    removeInputValue(contactsForm);
+  }
+  if (target.classList.contains("blog-cards__popup-close")) {
+    target.closest(".blog-cards__popup-bg").classList.remove("active");
+  }
+
+  if (target.classList.contains("js-popup__form")) {
+    openFormOrder(".product-form");
+    orderFormValidation(document.forms.orderForm)
+  }
+  if (target.classList.contains("close-popup-form")) {
+    closeFormOrder(".product-form");
+  }
+});

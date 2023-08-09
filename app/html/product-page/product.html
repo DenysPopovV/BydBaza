@@ -26,7 +26,7 @@
                         <span class="product__price">1399<span>грн</span></span>
                     </div>
                     <div class="product__btns">
-                        <button class="product__btn accent-product-btn" type="button">Замовити</button>
+                        <button class="product__btn accent-product-btn js-popup__form" type="button">Замовити</button>
                         <button class="product__like-btn accent-product-btn" type="button">
                             <img src="images/icons/like.svg" alt="Вподобати товар">
                         </button>
@@ -38,7 +38,8 @@
                     <div class="product-tabs__btns">
                         <button class="product-tabs__btn active" type="button" id="tab1">Про товар</button>
                         <button class="product-tabs__btn" type="button" id="tab2">Характеристики</button>
-                        <button class="product-tabs__btn" type="button" id="tab3">Відгуки (<span class="js-reviews__count">0</span>)</button>
+                        <button class="product-tabs__btn" type="button" id="tab3">Відгуки (<span
+                                class="js-reviews__count">0</span>)</button>
                     </div>
 
                     <div class="product-tabs__content tab-about active" id="tab1">
@@ -121,5 +122,101 @@
             </div>
         </div>
 
+
+        <div class="product-form">
+            <form action="" class="form-order" name="orderForm">
+                <span class="last-stage__close close-popup-form"></span>
+                <div class="form-order__stage show first-stage">
+                    <div class="first-stage__group">
+                        <input class="first-stage__input input-style" type="text" id="firstName" name="firstName"
+                            placeholder="Введіть ваше ім'я" required>
+                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
+                    </div>
+                    <div class="first-stage__group">
+                        <input class="first-stage__input input-style" type="text" id="lastName" name="lastName"
+                            placeholder="Введіть ваше прізвище">
+                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
+                    </div>
+                    <div class="first-stage__group">
+                        <input class="first-stage__input input-style" type="tel" id="phoneNumber" name="phoneNumber"
+                            placeholder="Введіть ваш номер">
+                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
+                    </div>
+                    <div class="first-stage__group">
+                        <input class="first-stage__input input-style" type="email" id="email" name="email"
+                            placeholder="Введіть ваш email">
+                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
+                    </div>
+                </div>
+
+                <div class="form-order__stage second-stage">
+                    <div class="second-stage__group">
+                        <label class="second-stage__title stage-title" for="location">Впишіть населений пункт отримувача</label>
+                        <input class="second-stage__input input-style" type="text" id="location" name="location"
+                            placeholder="Львів">
+                        <div class="second-stage__msg-input">Це поле обов'язкове. Не може бути порожнім</div>
+                    </div>
+                    <div class="second-stage__group">
+                        <span class="second-stage__title stage-title">Спосіб отримання замовлення</span>
+                        <ul class="second-stage__delivery">
+                            <span class="second-stage__msg">Вартість прораховується індивідуально</span>
+                            <li class="second-stage__item">
+                                <input class="second-stage__checkbox sr-only" type="radio" id="novaPoshta" name="delivery">
+                                <label class="second-stage__label  novaPoshta" for="novaPoshta">Доставка БудБаза</label>
+                            </li>
+                            <li class="second-stage__item">
+                                <input class="second-stage__checkbox sr-only" type="radio" id="samovuviz" name="delivery">
+                                <label class="second-stage__label" for="samovuviz">Самовивіз</label>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <div class="second-stage__group">
+                        <span class="second-stage__title stage-title">Спосіб оплати</span>
+                        <ul class="second-stage__pay">
+                            <li class="second-stage__item">
+                                <input class="second-stage__checkbox sr-only" type="radio" id="online" name="pay">
+                                <label class="second-stage__label" for="online">Карткою або електронним гаманцем</label>
+                            </li>
+                            <li class="last-stage__item">
+                                <input class="second-stage__checkbox sr-only" type="radio" id="offline" name="pay">
+                                <label class="second-stage__label" for="offline">Післяплата</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-order__stage last-stage">
+                    <span class="last-stage__title stage-title">Товари в замовленні</span>
+                    <div class="last-stage__product">
+                        <div class="last-stage__img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="last-stage__info">
+                            <span class="last-stage__name js-product__name">name</span>
+                            <div class="last-stage__pay">
+                                <span class="last-stage__count"><span>x</span> 1 <span>шт.</span></span>
+                                <span class="last-stage__price">1399 <span>грн</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="last-stage__finish">
+                        <span class="last-stage__text">Усього до оплати</span>
+                        <span class="last-stage__price bold">1399 <span>грн</span></span>
+                    </div>
+
+                    <button class="last-stage__submit accent-product-btn js-form__submit" type="submit">
+                        Замовити
+                    </button>
+                </div>
+            </form>
+
+            <div class="product-form__stages">
+                <span class="product-form__stage">1</span>
+                <span class="product-form__stage">2</span>
+                <span class="product-form__stage">3</span>
+            </div>
+        </div>
     </div>
 </section>
