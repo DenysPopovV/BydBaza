@@ -306,12 +306,15 @@ if (loadMoreBtn !== null) {
   });
 }
 
+
+const bodyLock = document.querySelector('body')
 const cardBtns = document.querySelectorAll(".blog-cards__btn");
 
 cardBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const target = e.target;
     tabsAction(target);
+    bodyLock.classList.add('lock')
   });
 });
 
@@ -428,7 +431,9 @@ const relatedSwiper = new Swiper(".related__swiper", {
 
 function changeHeaderTextColor() {
   if (document.querySelector(".breadcrumbs") !== null) {
-    document.querySelector(".header").classList.add("black-color");
+    document.querySelector(".contact-btn").style.color='black';
+    const productPageHeader = document.querySelectorAll(".header__btn");
+    Array.from(productPageHeader).forEach((btn)=> btn.style.color='black')
   }
 }
 changeHeaderTextColor();
@@ -574,14 +579,17 @@ document.addEventListener("click", (e) => {
     removeInputValue(contactsForm);
   }
   if (target.classList.contains("blog-cards__popup-close")) {
-    target.closest(".blog-cards__popup-bg").classList.remove("active");
+    bodyLock.classList.remove('lock')
+    target.closest(".blog-cards__popup").classList.remove("active");
   }
 
   if (target.classList.contains("js-popup__form")) {
+    bodyLock.classList.add('lock')
     openFormOrder(".product-form");
     orderFormValidation(document.forms.orderForm);
   }
   if (target.classList.contains("close-popup-form")) {
+    bodyLock.classList.remove('lock')
     closeFormOrder(".product-form");
     resetForm() 
   }

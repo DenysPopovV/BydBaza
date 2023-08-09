@@ -1,5 +1,8 @@
 .advantages {
     margin-bottom: 190px;
+    @include mxw($md) {
+        margin-bottom: 100px;
+    }
     
     &__list {
         display: grid;

@@ -210,6 +210,7 @@
         }
 
         button {
+            color: $text;
             font-size: 22px;
             font-weight: 600;
             line-height: 1.5;
@@ -350,12 +351,12 @@
 }
 
 .product-form {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: $white;
-    z-index: 10;
+    z-index: 100;
     padding: 50px;
     max-width: 600px;
     width: 100%;
@@ -364,8 +365,11 @@
     justify-content: center;
     border-radius: 10px;
     background-image: url('../images/bg.png');
-
     display: none;
+
+    @include mxw($xs) {
+        padding: 40px 20px;
+    }
 
     &.show {
         display: block;
@@ -389,6 +393,13 @@
         margin-right: 116px;
         position: relative;
 
+        @include mxw($xs) {
+            width: 29px;
+            height: 29px;
+            font-size: 18px;
+            line-height: 30px;
+        }
+
         &:last-child {
             margin-right: 0;
 
@@ -405,6 +416,11 @@
             left: 60px;
             top: 20px;
             background-color: #888;
+
+            @include mxw($xs) {
+                left: 50px;
+                top: 15px;
+            }
         }
 
         &.success {
@@ -423,6 +439,11 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-image: url('../images/icons/success.svg');
+
+                @include mxw($xs) {
+                    width: 19px;
+                    height: 19px;
+                }
             }
         }
     }
@@ -430,6 +451,10 @@
 
 .form-order {
     margin-bottom: 39px;
+
+    @include mxw($xs) {
+        margin-bottom: 20px;
+    }
 
     &__stage {
 
@@ -463,10 +488,15 @@
             .first-stage__input {
                 border-color: green;
             }
+
             .first-stage__msg {
                 color: green;
                 opacity: 0.8;
             }
+        }
+
+        @include mxw($xs) {
+            margin-bottom: 15px;
         }
     }
 
@@ -476,6 +506,10 @@
         font-size: 16px;
         color: red;
         opacity: 1;
+
+        @include mxw($xs) {
+            font-size: 12px;
+        }
     }
 }
 
@@ -484,14 +518,15 @@
     &__delivery {
         position: relative;
     }
+
     &__group {
         margin-bottom: 20px;
-        
 
         &.success {
             .second-stage__msg-input {
                 color: green;
-            }  
+            }
+
             .second-stage__input {
                 border-color: green;
             }
@@ -500,6 +535,10 @@
 
     &__item {
         margin-bottom: 20px;
+
+        @include mxw($xs) {
+            margin-bottom: 10px;
+        }
     }
 
     &__checkbox {
@@ -515,6 +554,10 @@
         font-size: 16px;
         color: red;
         opacity: 1;
+
+        @include mxw($xs) {
+            font-size: 12px;
+        }
     }
 
     &__label {
@@ -523,6 +566,11 @@
         font-size: 18px;
         font-weight: 500;
         line-height: 1.5;
+
+        @include mxw($xs) {
+            font-size: 14px;
+            padding-left: 35px;
+        }
 
         &::after {
             content: "";
@@ -535,6 +583,11 @@
             border: 2px solid rgba(155, 155, 155, 0.3);
             padding: 5px;
             background-clip: content-box;
+
+            @include mxw($xs) {
+                width: 25px;
+                height: 25px;
+            }
         }
 
         &.novaPoshta {
@@ -550,6 +603,10 @@
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-image: url('../images/icons/novaPoshta.png');
+
+                @include mxw($xs) {
+                    top: -5px;
+                }
             }
         }
     }
@@ -562,13 +619,22 @@
         font-weight: 500;
         line-height: 1.5;
         width: 200px;
+
+        @include mxw($xs) {
+            display: none;
+        }
     }
 }
 
 .last-stage {
     position: relative;
+
     &__title {
         transform: translateX(30px);
+
+        @include mxw($xs) {
+            transform: translateX(0);
+        }
     }
 
     &__product {
@@ -576,13 +642,24 @@
         border-bottom: 1px solid #4e4e4e;
         padding: 0 30px 22px 30px;
         margin-bottom: 30px;
+
+        @include mxw($xs) {
+            margin-bottom: 10px;
+            padding: 0 0 10px;
+        }
     }
+
     &__img {
         background-color: #4e4e4e;
         margin-right: 17px;
+
         img {
             width: 115px;
             height: 111px;
+        }
+
+        @include mxw($xs) {
+            margin-right: 10px;
         }
     }
 
@@ -595,6 +672,11 @@
 
     &__name {
         font-weight: 500;
+
+        @include mxw($xs) {
+            font-size: 18px;
+
+        }
     }
 
     &__pay {
@@ -604,9 +686,20 @@
 
     &__count {
         font-weight: 500;
+
+        @include mxw($xs) {
+            font-size: 18px;
+
+        }
     }
+
     &__price {
         font-weight: 500;
+
+        @include mxw($xs) {
+            font-size: 18px;
+
+        }
 
         &.bold {
             font-size: 22px;
@@ -619,11 +712,21 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 50px;
+
+        @include mxw($xs) {
+            margin-bottom: 30px;
+            padding: 0;
+        }
     }
 
     &__text {
         font-size: 22px;
         font-weight: 500;
+
+        @include mxw($xs) {
+            font-size: 18px;
+
+        }
     }
 
     &__submit {
@@ -634,6 +737,12 @@
         padding: 10px 98px 10px 97px;
         z-index: 1;
         box-shadow: 0px 2px 37px 15px #fb6201;
+
+        @include mxw($xs) {
+            box-shadow: 0px 2px 30px 5px #fb6201;
+            padding: 10px 70px 10px 70px;
+        }
+
         &::after {
             display: none;
         }
@@ -647,19 +756,25 @@
     top: 10px;
     width: 30px;
     height: 30px;
+
     &::after,
-    &::before{
-        
-        right:  0;
+    &::before {
+        top: 10px;
         position: absolute;
         content: '';
         width: 100%;
         height: 2px;
         background-color: #4e4e4e;
+
+        @include mxw($xs) {
+            width: 20px;
+        }
     }
+
     &::after {
         transform: rotate(45deg);
     }
+
     &::before {
         transform: rotate(-45deg);
     }
@@ -670,7 +785,12 @@
     margin-bottom: 18px;
     font-weight: 500;
     font-size: 22px;
-    line-height: 1.5; 
+    line-height: 1.5;
+
+    @include mxw($xs) {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
 }
 
 .input-style {
@@ -687,5 +807,10 @@
     &::placeholder {
         opacity: 0.8;
         color: rgba(108, 108, 108, 0.80);
+    }
+
+    @include mxw($xs) {
+        font-size: 16px;
+
     }
 }

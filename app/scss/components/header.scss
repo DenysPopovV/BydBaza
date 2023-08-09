@@ -1,10 +1,4 @@
 .header {
-
-    &.black-color {
-        button {
-            color: $text;
-        }
-    }
     &__top {
         @include mxw($md) {
             align-items: center;

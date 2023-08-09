@@ -18,8 +18,9 @@
     }
 
     @include mxw($xs) {
-        margin-bottom: 100px;
+        margin-bottom: 50px;
     }
+
     &__title {
         text-transform: uppercase;
         font-size: 62px;
@@ -46,19 +47,23 @@
     &__box {
         max-width: 1331px;
         margin: 40px auto;
-        padding-right: 40px;
+        padding: 0 40px 0 15px;
+
+        @include mxw($xs) {
+            margin: 5px auto 10px;
+        }
     }
 
     &__item {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-left: 15px;
     }
 
     &__text {
         display: block;
         font-size: 32px;
+        padding-right: 10px;
 
         @include mxw($vlg) {
             font-size: 30px;
@@ -73,11 +78,11 @@
         }
 
         @include mxw($sm) {
-            font-size: 18px;
+            font-size: 16px;
         }
 
         @include mxw($xs) {
-            font-size: 12px;
+            font-size: 10px;
         }
     }
 
@@ -97,7 +102,7 @@
             transition: transform .3s linear;
 
             @include mxw($xs) {
-                width: 25px;
+                width: 15px;
                 height: 3px;
             }
         }
@@ -117,11 +122,15 @@
         &.active::before {
             transform: rotate(0);
         }
+        @include mxw($xs) {
+            width: 15px;
+            height: 15px;
+        }
     }
 
     &__answer {
         display: none;
-        padding: 35px 0 0 15px;
+        padding: 35px 0 0 0;
 
         span {
             font-size: 16px;
@@ -133,6 +142,10 @@
 
         &.active {
             display: block;
+        }
+
+        @include mxw($xs) {
+            padding: 5px 0 0 0;
         }
     }
 }
