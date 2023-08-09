@@ -280,13 +280,31 @@ if (loadMoreBtn !== null) {
   });
 }
 
+
+const bodyLock = document.querySelector('body')
 const cardBtns = document.querySelectorAll(".blog-cards__btn");
 
 cardBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const target = e.target;
     tabsAction(target);
+    bodyLock.classList.add('lock')
   });
+});
+
+document.addEventListener("click", (e) => {
+  const target = e.target;
+  if (target.classList.contains("contacts__form-btn")) {
+    e.preventDefault();
+    target.setAttribute("disabled", "disabled");
+    target.classList.remove("success");
+    removeActiveGroupClass(".contacts__form-group");
+    removeInputValue(contactsForm);
+  }
+  if (target.classList.contains("blog-cards__popup-close")) {
+    target.closest(".blog-cards__popup-bg").classList.remove("active");
+    bodyLock.classList.remove('lock')
+  }
 });
 
 function productTabs(target) {
@@ -402,7 +420,9 @@ const relatedSwiper = new Swiper(".related__swiper", {
 
 function changeHeaderTextColor() {
   if (document.querySelector(".breadcrumbs") !== null) {
-    document.querySelector(".header").classList.add("black-color");
+    document.querySelector(".contact-btn").style.color='black';
+    const productPageHeader = document.querySelectorAll(".header__btn");
+    Array.from(productPageHeader).forEach((btn)=> btn.style.color='black')
   }
 }
 changeHeaderTextColor();
