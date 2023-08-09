@@ -27,13 +27,31 @@ function addFormValidation(formName) {
     const target = e.target;
     switch (target.name) {
       case "formQuestion":
-        checkFieldOnInput(target, patterns.textPattern, messages.errorText, ".contacts__form-group", ".contacts__form-msg");
+        checkFieldOnInput(
+          target,
+          patterns.textPattern,
+          messages.errorText,
+          ".contacts__form-group",
+          ".contacts__form-msg"
+        );
         break;
       case "firstName":
-        checkFieldOnInput(target, patterns.namePattern, messages.errorName, ".contacts__form-group", ".contacts__form-msg");
+        checkFieldOnInput(
+          target,
+          patterns.namePattern,
+          messages.errorName,
+          ".contacts__form-group",
+          ".contacts__form-msg"
+        );
         break;
       case "phoneNumber":
-        checkFieldOnInput(target, patterns.phonePattern, messages.errorPhone, ".contacts__form-group", ".contacts__form-msg");
+        checkFieldOnInput(
+          target,
+          patterns.phonePattern,
+          messages.errorPhone,
+          ".contacts__form-group",
+          ".contacts__form-msg"
+        );
         break;
       default:
         break;
@@ -42,10 +60,18 @@ function addFormValidation(formName) {
   for (const input of formName.elements) {
     if (input.type !== "submit") {
       input.addEventListener("focus", (e) => {
-        checkFieldOnFocus(e.target, ".contacts__form-group", ".contacts__form-msg");
+        checkFieldOnFocus(
+          e.target,
+          ".contacts__form-group",
+          ".contacts__form-msg"
+        );
       });
       input.addEventListener("blur", (e) => {
-        checkFieldOnBlur(e.target, ".contacts__form-group", ".contacts__form-msg");
+        checkFieldOnBlur(
+          e.target,
+          ".contacts__form-group",
+          ".contacts__form-msg"
+        );
       });
     }
   }
@@ -54,34 +80,34 @@ function addFormValidation(formName) {
 function checkFieldOnFocus(input, parentClassName, msgClassName) {
   if (input.value.length < 1) {
     input.closest(parentClassName).classList.add("error");
-    input
-      .closest(parentClassName)
-      .querySelector(msgClassName).textContent =
+    input.closest(parentClassName).querySelector(msgClassName).textContent =
       messages.errorRequired;
   }
 }
 
 function checkFieldOnBlur(input, parentClassName, msgClassName) {
   if (input.closest(parentClassName).classList.contains("success")) {
-    input
-      .closest(parentClassName)
-      .querySelector(msgClassName).textContent = "";
+    input.closest(parentClassName).querySelector(msgClassName).textContent = "";
   }
 }
 
-function checkFieldOnInput(input, pattern, message, parentClassName, msgClassName) {
+function checkFieldOnInput(
+  input,
+  pattern,
+  message,
+  parentClassName,
+  msgClassName
+) {
   if (!input.value.match(pattern)) {
     input.closest(parentClassName).classList.remove("success");
     input.closest(parentClassName).classList.add("error");
-    input
-      .closest(parentClassName)
-      .querySelector(msgClassName).textContent = message;
+    input.closest(parentClassName).querySelector(msgClassName).textContent =
+      message;
   } else {
     input.closest(parentClassName).classList.remove("error");
     input.closest(parentClassName).classList.add("success");
-    input
-      .closest(parentClassName)
-      .querySelector(msgClassName).textContent = messages.correct;
+    input.closest(parentClassName).querySelector(msgClassName).textContent =
+      messages.correct;
   }
 }
 
@@ -193,12 +219,12 @@ const InfoSwiper = new Swiper(".swiper-products", {
   },
 });
 
-function breadCrumbs(productName, breadCrumbsEl) {
+function breadCrumbsProductName(productName, breadCrumbsEl) {
   if (productName !== null && breadCrumbsEl !== null) {
     breadCrumbsEl.textContent = productName.textContent;
   }
 }
-breadCrumbs(productName, breadCrumbsEl);
+breadCrumbsProductName(productName, breadCrumbsEl);
 
 const productSwiper = new Swiper(".tab-reviews__swiper", {
   direction: "horizontal",
@@ -415,15 +441,24 @@ function closeFormOrder(parentElClassName) {
   document.querySelector(parentElClassName).classList.remove("show");
 }
 
-function validationLocationInput(target) {
-  if(target.value.length < 1) {
-    document.querySelector('.second-stage__msg-input').textContent = 'Від двох символів і більше!';
-    target.closest('.second-stage__group').classList.remove('success')
-    target.closest('.second-stage__group').classList.add('error')
-  } else {
-    document.querySelector('.second-stage__msg-input').textContent = messages.correct;
-    target.closest('.second-stage__group').classList.remove('error')
-    target.closest('.second-stage__group').classList.add('success')
+function secondStageForm() {
+  const dotsInFormStages = document.querySelector(".product-form__stages"),
+    lastStageNameProduct = document.querySelector(".last-stage__name"),
+    productName = document.querySelector(".js-product__name"),
+    priceProduct = document.querySelector(".product__price"),
+    priceOfOrderProduct = document.querySelectorAll(".last-stage__price"),
+    countOfProductsOrder = document.querySelector(".last-stage__count");
+
+  if (checkFormSuccess(".second-stage__group", document.forms.orderForm)) {
+    closeFormOrder(".second-stage");
+    openFormOrder(".last-stage");
+    dotsInFormStages.children[1].classList.add("success");
+    lastStageNameProduct.textContent = productName.textContent;
+    priceOfOrderProduct[0].textContent = priceProduct.textContent;
+    priceOfOrderProduct[1].textContent =
+      +priceProduct.textContent.split("г")[0] *
+        +countOfProductsOrder.textContent +
+      "грн";
   }
 }
 
@@ -432,51 +467,102 @@ function orderFormValidation(formName) {
     const target = e.target;
     switch (target.name) {
       case "firstName":
-        checkFieldOnInput(target, patterns.textPattern, messages.errorName, ".first-stage__group", ".first-stage__msg");
+        checkFieldOnInput(
+          target,
+          patterns.textPattern,
+          messages.errorName,
+          ".first-stage__group",
+          ".first-stage__msg"
+        );
         break;
       case "lastName":
-        checkFieldOnInput(target, patterns.namePattern, messages.errorName, ".first-stage__group", ".first-stage__msg");
+        checkFieldOnInput(
+          target,
+          patterns.namePattern,
+          messages.errorName,
+          ".first-stage__group",
+          ".first-stage__msg"
+        );
         break;
       case "phoneNumber":
-        checkFieldOnInput(target, patterns.phonePattern, messages.errorPhone, ".first-stage__group", ".first-stage__msg");
+        checkFieldOnInput(
+          target,
+          patterns.phonePattern,
+          messages.errorPhone,
+          ".first-stage__group",
+          ".first-stage__msg"
+        );
         break;
       case "email":
-        checkFieldOnInput(target, patterns.emailPattern, messages.errorMail, ".first-stage__group", ".first-stage__msg");
+        checkFieldOnInput(
+          target,
+          patterns.emailPattern,
+          messages.errorMail,
+          ".first-stage__group",
+          ".first-stage__msg"
+        );
         break;
-      case 'location':
-        // validationLocationInput(target)
-      break;
+      case "location":
+        target.nextElementSibling.textContent = "";
+        target.addEventListener("blur", (e) => {
+          if (target.value.length > 3) {
+            target.closest(".second-stage__group").classList.add("success");
+            target.nextElementSibling.textContent = "";
+            secondStageForm();
+          }
+        });
+        break;
     }
 
-    if(checkFormSuccess('.first-stage__group', document.forms.orderForm)) {
-      closeFormOrder('.first-stage')
-      openFormOrder('.second-stage')
-      document.querySelector('.product-form__stages').children[0].classList.add('success')
+    if (checkFormSuccess(".first-stage__group", document.forms.orderForm)) {
+      closeFormOrder(".first-stage");
+      openFormOrder(".second-stage");
+      document
+        .querySelector(".product-form__stages")
+        .children[0].classList.add("success");
     }
 
-    if(target.classList.contains('second-stage__checkbox')) {
-      target.closest('.second-stage__group').classList.add('success')
+    if (target.classList.contains("second-stage__checkbox")) {
+      target.closest(".second-stage__group").classList.add("success");
     }
-    if(checkFormSuccess('.second-stage__group', document.forms.orderForm)){
-      closeFormOrder('.second-stage')
-      openFormOrder('.last-stage')
-      document.querySelector('.product-form__stages').children[1].classList.add('success');
-    }
+    secondStageForm();
   });
 
   for (const input of formName.elements) {
-    if (input.type !== "radio" && !input.classList.contains('second-stage__input')) {
-        input.addEventListener("focus", (e) => {
-          checkFieldOnFocus(e.target, ".first-stage__group", ".first-stage__msg");
-        });
-        input.addEventListener("blur", (e) => {
-          checkFieldOnBlur(e.target, ".first-stage__group", ".first-stage__msg");
-        });
-      } 
+    if (
+      input.type !== "radio" &&
+      !input.classList.contains("second-stage__input") &&
+      !input.classList.contains("js-form__submit")
+    ) {
+      input.addEventListener("focus", (e) => {
+        checkFieldOnFocus(e.target, ".first-stage__group", ".first-stage__msg");
+      });
+      input.addEventListener("blur", (e) => {
+        checkFieldOnBlur(e.target, ".first-stage__group", ".first-stage__msg");
+      });
     }
   }
-  
+}
 
+function removeSuccessGroup(groupName){
+  document.querySelectorAll(groupName).forEach(group => {
+    group.classList.remove('success')
+  })
+}
+function resetForm() {
+  
+  document.forms.orderForm.reset();
+  removeSuccessGroup('.product-form__stage')
+  removeSuccessGroup('.second-stage__group')
+  removeSuccessGroup('.first-stage__group')
+  document.querySelectorAll('.first-stage__msg').forEach(msg => {
+    msg.textContent = messages.errorRequired
+  })
+  document.querySelector('.second-stage__msg-input').textContent = messages.errorRequired;
+  closeFormOrder(".product-form");
+  closeFormOrder(".last-stage");
+  openFormOrder(".first-stage");
+} 
 
 document.addEventListener("click", (e) => {
   const target = e.target;
@@ -493,9 +579,15 @@ document.addEventListener("click", (e) => {
 
   if (target.classList.contains("js-popup__form")) {
     openFormOrder(".product-form");
-    orderFormValidation(document.forms.orderForm)
+    orderFormValidation(document.forms.orderForm);
   }
   if (target.classList.contains("close-popup-form")) {
     closeFormOrder(".product-form");
+    resetForm() 
+  }
+
+  if (target.classList.contains("js-form__submit")) {
+    e.preventDefault();
+    resetForm() 
   }
 });
