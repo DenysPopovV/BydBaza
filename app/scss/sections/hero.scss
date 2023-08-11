@@ -13,6 +13,7 @@
 
     &__box {
         height: calc(100vh - 10px);
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -24,30 +25,30 @@
 
     &__content {
         z-index: 10;
-        max-width: 67%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-
-        @include mxw($md) {
-            flex-direction: column-reverse;
-        }
-        @include mxw($sm) {
-            max-width: 100%;
-        }
+        position: relative;
     }
 
     &__media {
+        position: absolute;
+        bottom: 12px;
         @include mxw($md) {
             display: flex;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 
     &__item {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
         @include mxw($md) {
-            &:first-child {
-                margin-right: 18px;
+            margin-right: 18px;
+            &:last-child {
+                transform: translateX(-6px);
+                margin-right: 0;
             }
         }
     }

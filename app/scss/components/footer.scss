@@ -75,8 +75,9 @@
     }
 
     &__item {
-        &:first-child {
-            margin-right: 15px;
+        margin-right: 18px;
+        &:last-child {
+            margin-right: 0;
         }
     }
 

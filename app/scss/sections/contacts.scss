@@ -95,18 +95,18 @@
 
         @include mxw($sm) {
             position: relative;
-            
+           font-size: 14px;
+            max-width: 350px;            
         }
         @include mxw($xs) {
             padding-left: 110px;
             font-size: 12px;
-            
         }
     }
 
     &__media {
         display: flex;
-        margin: 25px 0 35px 0;
+        margin: 15px 0 25px 0;
 
         @include mxw($sm) {
             position: absolute;
@@ -129,7 +129,7 @@
     }
     &__item {
         margin-right: 10px;
-
+        
         &:last-child {
             margin-bottom: 0;
         }
@@ -148,6 +148,11 @@
         @include mxw($sm) {
            display: none;
         }
+    }
+
+    &__location {
+        display: block;
+        margin-bottom: 15px;
     }
 }
 
