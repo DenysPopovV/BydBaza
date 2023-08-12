@@ -51,6 +51,7 @@
         width: 676px;
         padding: 0 0 4px 15px;
         z-index: 1;
+        background-color: transparent;
         border-bottom: 1px solid #ababab;
 
         @include mxw($sm) {

@@ -1,7 +1,7 @@
 .hero {
     height: 100vh;
     background-color: #3D3D3D;
-    margin-bottom: 80px;
+    // margin-bottom: 80px;
 
     &__bg-video {
         width: 100%;
@@ -47,7 +47,6 @@
         @include mxw($md) {
             margin-right: 18px;
             &:last-child {
-                transform: translateX(-6px);
                 margin-right: 0;
             }
         }
