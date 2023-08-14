@@ -155,7 +155,7 @@
 
     &__like-btn {
         display: inline-block;
-        padding: 7px 2px;
+        padding: 7px 7px;
 
         &::after {
             display: none;
@@ -682,10 +682,24 @@
     &__pay {
         display: flex;
         justify-content: space-between;
+
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        span {
+            font-weight: 500;
+        }
     }
 
+    // &__box {
+    //     display: block;
+    // }
+
     &__count {
-        font-weight: 500;
+        text-align: right;
+        max-width: 50px;
+        box-sizing: border-box;
 
         @include mxw($xs) {
             font-size: 18px;
@@ -694,8 +708,6 @@
     }
 
     &__price {
-        font-weight: 500;
-
         @include mxw($xs) {
             font-size: 18px;
 

@@ -15,20 +15,20 @@
         <div class="header__top copy__top">
             <div class="header__logo-box copy__logo-box">
                 <a href="index.html"><img class="header__logo copy__logo" src="images/logo.png" alt=""></a>
-                <a class="header__catalog catalog-btn" href="index.html#catalog">Каталог</a>
+                <a class="header__catalog catalog-btn scroll" href="#new-products">Каталог</a>
             </div>
             <ul class="header__menu copy__menu">
                 <li class="header__item copy__item">
-                    <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
+                    <a class="header__btn copy__btn scroll" href="#contact">Контакти</a>
                 </li>
                 <li class="header__item copy__item">
-                    <a class="header__btn copy__btn" href="index.html#question">FAQ</a>
+                    <a class="header__btn copy__btn scroll" href="#question">FAQ</a>
                 </li>
                 <li class="header__item copy__item">
                     <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
                 </li>
             </ul>
-            <a class="header__contact-btn contact-btn" href="index.html#contact">Замовити дзвінок</a>
+            <a class="header__contact-btn contact-btn scroll" href="#contact">Замовити дзвінок</a>
         </div>
     </div>
 </section>
@@ -42,17 +42,18 @@
         <span class="js-breadcrumbs__title breadcrumbs--style"></span>
     </div>
 </section>
-             <section class="product">
+            <section class="product">
     <div class="container">
         <h1 class="product__title js-product__name">Назва товару</h1>
 
         <div class="product__rating">
             <div class="product__stars">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
+                <span class="sr-only">Оцінка цього товру</span>
+                <img src="images/icons/star.svg" alt="1-зірочка">
+                <img src="images/icons/star.svg" alt="2-зірочка">
+                <img src="images/icons/star.svg" alt="3-зірочка">
+                <img src="images/icons/star.svg" alt="4-зірочка">
+                <img src="images/icons/star.svg" alt="5-зірочка">
             </div>
 
             <div class="product__reviews-count">
@@ -72,6 +73,7 @@
                     <div class="product__btns">
                         <button class="product__btn accent-product-btn js-popup__form" type="button">Замовити</button>
                         <button class="product__like-btn accent-product-btn" type="button">
+                            <span class="sr-only">кнопка для вподобання цього товару</span>
                             <img src="images/icons/like.svg" alt="Вподобати товар">
                         </button>
                     </div>
@@ -239,7 +241,7 @@
                         <div class="last-stage__info">
                             <span class="last-stage__name js-product__name">name</span>
                             <div class="last-stage__pay">
-                                <div><span>x</span><span class="last-stage__count"> 2 </span><span>шт.</span></div>
+                               <span class="last-stage__box"><input class="last-stage__count" type="number" name="" id="" value="1" min="1"> .шт</span>
                                 <span class="last-stage__price"> <span>грн</span></span>
                             </div>
                         </div>
@@ -351,7 +353,8 @@
     <div class="container">
         <div class="footer__top copy__top">
             <div class="footer__logo-box copy__logo-box">
-                <a href="index.html"><img class="footer__logo copy__logo" src="images/logo.png" alt="логотип магазину"></a>
+                <a href="index.html"><img class="footer__logo copy__logo" src="images/logo.png"
+                        alt="логотип магазину"></a>
                 <a class="footer__catalog catalog-btn" href="#">Каталог</a>
             </div>
             <ul class="footer__menu copy__menu">
@@ -369,23 +372,39 @@
                 <a href="tel:343243243243" class="footer__tell location-contacts__tell">+380(99)-999-99-99</a>
                 <ul class="footer__media media">
                     <li class="footer__item media__item">
-                      <a class="footer__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/" target="_blank"></a>
+                        <a class="footer__media-btn media__btn media__btn--inst"
+                            href="https://www.instagram.com/budbazakam/" target="_blank">
+                            <span class="sr-only">Посилання для інстаграма</span>
+                        </a>
                     </li>
                     <li class="footer__item media__item">
-                      <a class="footer__media-btn media__btn media__btn--facebook"  href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083" target="_blank"></a>
+                        <a class="footer__media-btn media__btn media__btn--facebook"
+                            href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                            target="_blank">
+                            <span class="sr-only">Посилання для Фейсбука</span>
+                        </a>
                     </li>
                     <li class="hero__item media__item">
-                        <a class="hero__media-btn media__btn media__btn--location" href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
+                        <a class="hero__media-btn media__btn media__btn--location"
+                            href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank">
+                            <span class="sr-only">Посилання на наше місце знаходження</span>
+                        </a>
                     </li>
-                  </ul>
-                <a class="footer__location" href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu" target="_blank">Львівська область, м. Кам’янка-Бузька Вулиця Федьковича, 74</a>
+                </ul>
+                <a class="footer__location"
+                    href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu"
+                    target="_blank">Львівська область, м. Кам’янка-Бузька Вулиця Федьковича, 74</a>
             </div>
             <div class="footer__map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.13539350939!2d24.346026777743923!3d50.12118837153111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472532a2fa3c18bb%3A0x25316f8ab74aa12a!2z0LLRg9C70LjRhtGPINCk0LXQtNGM0LrQvtCy0LjRh9CwLCA3NCwg0JrQsNC8J9GP0L3QutCwLdCR0YPQt9GM0LrQsCwg0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCA4MDQwMA!5e0!3m2!1sru!2sua!4v1691065369113!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.13539350939!2d24.346026777743923!3d50.12118837153111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472532a2fa3c18bb%3A0x25316f8ab74aa12a!2z0LLRg9C70LjRhtGPINCk0LXQtNGM0LrQvtCy0LjRh9CwLCA3NCwg0JrQsNC8J9GP0L3QutCwLdCR0YPQt9GM0LrQsCwg0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCA4MDQwMA!5e0!3m2!1sru!2sua!4v1691065369113!5m2!1sru!2sua"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
         <div class="footer__sub">
-            <a class="footer__sub-text" href="https://www.instagram.com/webd.studio/" target="_blank">Розробка сайтів: Another IT</a>
+            <a class="footer__sub-text" href="https://www.instagram.com/webd.studio/" target="_blank">Розробка сайтів:
+                Another IT</a>
             <span class="footer__sub-text">© 2023, Буд База</span>
         </div>
 

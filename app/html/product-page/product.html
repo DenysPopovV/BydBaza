@@ -4,11 +4,12 @@
 
         <div class="product__rating">
             <div class="product__stars">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
-                <img src="images/icons/star.svg" alt="star">
+                <span class="sr-only">Оцінка цього товру</span>
+                <img src="images/icons/star.svg" alt="1-зірочка">
+                <img src="images/icons/star.svg" alt="2-зірочка">
+                <img src="images/icons/star.svg" alt="3-зірочка">
+                <img src="images/icons/star.svg" alt="4-зірочка">
+                <img src="images/icons/star.svg" alt="5-зірочка">
             </div>
 
             <div class="product__reviews-count">
@@ -28,6 +29,7 @@
                     <div class="product__btns">
                         <button class="product__btn accent-product-btn js-popup__form" type="button">Замовити</button>
                         <button class="product__like-btn accent-product-btn" type="button">
+                            <span class="sr-only">кнопка для вподобання цього товару</span>
                             <img src="images/icons/like.svg" alt="Вподобати товар">
                         </button>
                     </div>
@@ -195,7 +197,7 @@
                         <div class="last-stage__info">
                             <span class="last-stage__name js-product__name">name</span>
                             <div class="last-stage__pay">
-                                <div><span>x</span><span class="last-stage__count"> 2 </span><span>шт.</span></div>
+                               <span class="last-stage__box"><input class="last-stage__count" type="number" name="" id="" value="1" min="1"> .шт</span>
                                 <span class="last-stage__price"> <span>грн</span></span>
                             </div>
                         </div>
