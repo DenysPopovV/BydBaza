@@ -1,23 +1,11 @@
 .question {
-    margin-bottom: 360px;
-
-    @include mxw($vlg) {
-        margin-bottom: 300px;
-    }
-
-    @include mxw($lg) {
-        margin-bottom: 250px;
-    }
+    margin-bottom: 150px;
 
     @include mxw($md) {
-        margin-bottom: 200px;
+        margin-bottom: 100px;
     }
 
     @include mxw($sm) {
-        margin-bottom: 150px;
-    }
-
-    @include mxw($xs) {
         margin-bottom: 50px;
     }
 
