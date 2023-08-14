@@ -20,11 +20,11 @@
             padding: 20px 0;
 
             @include mxw($md) {
-                padding: 5px 5px;
+                padding: 5px 15px;
             }
 
             @include mxw($xs) {
-                padding: 10px 5px;
+                padding: 10px 15px;
             }
         }
 
@@ -151,7 +151,7 @@
 
 .mobile {
     z-index: 10000;
-    height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
     width: 100%;
     position: fixed;
     background-color: #3d3d3d;

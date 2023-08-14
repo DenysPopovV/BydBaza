@@ -26,17 +26,17 @@ $vlg: 1400;
     }
 }
 
-body {
-    @media screen and (max-width: 18in) {
-        zoom: 80%;
-    }
-    @media screen and (max-width: 13in) {
-        zoom: 90%;
-    }
-    @media screen and (max-width: 10in) {
-        zoom: 100%;
-    }
-}
+// body {
+//     @media screen and (max-width: 18in) {
+//         zoom: 80%;
+//     }
+//     @media screen and (max-width: 13in) {
+//         zoom: 90%;
+//     }
+//     @media screen and (max-width: 10in) {
+//         zoom: 100%;
+//     }
+// }
 
 input {
     &:focus {
