@@ -1,31 +1,210 @@
 .header {
+    position: relative;
+
+    &__wrapper {
+        z-index: 1000;
+        padding: 10px 5px;
+    }
+
     &__top {
-        @include mxw($md) {
-            align-items: center;
+        align-items: center;
+
+        &.sticky {
+            z-index: 1000;
+            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #3d3d3d;
+            padding: 20px 0;
+
+            @include mxw($md) {
+                padding: 5px 5px;
+            }
+
+            @include mxw($xs) {
+                padding: 10px 5px;
+            }
         }
+
+        &.animation {
+            transition: opacity .8s linear;
+        }
+
+        &.opacity {
+            opacity: 1;
+        }
+    }
+
+    &__center-fix {
+        max-width: 1331px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     &__logo-box {
+        position: relative;
+        display: flex;
+
         @include mxw($md) {
-            max-width: 180px;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 100%;
         }
     }
 
+    &__catalog {
+        position: absolute;
+        transform: translateX(180px);
+
+        @include mxw($md) {
+            display: none;
+        }
+    }
+
+    &__mobile-btn {
+        display: none;
+        position: relative;
+        width: 40px;
+        height: 20px;
+
+        &::after,
+        &::before,
+        span {
+            content: '';
+            position: absolute;
+            height: 3px;
+            right: 0;
+            background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
+            transition: all .3s linear;
+        }
+
+        &::after {
+            width: 100%;
+            top: 0;
+        }
+
+        span {
+            width: 75%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &::before {
+            width: 50%;
+            bottom: 0;
+        }
+
+        &.active {
+
+            &::after,
+            &::before {
+                width: 70%;
+                top: 50%;
+                transform: translateY(-50%) rotate(45deg);
+            }
+
+            span {
+                display: none;
+            }
+
+            &::before {
+                top: 9px;
+                transform: rotate(-42deg);
+            }
+
+        }
+
+        @include mxw($md) {
+            display: block;
+        }
+
+    }
+
     &__logo {
+        margin-bottom: 0;
+        height: 43px;
+
         @include mxw($xs) {
             margin-bottom: 0;
         }
     }
 
     &__menu {
-        @include mxw($sm) {
+        @include mxw($md) {
             display: none;
         }
     }
-    &.contact-btn {
+
+    &__contact-btn {
         @include mxw($md) {
-            padding: 5px 11px 6px 10px;
+            display: none;
         }
     }
+
+
 }
 
+.mobile {
+    z-index: 10000;
+    height: calc(100vh - 60px);
+    width: 100%;
+    position: fixed;
+    background-color: #3d3d3d;
+    top: 60px;
+    transform: translateX(-200%);
+    right: 0;
+    bottom: 0;
+    transition: all .3s linear;
+    text-align: center;
+    padding: 100px 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    &__item {
+        padding: 15px 0;
+        border-bottom: 1px solid $accent;
+    }
+
+    &__link {
+        color: $white;
+        text-transform: uppercase;
+    }
+
+    &__box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__icons {
+        display: flex;
+    }
+
+    &__media-item {
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__media-btn {
+        &::after {
+            left: 0;
+        }
+    }
+
+    &__contact {
+        padding: 10px 30px;
+    }
+}

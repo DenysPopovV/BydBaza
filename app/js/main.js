@@ -11,8 +11,8 @@ const contactsForm = document.forms.contactForm,
   cardBtns = document.querySelectorAll(".blog-cards__btn"),
   blogCardParent = document.querySelector(".blog-cards__list"),
   loadMoreBtn = document.getElementById("loadMore"),
-  headerWrapper = document.querySelector(".headertop"),
-  headerMenuBtn = document.querySelector(".headermobile-btn"),
+  headerWrapper = document.querySelector(".header__top"),
+  headerMenuBtn = document.querySelector(".header__mobile-btn"),
   headerMobMenu = document.querySelector(".mobile");
 
 const patterns = {
@@ -688,3 +688,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+window.addEventListener('scroll',  headerFixed);
