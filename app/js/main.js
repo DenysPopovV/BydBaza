@@ -4,7 +4,16 @@ const contactsForm = document.forms.contactForm,
   productTabBtns = document.querySelectorAll(".product-tabs__btn"),
   productTabContent = document.querySelectorAll(".product-tabs__content"),
   productName = document.querySelector(".js-product__name"),
-  breadCrumbsEl = document.querySelector(".js-breadcrumbs__title");
+  breadCrumbsEl = document.querySelector(".js-breadcrumbs__title"),
+  stars = document.querySelector(".product__stars"),
+  productReviewsList = document.querySelector(".tab-reviews__wrapper"),
+  bodyLock = document.querySelector("body"),
+  cardBtns = document.querySelectorAll(".blog-cards__btn"),
+  blogCardParent = document.querySelector(".blog-cards__list"),
+  loadMoreBtn = document.getElementById("loadMore"),
+  headerWrapper = document.querySelector(".header__top"),
+  headerMenuBtn = document.querySelector(".header__mobile-btn"),
+  headerMobMenu = document.querySelector(".mobile");
 
 const patterns = {
   textPattern: /[а-яА-ЯЁё]{2,}/,
@@ -22,6 +31,8 @@ const messages = {
   correct: "Все правильно, заповнюйте далі!",
 };
 
+///////////////////////////home-page {
+//contact-form {
 function addFormValidation(formName) {
   formName.addEventListener("input", (e) => {
     const target = e.target;
@@ -98,16 +109,15 @@ function checkFieldOnInput(
   parentClassName,
   msgClassName
 ) {
+  const parentEl = input.closest(parentClassName);
   if (!input.value.match(pattern)) {
-    input.closest(parentClassName).classList.remove("success");
-    input.closest(parentClassName).classList.add("error");
-    input.closest(parentClassName).querySelector(msgClassName).textContent =
-      message;
+    parentEl.classList.remove("success");
+    parentEl.classList.add("error");
+    parentEl.querySelector(msgClassName).textContent = message;
   } else {
-    input.closest(parentClassName).classList.remove("error");
-    input.closest(parentClassName).classList.add("success");
-    input.closest(parentClassName).querySelector(msgClassName).textContent =
-      messages.correct;
+    parentEl.classList.remove("error");
+    parentEl.classList.add("success");
+    parentEl.querySelector(msgClassName).textContent = messages.correct;
   }
 }
 
@@ -150,10 +160,11 @@ function removeActiveGroupClass(groupClass) {
   }
 }
 
-if (contactsForm != undefined) {
+if (contactsForm) {
   addFormValidation(contactsForm);
   checkButtonDisabled(contactsForm.contactsBtn);
 }
+// }
 
 const InfoSwiper = new Swiper(".swiper-products", {
   direction: "horizontal",
@@ -219,26 +230,6 @@ const InfoSwiper = new Swiper(".swiper-products", {
   },
 });
 
-function breadCrumbsProductName(productName, breadCrumbsEl) {
-  if (productName !== null && breadCrumbsEl !== null) {
-    breadCrumbsEl.textContent = productName.textContent;
-  }
-}
-breadCrumbsProductName(productName, breadCrumbsEl);
-
-const productSwiper = new Swiper(".tab-reviews__swiper", {
-  direction: "horizontal",
-  spaceBetween: 10,
-  slidesPerView: 1,
-  loop: false,
-  freeMode: true,
-
-  navigation: {
-    nextEl: ".tab-reviews__arrow-next",
-    prevEl: ".tab-reviews__arrow-prev",
-  },
-});
-
 function tabsAction(target) {
   const answerEl = document.querySelector(`div#${target.id}`);
   if (target.id === answerEl.id) {
@@ -264,27 +255,27 @@ questionTabBtns.forEach((btn) => {
     tabsAction(target);
   });
 });
+/////////////////////////// }
 
-const blogCardParent = document.querySelector(".blog-cards__list");
-const loadMoreBtn = document.getElementById("loadMore");
-let scrollDownHeight;
-
-if (blogCardParent !== null) {
-  addBlogCardsOnLoad(blogCardParent.children);
+/////////////////////blog-page {
+function renameHeroTitleBlogPage() {
+  if (document.querySelector(".blog-cards")) {
+    document.querySelector(".hero__name").textContent = "БудБлог";
+  }
 }
+renameHeroTitleBlogPage();
 
+let scrollDownHeight;
 function addBlogCardsOnLoad(item) {
   for (let i = 0; i < 3; i++) {
     item[i].classList.add("active");
   }
   scrollDownHeight = document.querySelector(".blog-cards").offsetHeight;
 }
-
 function addCardsOnClick() {
   const hiddenItems = Array.from(blogCardParent.children).filter(
     (item) => !item.classList.contains("active")
   );
-
   if (hiddenItems.length > 0) {
     for (let i = 0; i < 3; i++) {
       if (hiddenItems[i]) {
@@ -300,24 +291,23 @@ function addCardsOnClick() {
   }
 }
 
-if (loadMoreBtn !== null) {
+if (blogCardParent) {
+  addBlogCardsOnLoad(blogCardParent.children);
   loadMoreBtn.addEventListener("click", function (e) {
     addCardsOnClick(e);
   });
 }
 
-
-const bodyLock = document.querySelector('body')
-const cardBtns = document.querySelectorAll(".blog-cards__btn");
-
 cardBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const target = e.target;
     tabsAction(target);
-    bodyLock.classList.add('lock')
+    bodyLock.classList.add("lock");
   });
 });
+////////////// }
 
+////////////////////////product-page {
 function productTabs(target) {
   const contentEl = document.querySelector(`div#${target.id}`);
   if (!target.classList.contains("active")) {
@@ -339,31 +329,182 @@ productTabBtns.forEach((btn) => {
   });
 });
 
-const productReviewsList = document.querySelector(".tab-reviews__wrapper");
+const productSwiper = new Swiper(".tab-reviews__swiper", {
+  direction: "horizontal",
+  spaceBetween: 10,
+  slidesPerView: 1,
+  loop: false,
+  freeMode: true,
+
+  navigation: {
+    nextEl: ".tab-reviews__arrow-next",
+    prevEl: ".tab-reviews__arrow-prev",
+  },
+});
+
 function countReviews(reviewsList) {
   document.querySelectorAll(".js-reviews__count").forEach((item) => {
     item.textContent = reviewsList.length;
   });
 }
-if (productReviewsList !== null) {
+if (productReviewsList) {
   countReviews(productReviewsList.children);
 }
 
 function ratingStar(stars) {
-  [...stars].forEach((star, index) => {
-    star.addEventListener("click", (e) => {
-      [...stars].forEach((star, index1) => {
-        index >= index1
-          ? star.classList.add("active")
-          : star.classList.remove("active");
+  if (document.querySelector(".product__stars")) {
+    [...stars.children].forEach((star, index) => {
+      star.addEventListener("click", (e) => {
+        [...stars].forEach((star, index1) => {
+          index >= index1
+            ? star.classList.add("active")
+            : star.classList.remove("active");
+        });
       });
     });
+  }
+}
+ratingStar(stars);
+
+//form-order {
+function openFormOrder(parentElClassName) {
+  document.querySelector(parentElClassName).classList.add("show");
+}
+function closeFormOrder(parentElClassName) {
+  document.querySelector(parentElClassName).classList.remove("show");
+}
+
+function showLastStageAddInfo() {
+  const dotsInFormStages = document.querySelector(".product-form__stages"),
+    lastStageNameProduct = document.querySelector(".last-stage__name"),
+    productName = document.querySelector(".js-product__name"),
+    priceProduct = document.querySelector(".product__price"),
+    priceOfOrderProduct = document.querySelectorAll(".last-stage__price"),
+    countOfProductsOrder = document.querySelector(".last-stage__count");
+
+  if (checkFormSuccess(".second-stage__group", document.forms.orderForm)) {
+    closeFormOrder(".second-stage");
+    openFormOrder(".last-stage");
+    dotsInFormStages.children[1].classList.add("success");
+    lastStageNameProduct.textContent = productName.textContent;
+    priceOfOrderProduct[0].textContent = priceProduct.textContent;
+    priceOfOrderProduct[1].textContent =
+      +priceProduct.textContent.split("г")[0] * +countOfProductsOrder.value +
+      "грн";
+  }
+}
+
+function formOrderHandler(target) {
+  switch (target.name) {
+    case "firstName":
+      checkFieldOnInput(
+        target,
+        patterns.textPattern,
+        messages.errorName,
+        ".first-stage__group",
+        ".first-stage__msg"
+      );
+      break;
+    case "lastName":
+      checkFieldOnInput(
+        target,
+        patterns.namePattern,
+        messages.errorName,
+        ".first-stage__group",
+        ".first-stage__msg"
+      );
+      break;
+    case "phoneNumber":
+      checkFieldOnInput(
+        target,
+        patterns.phonePattern,
+        messages.errorPhone,
+        ".first-stage__group",
+        ".first-stage__msg"
+      );
+      break;
+    case "email":
+      checkFieldOnInput(
+        target,
+        patterns.emailPattern,
+        messages.errorMail,
+        ".first-stage__group",
+        ".first-stage__msg"
+      );
+      break;
+    case "location":
+      target.nextElementSibling.textContent = "";
+      target.addEventListener("blur", (e) => {
+        if (target.value.length > 3) {
+          target.closest(".second-stage__group").classList.add("success");
+          target.nextElementSibling.textContent = "";
+          showLastStageAddInfo(target);
+        }
+      });
+      break;
+  }
+
+  if (checkFormSuccess(".first-stage__group", document.forms.orderForm)) {
+    closeFormOrder(".first-stage");
+    openFormOrder(".second-stage");
+    document
+      .querySelector(".product-form__stages")
+      .children[0].classList.add("success");
+  }
+
+  if (target.classList.contains("second-stage__checkbox")) {
+    target.closest(".second-stage__group").classList.add("success");
+  }
+  showLastStageAddInfo(target);
+}
+
+function orderFormValidation(formName) {
+  formName.addEventListener("input", (e) => {
+    const target = e.target;
+    formOrderHandler(target);
+  });
+
+  for (const input of formName.elements) {
+    if (
+      input.type !== "radio" &&
+      !input.classList.contains("second-stage__input") &&
+      !input.classList.contains("js-form__submit") &&
+      !input.classList.contains("last-stage__count")
+    ) {
+      input.addEventListener("focus", (e) => {
+        checkFieldOnFocus(e.target, ".first-stage__group", ".first-stage__msg");
+      });
+      input.addEventListener("blur", (e) => {
+        checkFieldOnBlur(e.target, ".first-stage__group", ".first-stage__msg");
+      });
+    }
+  }
+}
+
+function removeSuccessGroup(groupName) {
+  document.querySelectorAll(groupName).forEach((group) => {
+    group.classList.remove("success");
   });
 }
-const stars = document.querySelector(".product__stars");
-if (stars !== null) {
-  ratingStar(stars.children);
+function resetForm() {
+  document.forms.orderForm.reset();
+  removeSuccessGroup(".product-form__stage");
+  removeSuccessGroup(".second-stage__group");
+  removeSuccessGroup(".first-stage__group");
+  document.querySelectorAll(".first-stage__msg").forEach((msg) => {
+    msg.textContent = messages.errorRequired;
+  });
+  document.querySelectorAll(".form-order__stage").forEach((stage) => {
+    stage.classList.remove("show");
+  });
+  document.querySelector(".first-stage").classList.add("show");
+  document.querySelector(".second-stage__msg-input").textContent =
+    messages.errorRequired;
+  closeFormOrder(".product-form");
+  closeFormOrder(".last-stage");
+  openFormOrder(".first-stage");
 }
+// }
 
 const relatedSwiper = new Swiper(".related__swiper", {
   direction: "horizontal",
@@ -428,163 +569,9 @@ const relatedSwiper = new Swiper(".related__swiper", {
     },
   },
 });
+//////////////////////////// }
 
-function changeHeaderTextColor() {
-  if (document.querySelector(".breadcrumbs") !== null) {
-    document.querySelector(".contact-btn").style.color='black';
-    const productPageHeader = document.querySelectorAll(".header__btn");
-    Array.from(productPageHeader).forEach((btn)=> btn.style.color='black')
-  }
-}
-changeHeaderTextColor();
-
-/////form-order
-function openFormOrder(parentElClassName) {
-  document.querySelector(parentElClassName).classList.add("show");
-}
-function closeFormOrder(parentElClassName) {
-  document.querySelector(parentElClassName).classList.remove("show");
-}
-
-function secondStageForm() {
-  const dotsInFormStages = document.querySelector(".product-form__stages"),
-    lastStageNameProduct = document.querySelector(".last-stage__name"),
-    productName = document.querySelector(".js-product__name"),
-    priceProduct = document.querySelector(".product__price"),
-    priceOfOrderProduct = document.querySelectorAll(".last-stage__price"),
-    countOfProductsOrder = document.querySelector(".last-stage__count");
-
-  if (checkFormSuccess(".second-stage__group", document.forms.orderForm)) {
-    closeFormOrder(".second-stage");
-    openFormOrder(".last-stage");
-    dotsInFormStages.children[1].classList.add("success");
-    lastStageNameProduct.textContent = productName.textContent;
-    priceOfOrderProduct[0].textContent = priceProduct.textContent;
-    priceOfOrderProduct[1].textContent =
-      +priceProduct.textContent.split("г")[0] *
-        +countOfProductsOrder.textContent +
-      "грн";
-  }
-}
-
-function orderFormValidation(formName) {
-  formName.addEventListener("input", (e) => {
-    const target = e.target;
-    switch (target.name) {
-      case "firstName":
-        checkFieldOnInput(
-          target,
-          patterns.textPattern,
-          messages.errorName,
-          ".first-stage__group",
-          ".first-stage__msg"
-        );
-        break;
-      case "lastName":
-        checkFieldOnInput(
-          target,
-          patterns.namePattern,
-          messages.errorName,
-          ".first-stage__group",
-          ".first-stage__msg"
-        );
-        break;
-      case "phoneNumber":
-        checkFieldOnInput(
-          target,
-          patterns.phonePattern,
-          messages.errorPhone,
-          ".first-stage__group",
-          ".first-stage__msg"
-        );
-        break;
-      case "email":
-        checkFieldOnInput(
-          target,
-          patterns.emailPattern,
-          messages.errorMail,
-          ".first-stage__group",
-          ".first-stage__msg"
-        );
-        break;
-      case "location":
-        target.nextElementSibling.textContent = "";
-        target.addEventListener("blur", (e) => {
-          if (target.value.length > 3) {
-            target.closest(".second-stage__group").classList.add("success");
-            target.nextElementSibling.textContent = "";
-            secondStageForm();
-          }
-        });
-        break;
-    }
-
-    if (checkFormSuccess(".first-stage__group", document.forms.orderForm)) {
-      closeFormOrder(".first-stage");
-      openFormOrder(".second-stage");
-      document
-        .querySelector(".product-form__stages")
-        .children[0].classList.add("success");
-    }
-
-    if (target.classList.contains("second-stage__checkbox")) {
-      target.closest(".second-stage__group").classList.add("success");
-    }
-    secondStageForm();
-  });
-
-  for (const input of formName.elements) {
-    if (
-      input.type !== "radio" &&
-      !input.classList.contains("second-stage__input") &&
-      !input.classList.contains("js-form__submit")
-    ) {
-      input.addEventListener("focus", (e) => {
-        checkFieldOnFocus(e.target, ".first-stage__group", ".first-stage__msg");
-      });
-      input.addEventListener("blur", (e) => {
-        checkFieldOnBlur(e.target, ".first-stage__group", ".first-stage__msg");
-      });
-    }
-  }
-}
-
-function removeSuccessGroup(groupName){
-  document.querySelectorAll(groupName).forEach(group => {
-    group.classList.remove('success')
-  })
-}
-function resetForm() {
-  
-  document.forms.orderForm.reset();
-  removeSuccessGroup('.product-form__stage')
-  removeSuccessGroup('.second-stage__group')
-  removeSuccessGroup('.first-stage__group')
-  document.querySelectorAll('.first-stage__msg').forEach(msg => {
-    msg.textContent = messages.errorRequired
-  })
-  document.querySelectorAll('.form-order__stage').forEach(stage => {
-    stage.classList.remove('show')
-  })
-  document.querySelector('.first-stage').classList.add('show');
-  document.querySelector('.second-stage__msg-input').textContent = messages.errorRequired;
-  closeFormOrder(".product-form");
-  closeFormOrder(".last-stage");
-  openFormOrder(".first-stage");
-} 
-
-function renameHeroTitleBlogPage() {
-  if(document.querySelector('.blog-cards')){
-    document.querySelector('.hero__name').textContent = 'Буд Блог'
-  }
-}
-renameHeroTitleBlogPage()
-
-
-const headerWrapper = document.querySelector('.header__top');
-const headerMenuBtn = document.querySelector('.header__mobile-btn')
-const headerMobMenu = document.querySelector('.mobile');
-
+//////////////////////////////////Global
 
 function headerFixed() {
   const scrollTop = document.documentElement.scrollTop;
@@ -592,23 +579,25 @@ function headerFixed() {
   headerWrapper.classList.toggle('animation', scrollTop >= 200);
   headerWrapper.classList.toggle('opacity', scrollTop >= 350);
 }
+window.addEventListener('scroll',  headerFixed);
 
-
-document.addEventListener("click", (e) => {
-  const target = e.target;
-
-  if (target.classList.contains("close-js")) {
-    headerMobMenu.classList.remove("active");
-    bodyLock.classList.remove('lock');
-    headerMenuBtn.classList.remove("active");
+function changeHeaderTextColor() {
+  if (document.querySelector(".breadcrumbs") !== null) {
+    document.querySelector(".contact-btn").style.color = "black";
+    const productPageHeader = document.querySelectorAll(".header__btn");
+    Array.from(productPageHeader).forEach((btn) => (btn.style.color = "black"));
   }
+}
+changeHeaderTextColor();
 
-  if (target.classList.contains("header__mobile-btn")) {
-    bodyLock.classList.toggle('lock')
-    target.classList.toggle("active");
-    headerMobMenu.classList.toggle("active");
+function breadCrumbsProductName(productName, breadCrumbsEl) {
+  if (productName && breadCrumbsEl) {
+    breadCrumbsEl.textContent = productName.textContent;
   }
-  
+}
+breadCrumbsProductName(productName, breadCrumbsEl);
+
+function clickHandler(target) {
   if (target.classList.contains("contacts__form-btn")) {
     e.preventDefault();
     target.setAttribute("disabled", "disabled");
@@ -617,26 +606,87 @@ document.addEventListener("click", (e) => {
     removeInputValue(contactsForm);
   }
   if (target.classList.contains("blog-cards__popup-close")) {
-    bodyLock.classList.remove('lock')
+    bodyLock.classList.remove("lock");
     target.closest(".blog-cards__popup").classList.remove("active");
   }
 
   if (target.classList.contains("js-popup__form")) {
-    bodyLock.classList.add('lock')
+    bodyLock.classList.add("lock");
     openFormOrder(".product-form");
     orderFormValidation(document.forms.orderForm);
   }
   if (target.classList.contains("close-popup-form")) {
-    bodyLock.classList.remove('lock')
+    bodyLock.classList.remove("lock");
     closeFormOrder(".product-form");
-    resetForm() 
+    resetForm();
   }
 
   if (target.classList.contains("js-form__submit")) {
     e.preventDefault();
-    bodyLock.classList.remove('lock')
-    resetForm() 
+    bodyLock.classList.remove("lock");
+    resetForm();
   }
+
+  if (target.classList.contains("close-js")) {
+    headerMobMenu.classList.remove("active");
+    bodyLock.classList.remove("lock");
+    headerMenuBtn.classList.remove("active");
+  }
+
+  if (target.classList.contains("header__mobile-btn")) {
+    bodyLock.classList.toggle("lock");
+    target.classList.toggle("active");
+    headerMobMenu.classList.toggle("active");
+  }
+}
+
+document.addEventListener("click", (e) => {
+  const target = e.target;
+  clickHandler(target);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const headerBox = document.querySelector(".header__top");
+  const headerHeight = headerBox.offsetHeight;
+  const scrollLinks = document.querySelectorAll(".scroll");
+
+  const bodyStyles = window.getComputedStyle(document.body);
+  const zoomValue = parseFloat(bodyStyles.zoom);
+  console.log(zoomValue);
+  scrollLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const scrollAnchor = this.getAttribute("href");
+      const scrollTarget = document.querySelector(scrollAnchor);
+
+      if (scrollTarget) {
+        const scrollPoint =
+          scrollTarget.getBoundingClientRect().top - headerHeight;
+        let additionalOffset = 0;
+        if (zoomValue === 0.8 && scrollAnchor === "#contact") {
+          additionalOffset = 900;
+        } else if (zoomValue === 0.8 && scrollAnchor === "#new-products") {
+          additionalOffset = 500;
+        } else if (zoomValue === 0.8 && scrollAnchor === "#question") {
+          additionalOffset = 1100;
+        }
+        if (zoomValue === 0.9 && scrollAnchor === "#contact") {
+          additionalOffset = 300;
+        } else if (zoomValue === 0.9 && scrollAnchor === "#new-products") {
+          additionalOffset = 200;
+        } else if (zoomValue === 0.9 && scrollAnchor === "#question") {
+          additionalOffset = 500;
+        }
+        window.scrollTo({
+          top: scrollPoint - additionalOffset,
+          behavior: "smooth",
+        });
+      }
+
+      return false;
+    });
+  });
 });
 
 window.addEventListener('scroll',  headerFixed);
