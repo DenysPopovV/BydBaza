@@ -664,40 +664,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const headerHeight = headerBox.offsetHeight;
   const scrollLinks = document.querySelectorAll(".scroll");
 
-  const bodyStyles = window.getComputedStyle(document.body);
-  const zoomValue = parseFloat(bodyStyles.zoom);
-  console.log(zoomValue);
+  // const bodyStyles = window.getComputedStyle(document.body);
+  // const zoomValue = parseFloat(bodyStyles.zoom);
   scrollLinks.forEach(function (link) {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-
       const scrollAnchor = this.getAttribute("href");
       const scrollTarget = document.querySelector(scrollAnchor);
-
       if (scrollTarget) {
         const scrollPoint =
-          scrollTarget.getBoundingClientRect().top - headerHeight;
+          scrollTarget.getBoundingClientRect().top +
+          window.scrollY -
+          headerHeight;
         let additionalOffset = 0;
-        if (zoomValue === 0.8 && scrollAnchor === "#contact") {
-          additionalOffset = 900;
-        } else if (zoomValue === 0.8 && scrollAnchor === "#new-products") {
-          additionalOffset = 500;
-        } else if (zoomValue === 0.8 && scrollAnchor === "#question") {
-          additionalOffset = 1100;
-        }
-        if (zoomValue === 0.9 && scrollAnchor === "#contact") {
-          additionalOffset = 300;
-        } else if (zoomValue === 0.9 && scrollAnchor === "#new-products") {
-          additionalOffset = 200;
-        } else if (zoomValue === 0.9 && scrollAnchor === "#question") {
-          additionalOffset = 500;
-        }
         window.scrollTo({
-          top: scrollPoint - additionalOffset,
+          top: scrollPoint + additionalOffset,
           behavior: "smooth",
         });
       }
-
       return false;
     });
   });

@@ -21,11 +21,11 @@
             color: $white;
 
             @include mxw($md) {
-                padding: 5px 5px;
+                padding: 5px 15px;
             }
 
             @include mxw($xs) {
-                padding: 10px 5px;
+                padding: 10px 15px;
             }
         }
 
