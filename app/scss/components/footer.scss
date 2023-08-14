@@ -18,6 +18,8 @@
     }
 
     &__catalog {
+        position: relative;
+        z-index: 100;
         @include mxw($md) {
             display: none;
         }

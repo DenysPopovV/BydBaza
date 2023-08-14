@@ -580,8 +580,35 @@ function renameHeroTitleBlogPage() {
 }
 renameHeroTitleBlogPage()
 
+
+const headerWrapper = document.querySelector('.header__top');
+const headerMenuBtn = document.querySelector('.header__mobile-btn')
+const headerMobMenu = document.querySelector('.mobile');
+
+
+function headerFixed() {
+  const scrollTop = document.documentElement.scrollTop;
+  headerWrapper.classList.toggle('sticky', scrollTop >= 100);
+  headerWrapper.classList.toggle('animation', scrollTop >= 200);
+  headerWrapper.classList.toggle('opacity', scrollTop >= 350);
+}
+
+
 document.addEventListener("click", (e) => {
   const target = e.target;
+
+  if (target.classList.contains("close-js")) {
+    headerMobMenu.classList.remove("active");
+    bodyLock.classList.remove('lock');
+    headerMenuBtn.classList.remove("active");
+  }
+
+  if (target.classList.contains("header__mobile-btn")) {
+    bodyLock.classList.toggle('lock')
+    target.classList.toggle("active");
+    headerMobMenu.classList.toggle("active");
+  }
+  
   if (target.classList.contains("contacts__form-btn")) {
     e.preventDefault();
     target.setAttribute("disabled", "disabled");
@@ -611,3 +638,5 @@ document.addEventListener("click", (e) => {
     resetForm() 
   }
 });
+
+window.addEventListener('scroll',  headerFixed);

@@ -1,6 +1,5 @@
 .contacts {
-    padding-top: 20px;
-    margin-bottom: 80px;
+    padding-top: 80px;
 
     &__top {
         display: flex;
@@ -11,6 +10,7 @@
             margin: 0 0 50px 0;
         }
         @include mxw($sm) {
+            margin-bottom: 0;
             justify-content: end;
         }
     }
