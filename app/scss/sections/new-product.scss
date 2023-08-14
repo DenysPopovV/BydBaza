@@ -3,6 +3,7 @@
 
     @include mxw($sm) {
         margin-bottom: 0;
+        padding-top: 100px;
     }
 
     &__title {
@@ -18,6 +19,9 @@
                 transform: translateX(-50%) rotate(90deg);
                 left: 50%;
             }
+        }
+        @include mxw($sm) {
+            margin-bottom: 20px;
         }
     }
 

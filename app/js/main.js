@@ -578,17 +578,31 @@ function headerFixed() {
   headerWrapper.classList.toggle("sticky", scrollTop >= 100);
   headerWrapper.classList.toggle("animation", scrollTop >= 200);
   headerWrapper.classList.toggle("opacity", scrollTop >= 350);
+
+  if (document.querySelector(".breadcrumbs") !== null) {
+    if (scrollTop >= 100) {
+      changeHeaderTextColorWhite();
+    } else if (scrollTop <= 100) {
+      changeHeaderTextColorBlack();
+    }
+  }
 }
 window.addEventListener("scroll", headerFixed);
 
-function changeHeaderTextColor() {
+function changeHeaderTextColorWhite() {
+  document.querySelector(".contact-btn").style.color = "white";
+  const productPageHeader = document.querySelectorAll(".header__btn");
+  Array.from(productPageHeader).forEach((btn) => (btn.style.color = "white"));
+}
+
+function changeHeaderTextColorBlack() {
   if (document.querySelector(".breadcrumbs") !== null) {
     document.querySelector(".contact-btn").style.color = "black";
     const productPageHeader = document.querySelectorAll(".header__btn");
     Array.from(productPageHeader).forEach((btn) => (btn.style.color = "black"));
   }
 }
-changeHeaderTextColor();
+changeHeaderTextColorBlack();
 
 function breadCrumbsProductName(productName, breadCrumbsEl) {
   if (productName && breadCrumbsEl) {
