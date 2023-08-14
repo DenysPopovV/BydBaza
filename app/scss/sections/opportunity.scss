@@ -1,6 +1,8 @@
 .opportunity {
     padding: 0 0 100px;
-
+    @include mxw($sm) {
+        padding-top: 70px;
+    }
     &__title {
         text-transform: uppercase;
         font-size: 62px;
