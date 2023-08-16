@@ -46,20 +46,17 @@
         }
     }
 
-    &__item {
-        margin-bottom: 15px;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
     &__card {
         border-bottom: 1px solid $text;
         padding: 5px 15px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         @include mxw($xs) {
             padding: 0 0 5px 0;
