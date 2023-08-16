@@ -45,16 +45,18 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include mxw($lg) {
+            flex-wrap: wrap;
+        }
     }
 
     &__logo-box {
-        position: relative;
-        display: flex;
-
         @include mxw($md) {
+            display: flex;
             align-items: center;
             justify-content: space-between;
-            max-width: 100%;
+            width: 100%;
         }
     }
 
@@ -128,6 +130,7 @@
 
     &__logo {
         margin-bottom: 0;
+        width: 200px;
         height: 43px;
 
         @include mxw($xs) {
@@ -136,18 +139,66 @@
     }
 
     &__menu {
+        padding-left: 30px;
+
         @include mxw($md) {
             display: none;
         }
     }
 
-    &__contact-btn {
-        @include mxw($md) {
-            display: none;
+    &__pages-icons {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        max-width: 200px;
+        width: 100%;
+    }
+
+    &__pages-item {
+        position: relative;
+        margin: 0 15px 0 0;
+        padding-left: 40px;
+
+        span {
+            position: absolute;
+            font-size: 12px;
+            color: $white;
+            padding: 1px 4px;
+            border-radius: 50%;
+            background-color: $accent;
+            right: -3px;
+            top: 13px;
+            z-index: 1000;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            background-color: $accent;
+            top: 0;
+            left: 0;
+        }
+
+        &:last-child {
+            margin-right: 5px;
+            padding-left: 0;
+
+            &::after {
+                display: none;
+            }
         }
     }
 
+    &__pages-btn {
+        width: 35px;
+        height: 30px;
 
+        &.style {
+            filter: invert(100%) sepia(0%) saturate(7460%) hue-rotate(196deg) brightness(90%) contrast(96%);
+        }
+    }
 }
 
 .mobile {
@@ -162,7 +213,7 @@
     bottom: 0;
     transition: all .3s linear;
     text-align: center;
-    padding: 100px 40px 30px;
+    padding: 50px 20px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -177,8 +228,61 @@
     }
 
     &__link {
+        position: relative;
         color: $white;
         text-transform: uppercase;
+
+        span {
+            position: absolute;
+            font-size: 12px;
+            color: $white;
+            padding: 1px 4px;
+            border-radius: 50%;
+            background-color: $accent;
+            right: -1px;
+            top: -5px;
+            z-index: 1000;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            top: -4px;
+            right: 0;
+        }
+
+        &--like {
+            text-align: left;
+            display: inline-block;
+            width: 270px;
+
+            &::after {
+                width: 33px;
+                background-image: url("../images/icons/like.svg");
+            }
+            span{
+                right: -7px;
+                top: -7px;
+            }
+        }
+
+        &--basket {
+            text-align: left;
+            display: inline-block;
+            width: 150px;
+
+            &::after {
+                width: 40px;
+                background-image: url("../images/icons/backet-for-btn.svg");
+
+            }
+        }
+
+        
     }
 
     &__box {
@@ -197,6 +301,10 @@
         &:last-child {
             margin-right: 0;
         }
+
+        @include mxw($xs) {
+margin-right: 5px;
+        }
     }
 
     &__media-btn {
@@ -206,6 +314,6 @@
     }
 
     &__contact {
-        padding: 10px 30px;
+        padding: 10px 20px;
     }
 }

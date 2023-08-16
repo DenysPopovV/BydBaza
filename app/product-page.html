@@ -18,45 +18,80 @@
                 <div class="header__center-fix">
                     <div class="header__logo-box copy__logo-box">
                         <a href="index.html"><img class="header__logo copy__logo" src="images/logo.png" alt="Логотип компанії"></a>
-                        <a class="header__catalog catalog-btn" href="index.html#new-products">Каталог</a>
                         <button class="header__mobile-btn" type="button">
                             <span></span>
                         </button>
                     </div>
-                    <ul class="header__menu copy__menu">
-                        <li class="header__item copy__item">
-                            <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
-                        </li>
-                        <li class="header__item copy__item">
-                            <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
-                        </li>
-                        <li class="header__item copy__item">
-                            <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
-                        </li>
-                    </ul>
-                    <a class="header__contact-btn contact-btn scroll" href="index.html#contact">Замовити дзвінок</a>
+                    <nav class="header__navigation">
+                        <ul class="header__menu copy__menu">
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="">Каталог</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn copy__btn--catalog" href="index.html#new-products">NEW</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="">Галерея</a>
+                            </li>
+                            <li class="header__pages-item media__item">
+                                <span>0</span>
+                                <a class="header__pages-btn media__btn media__btn--basket"
+                                    href="basket-page.html"></a>
+                            </li>
+                            <li class="header__pages-item media__item">
+                                <span>0</span>
+                                <a class="header__pages-btn media__btn media__btn--likes"
+                                    href=""></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    
                 </div>
             </div>
             <div class="mobile">
                 <ul class="mobile__list">
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#new-product">каталог</a>
+                        <a class="mobile__link close-js" href="">каталог</a>
                     </li>
-                    <li class="mobile__item">
+                    <!-- <li class="mobile__item">
                         <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
-                    </li>
+                    </li> -->
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#contact">Контакти</a>
+                        <a class="mobile__link close-js" href="index.html#new-product">new</a>
+                    </li>
+
+                    <li class="mobile__item">
+                        <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
                     </li>
                     <li class="mobile__item">
                         <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
                     </li>
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#question">FAQ</a>
+                        <a class="mobile__link close-js" href="">Галерея</a>
+                    </li>
+                    <li class="mobile__item">
+                        <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
+                            <span>0</span>
+                        </a>
+                    </li>
+                    <li class="mobile__item">
+                        <a class="mobile__link mobile__link--like close-js" href="">Вподобані товари
+                            <span>0</span>
+                        </a>
                     </li>
                 </ul>
                 <div class="mobile__box">
-                    <a class="mobile__contact contact-btn close-js" href="index.html#contact">Замовити дзвінок</a>
+                    <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з нами</a>
                     <ul class="mobile__icons media">
                         <li class="mobile__media-item media__item">
                           <a class="mobile__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/" target="_blank"></a>
@@ -113,10 +148,16 @@
                     </div>
                     <div class="product__btns">
                         <button class="product__btn accent-product-btn js-popup__form" type="button">Замовити</button>
-                        <button class="product__like-btn accent-product-btn" type="button">
-                            <span class="sr-only">кнопка для вподобання цього товару</span>
-                            <img src="images/icons/like.svg" alt="Вподобати товар">
-                        </button>
+                        <div class="product__store">
+                            <button class="product__like-btn accent-product-btn" type="button">
+                                <span class="sr-only">кнопка для вподобання цього товару</span>
+                                <img src="images/icons/like.svg" alt="Вподобати товар">
+                            </button>
+                            <button class="product__basket-btn accent-product-btn" type="button">
+                                <span class="sr-only">кнопка для додавання цього товару до корзини</span>
+                                <img src="images/icons/backet-for-btn.svg" alt="Корзина товару">
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -333,6 +374,44 @@
                         </div>
                         <span class="related__price">1399 грн</span>
                         <a class="related__btn accent-product-btn" href="product-page.html">Замовити</a>
+                    </a>
+                </div>
+                <div class="related__item swiper-slide">
+                    <a class="related__link" href="#">
+                        <div class="related__info">
+                            <div class="related__absolute">
+                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                    id="like[0]">
+                                <label class="related__label" for="like[0]"></label>
+                            </div>
+                            <img class="related__img" src="" alt="фото товара">
+                            <span class="related__instock">В наявності</span>
+                        </div>
+                        <div class="related__flex">
+                            <span class="related__name">Назва товару</span>
+                            <span class="related__description">Опис</span>
+                        </div>
+                        <span class="related__price">1399 грн</span>
+                        <a class="related__btn accent-product-btn" href="#">Замовити</a>
+                    </a>
+                </div>
+                <div class="related__item swiper-slide">
+                    <a class="related__link" href="#">
+                        <div class="related__info">
+                            <div class="related__absolute">
+                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                    id="like[0]">
+                                <label class="related__label" for="like[0]"></label>
+                            </div>
+                            <img class="related__img" src="" alt="фото товара">
+                            <span class="related__instock">В наявності</span>
+                        </div>
+                        <div class="related__flex">
+                            <span class="related__name">Назва товару</span>
+                            <span class="related__description">Опис</span>
+                        </div>
+                        <span class="related__price">1399 грн</span>
+                        <a class="related__btn accent-product-btn" href="#">Замовити</a>
                     </a>
                 </div>
                 <div class="related__item swiper-slide">

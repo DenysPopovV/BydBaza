@@ -1,7 +1,4 @@
-html {
-    height: 100%;
-}
-
+html,
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
@@ -12,6 +9,14 @@ body {
     grid-template-rows: auto 1fr auto;
     background-image: url('../images/bg.png');
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+main {
+    flex: 1;
 }
 
 .container {
@@ -78,8 +83,25 @@ body {
 
         &--location::after {
             background-image: url('../images/icons/location.svg');
-           
         }
+
+        &--basket::after,
+        &--likes::after {
+            top: 15px;
+            width: 36px;
+            height: 30px;
+        }
+
+        &--basket::after {
+            background-image: url('../images/icons/backet-for-btn.svg');
+        }
+
+        &--likes::after {
+            width: 30px;
+            height: 30px;
+            background-image: url('../images/icons/like.svg');
+        }
+
     }
 }
 
@@ -96,15 +118,6 @@ body {
 
         @include mxw($md) {
             align-items: center;
-        }
-    }
-
-    &__logo-box {
-        max-width: 210px;
-        width: 100%;
-
-        @include mxw($md) {
-            max-width: 180px;
         }
     }
 
@@ -136,7 +149,7 @@ body {
 
         @include mxw($md) {
             margin-right: 20px;
-         }
+        }
     }
 
     &__btn {
@@ -144,6 +157,15 @@ body {
         text-transform: uppercase;
         font-size: 19px;
         line-height: 60px;
+
+        &--catalog {
+            color: $accent;
+            border-bottom: 1px inset $accent;
+        }
+
+        &.style {
+            color: black;
+        }
     }
 }
 
@@ -196,7 +218,7 @@ body {
     border: 2px solid $accent;
     color: $white;
 
-    
+
     @include mxw($md) {
         padding: 5px 26px 6px 16px;
     }
@@ -208,8 +230,6 @@ body {
 }
 
 .catalog-btn {
-    display: block;
-    width: 158px;
     padding: 10px 38px;
     border-radius: 10px;
     background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));

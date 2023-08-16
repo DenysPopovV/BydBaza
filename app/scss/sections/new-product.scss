@@ -1,9 +1,10 @@
 .new-products {
-    margin-bottom: 100px;
+    padding-top: 100px;
+    margin-bottom: 25px;
 
     @include mxw($sm) {
         margin-bottom: 0;
-        padding-top: 100px;
+
     }
 
     &__title {
@@ -35,6 +36,9 @@
 
         @include mxw($lg) {
             overflow-x: hidden;
+        }
+        @include mxw($sm) {
+            margin-bottom: 0;
         }
 
     }
