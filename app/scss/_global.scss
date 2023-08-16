@@ -161,12 +161,7 @@ body {
     font-weight: 300;
     border-radius: 10px;
     border: 6px solid $accent;
-    box-shadow: 0px 0px 31px 0px #FB6101,
-        0px 0px 63px 0px #FB6101,
-        0px 0px 223px 0px #FB6101,
-        0px 0px 447px 0px #FB6101,
-        0px 0px 766px 0px #FB6101,
-        0px 0px 1341px 0px #FB6101;
+    box-shadow: 0px 0px 31px 10px #FB6101;
 
     &::after {
         content: '';
@@ -274,7 +269,7 @@ body {
 
         @include mxw($sm) {
             height: 90px;
-            top: -40px;
+            top: -50px;
             transform: translateX(-50%) rotate(90deg);
             left: 50%;
         }

@@ -225,6 +225,7 @@ const InfoSwiper = new Swiper(".swiper-products", {
       slidesPerView: 3,
     },
     1400: {
+      initialSlide: 1,
       slidesPerView: 3,
     },
   },
@@ -604,12 +605,15 @@ function changeHeaderTextColorBlack() {
 }
 changeHeaderTextColorBlack();
 
+const servicesBreadCrumbs = document.querySelector('.breadcrumbs-services-title')
+
 function breadCrumbsProductName(productName, breadCrumbsEl) {
   if (productName && breadCrumbsEl) {
     breadCrumbsEl.textContent = productName.textContent;
   }
 }
 breadCrumbsProductName(productName, breadCrumbsEl);
+breadCrumbsProductName(servicesBreadCrumbs, breadCrumbsEl);
 
 function clickHandler(target) {
   if (target.classList.contains("contacts__form-btn")) {
