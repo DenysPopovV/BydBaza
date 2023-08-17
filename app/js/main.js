@@ -13,7 +13,9 @@ const contactsForm = document.forms.contactForm,
   loadMoreBtn = document.getElementById("loadMore"),
   headerWrapper = document.querySelector(".header__top"),
   headerMenuBtn = document.querySelector(".header__mobile-btn"),
-  headerMobMenu = document.querySelector(".mobile");
+  headerMobMenu = document.querySelector(".mobile"),
+  headerMenu = document.querySelector(".header__menu"),
+  headerBtn = headerMenu.children;
 
 const patterns = {
   textPattern: /[а-яА-ЯЁё]{2,}/,
@@ -170,6 +172,7 @@ const InfoSwiper = new Swiper(".swiper-products", {
   direction: "horizontal",
   spaceBetween: 132,
   slidesPerView: 3,
+  initialSlide: 1,
   loop: false,
   freeMode: true,
 
@@ -225,10 +228,12 @@ const InfoSwiper = new Swiper(".swiper-products", {
       slidesPerView: 3,
     },
     1400: {
+      initialSlide: 1,
       slidesPerView: 3,
     },
   },
 });
+
 
 function tabsAction(target) {
   const answerEl = document.querySelector(`div#${target.id}`);
@@ -510,6 +515,7 @@ const relatedSwiper = new Swiper(".related__swiper", {
   direction: "horizontal",
   spaceBetween: 132,
   slidesPerView: 3,
+  initialSlide: 1,
   loop: false,
   freeMode: true,
 
@@ -581,28 +587,38 @@ function headerFixed() {
 
   if (document.querySelector(".breadcrumbs") !== null) {
     if (scrollTop >= 100) {
-      changeHeaderTextColorWhite();
+      changeHeaderTextColorWhite(".header__btn");
+      changeHeaderTextColorWhite(".header__pages-btn");
     } else if (scrollTop <= 100) {
-      changeHeaderTextColorBlack();
+      changeHeaderTextColorBlack(".header__btn");
+      changeHeaderTextColorBlack(".header__pages-btn");
     }
   }
 }
 window.addEventListener("scroll", headerFixed);
 
-function changeHeaderTextColorWhite() {
-  document.querySelector(".contact-btn").style.color = "white";
-  const productPageHeader = document.querySelectorAll(".header__btn");
-  Array.from(productPageHeader).forEach((btn) => (btn.style.color = "white"));
+function changeHeaderTextColorWhite(className) {
+  const productPageHeader = document.querySelectorAll(className);
+  Array.from(productPageHeader).forEach((btn) => btn.classList.remove('style'));
 }
 
-function changeHeaderTextColorBlack() {
-  if (document.querySelector(".breadcrumbs") !== null) {
-    document.querySelector(".contact-btn").style.color = "black";
-    const productPageHeader = document.querySelectorAll(".header__btn");
-    Array.from(productPageHeader).forEach((btn) => (btn.style.color = "black"));
-  }
+function changeHeaderTextColorBlack(className) {
+  const changeColor = document.querySelectorAll(className);
+  Array.from(changeColor).forEach((btn) => btn.classList.add('style'));
 }
-changeHeaderTextColorBlack();
+
+if (document.querySelector(".breadcrumbs") !== null) {
+  changeHeaderTextColorBlack(".header__btn");
+  changeHeaderTextColorBlack(".header__pages-btn");
+}
+
+const servicesBreadCrumbs = document.querySelector(
+  ".breadcrumbs-services-title"
+);
+
+const basketBreadCrumbs = document.querySelector(
+  ".basket__title"
+);
 
 function breadCrumbsProductName(productName, breadCrumbsEl) {
   if (productName && breadCrumbsEl) {
@@ -610,6 +626,8 @@ function breadCrumbsProductName(productName, breadCrumbsEl) {
   }
 }
 breadCrumbsProductName(productName, breadCrumbsEl);
+breadCrumbsProductName(servicesBreadCrumbs, breadCrumbsEl);
+breadCrumbsProductName(basketBreadCrumbs, breadCrumbsEl);
 
 function clickHandler(target) {
   if (target.classList.contains("contacts__form-btn")) {

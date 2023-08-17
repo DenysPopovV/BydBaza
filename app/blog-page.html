@@ -18,45 +18,80 @@
                 <div class="header__center-fix">
                     <div class="header__logo-box copy__logo-box">
                         <a href="index.html"><img class="header__logo copy__logo" src="images/logo.png" alt="Логотип компанії"></a>
-                        <a class="header__catalog catalog-btn" href="index.html#new-products">Каталог</a>
                         <button class="header__mobile-btn" type="button">
                             <span></span>
                         </button>
                     </div>
-                    <ul class="header__menu copy__menu">
-                        <li class="header__item copy__item">
-                            <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
-                        </li>
-                        <li class="header__item copy__item">
-                            <a class="header__btn copy__btn" href="index.html#question">FAQ</a>
-                        </li>
-                        <li class="header__item copy__item">
-                            <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
-                        </li>
-                    </ul>
-                    <a class="header__contact-btn contact-btn scroll" href="index.html#contact">Замовити дзвінок</a>
+                    <nav class="header__navigation">
+                        <ul class="header__menu copy__menu">
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="">Каталог</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn copy__btn--catalog" href="index.html#new-products">NEW</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
+                            </li>
+                            <li class="header__item copy__item">
+                                <a class="header__btn copy__btn" href="">Галерея</a>
+                            </li>
+                            <li class="header__pages-item media__item">
+                                <span>0</span>
+                                <a class="header__pages-btn media__btn media__btn--basket"
+                                    href="basket-page.html"></a>
+                            </li>
+                            <li class="header__pages-item media__item">
+                                <span>0</span>
+                                <a class="header__pages-btn media__btn media__btn--likes"
+                                    href=""></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    
                 </div>
             </div>
             <div class="mobile">
                 <ul class="mobile__list">
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#new-product">каталог</a>
+                        <a class="mobile__link close-js" href="">каталог</a>
                     </li>
-                    <li class="mobile__item">
+                    <!-- <li class="mobile__item">
                         <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
-                    </li>
+                    </li> -->
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#contact">Контакти</a>
+                        <a class="mobile__link close-js" href="index.html#new-product">new</a>
+                    </li>
+
+                    <li class="mobile__item">
+                        <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
                     </li>
                     <li class="mobile__item">
                         <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
                     </li>
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#question">FAQ</a>
+                        <a class="mobile__link close-js" href="">Галерея</a>
+                    </li>
+                    <li class="mobile__item">
+                        <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
+                            <span>0</span>
+                        </a>
+                    </li>
+                    <li class="mobile__item">
+                        <a class="mobile__link mobile__link--like close-js" href="">Вподобані товари
+                            <span>0</span>
+                        </a>
                     </li>
                 </ul>
                 <div class="mobile__box">
-                    <a class="mobile__contact contact-btn close-js" href="index.html#contact">Замовити дзвінок</a>
+                    <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з нами</a>
                     <ul class="mobile__icons media">
                         <li class="mobile__media-item media__item">
                           <a class="mobile__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/" target="_blank"></a>
@@ -84,7 +119,7 @@
     Товарів, Матеріалів та Інструментів
   </h1>
   <video class="hero__bg-video" autoplay loop muted plays-inline>
-    <source src="videos/video-bg.mp4" type="video/mp4" />
+    <source src="" type="video/mp4" />
   </video>
   <div class="hero__efect-bg"> </div>
     <div class="container">
@@ -122,8 +157,9 @@
           <div class="hero__text">
             <h2 class="hero__name">БудБаза</h2>
             <span class="hero__advantages"
-              >Все для будівництва та ремонту.</span
-            >
+              >Все для будівництва та ремонту.
+              </span>
+              <a class="hero__catalog catalog-btn scroll" href="#new-products">Каталог</a>
           </div>
         </div>
       </div>

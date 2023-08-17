@@ -2,7 +2,7 @@
     padding-bottom: 150px;
 
     @include mxw($sm) {
-        padding-bottom: 100px;
+        padding-bottom: 70px;
     }
 
     &__title {
@@ -74,6 +74,7 @@
             margin-right: 0;
             width: 344px;
             height: 368px;
+            margin-bottom: 20px;
         }
 
         @include mxw($sm) {
@@ -92,7 +93,18 @@
 
         @include mxw($sm) {
             margin-bottom: 40px;
+            flex-direction: column;
         }
+    }
+
+    &__box{
+        @include mxw($md) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding:0 15px;
+        }
+        
     }
 
     &__stock {
@@ -139,6 +151,9 @@
     &__btns {
         display: flex;
         align-items: center;
+        @include mxw($sm) {
+            justify-content: space-between;
+        }
     }
 
     &__btn {
@@ -153,9 +168,11 @@
         }
     }
 
-    &__like-btn {
+    &__like-btn,
+    &__basket-btn {
         display: inline-block;
         padding: 7px 7px;
+        margin-right: 15px;
 
         &::after {
             display: none;
@@ -175,6 +192,9 @@
             padding: 10px 7px;
             border-radius: 15px;
         }
+    }
+    &__basket-btn{
+        margin-right: 0;
     }
 }
 
@@ -207,6 +227,7 @@
 
         @include mxw($sm) {
             justify-content: center;
+            margin-bottom: 15px;
         }
 
         button {
@@ -700,6 +721,7 @@
         text-align: right;
         max-width: 50px;
         box-sizing: border-box;
+        border-bottom: 1px solid $text;
 
         @include mxw($xs) {
             font-size: 18px;

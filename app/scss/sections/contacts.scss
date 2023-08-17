@@ -1,5 +1,5 @@
 .contacts {
-    padding-top: 80px;
+    padding-top: 100px;
 
     &__top {
         display: flex;
@@ -28,7 +28,7 @@
         @include mxw($sm) {
             margin: 0 auto;
             align-items: center;
-            margin-bottom: 90px;
+            margin-bottom: 50px;
         }
     }
 
@@ -84,6 +84,7 @@
         box-shadow: 0px 0px 100px 10px #FB6201;
         transition: all 0.8s;
         @include mxw($xs) {
+            box-shadow: 0px 0px 60px 10px #FB6201;
             padding: 15px 75px;
             
         }

@@ -1,6 +1,7 @@
 .partners {
 	overflow-x: hidden;
-	padding-top: 80px;
+	padding-top: 100px;
+
 }
 
 .scroll-full-width {
@@ -12,7 +13,9 @@
 	margin-left: -50vw;
 	margin-right: -50vw;
 
-
+	@include mxw($sm) {
+		transform: translateY(0);
+	}
 }
 
 .scroll-full-width.top {
@@ -22,6 +25,9 @@
 	@include mxw($md) {
 		border: transparent;
 	}
+	@include mxw($sm) {
+		padding: 0 0 50px 0;
+	}
 }
 
 .scroll-full-width.bottom {
@@ -30,6 +36,7 @@
 
 	@include mxw($md) {
 		border: transparent;
+		padding-bottom: 0;
 	}
 }
 

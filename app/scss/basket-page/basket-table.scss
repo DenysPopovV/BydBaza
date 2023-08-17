@@ -1,0 +1,172 @@
+.basket {
+    @include mxw($sm) {
+        padding-top: 40px;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+
+        @include mxw($xs) {
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__text {
+        @include mxw($xs) {
+            font-size: 16px;
+        }
+    }
+
+    &__count {
+        font-weight: 600;
+    }
+
+    &__table {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 100px;
+
+        @include mxw($xs) {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__list {
+        margin-bottom: 75px;
+
+        @include mxw($xs) {
+            margin-bottom: 50px;
+        }
+    }
+
+    &__card {
+        border-bottom: 1px solid $text;
+        padding: 5px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include mxw($xs) {
+            padding: 0 0 5px 0;
+        }
+    }
+
+    &__card-top {
+        display: flex;
+    }
+
+    &__card-photo {
+        max-width: 110px;
+        width: 100%;
+        height: 110px;
+        object-fit: cover;
+        margin-right: 10px;
+        border: 1px solid $text;
+    }
+
+    &__card-info {
+        display: flex;
+        flex-direction: column;
+
+        @include mxw($xs) {
+            justify-content: space-between;
+            padding: 15px 0;
+            font-size: 16px;
+            max-width: 150px;
+            width: 100%;
+        }
+    }
+
+    &__card-name {
+        font-size: 24px;
+        margin-bottom: 20px;
+
+        @include mxw($xs) {
+            font-size: 16px;
+        }
+    }
+
+    &__card-count {
+        font-weight: 600;
+        max-width: 40px;
+        border-bottom: 1px solid $text;
+    }
+
+    &__card-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 150px;
+        width: 100%;
+
+        @include mxw($xs) {
+            max-width: 120px;
+            font-size: 16px;
+        }
+    }
+
+    &__card-price {
+        span {
+            font-weight: 600;
+        }
+    }
+
+    &__card-delete {
+        position: relative;
+        width: 30px;
+        height: 30px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 32px;
+            top: 0;
+            right: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("../images/icons/garbage.svg");
+        }
+
+        @include mxw($xs) {
+            &::after{
+                width: 25px;
+                height: 28px;
+            }
+        }
+    }
+
+    &__btn {
+        display: flex;
+        width: 100%;
+        justify-content: end;
+        @include mxw($xs) {
+            justify-content: center;
+        }
+    }
+
+    &__submit {
+        padding: 10px 80px;
+        color: $white;
+        box-shadow: 0px 2px 37px 6px #fb6201;
+        background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
+        border-radius: 12px;
+
+        @include mxw($xs) {
+            font-size: 18px;
+            box-shadow: 0px 2px 10px 6px #fb6201;
+        }
+    }
+}
