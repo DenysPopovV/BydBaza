@@ -28,14 +28,31 @@
 
     &__count {
         font-weight: 600;
+        text-align: right;
+        max-width: 140px;
+    }
+
+    &__msg {
+        padding-left: 15px;
+        display: none;
+
+        &.show {
+            display: block;
+        }
+
+        @include mxw($xs) {
+            font-size: 16px;
+            padding-left: 0;
+        }
     }
 
     &__table {
         display: flex;
         flex-direction: column;
         margin-bottom: 100px;
+        display: none;
 
-        &.show{
+        &.show {
             display: block;
         }
 
@@ -52,22 +69,11 @@
         }
     }
 
-    &__msg{
-        padding-left: 15px;
 
-        &.message{
-            display: none;
-        }
-
-        @include mxw($xs) {
-            font-size: 16px;
-            padding-left: 0;
-        }
-    }
 
     &__card {
         border-bottom: 1px solid $text;
-        padding:0 15px 10px;
+        padding: 0 15px 10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -160,7 +166,7 @@
         }
 
         @include mxw($xs) {
-            &::after{
+            &::after {
                 width: 25px;
                 height: 28px;
             }
@@ -171,6 +177,7 @@
         display: flex;
         width: 100%;
         justify-content: end;
+
         @include mxw($xs) {
             justify-content: center;
         }
@@ -180,18 +187,14 @@
         padding: 10px 80px;
         color: $white;
         box-shadow: 0px 2px 37px 6px #fb6201;
-        background-color: $text;
-        border: 6px solid $accent;
         border-radius: 12px;
-
-        &.submit{
-            background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
-            border: transparent;
-        }
+        background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
 
         @include mxw($xs) {
             font-size: 18px;
             box-shadow: 0px 2px 10px 6px #fb6201;
         }
     }
+
+
 }

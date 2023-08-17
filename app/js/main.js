@@ -15,7 +15,11 @@ const contactsForm = document.forms.contactForm,
   headerMenuBtn = document.querySelector(".header__mobile-btn"),
   headerMobMenu = document.querySelector(".mobile"),
   headerMenu = document.querySelector(".header__menu"),
-  headerBtn = headerMenu.children;
+  headerBtn = headerMenu.children,
+  allProductsInBasket =
+    JSON.parse(localStorage.getItem("productsInBasket")) || [],
+  headerBasketBtn = document.querySelector(".media__btn--basket"),
+  basketList = document.querySelector(".basket__list");
 
 const patterns = {
   textPattern: /[а-яА-ЯЁё]{2,}/,
@@ -234,7 +238,6 @@ const InfoSwiper = new Swiper(".swiper-products", {
   },
 });
 
-
 function tabsAction(target) {
   const answerEl = document.querySelector(`div#${target.id}`);
   if (target.id === answerEl.id) {
@@ -360,7 +363,7 @@ function ratingStar(stars) {
   if (document.querySelector(".product__stars")) {
     [...stars.children].forEach((star, index) => {
       star.addEventListener("click", (e) => {
-        [...stars].forEach((star, index1) => {
+        [...stars.children].forEach((star, index1) => {
           index >= index1
             ? star.classList.add("active")
             : star.classList.remove("active");
@@ -576,6 +579,54 @@ const relatedSwiper = new Swiper(".related__swiper", {
   },
 });
 //////////////////////////// }
+//////////////////////////////////// basket-page {
+function makeObjProductInfo() {
+  const productInfo = {
+    id: Math.floor(Math.random() * 1000),
+    name: document.querySelector(".js-product__name").textContent,
+    price: document.querySelector(".product__price").textContent,
+    img: document.querySelector(".product__img").getAttribute("src"),
+  };
+  return productInfo;
+}
+
+function checkAndPushObjInStore(objWithInfo) {
+  let flag = true;
+  if (allProductsInBasket.length > 0) {
+    allProductsInBasket.forEach((product) => {
+      for (key in product) {
+        if (
+          product.name === objWithInfo.name &&
+          product.price === objWithInfo.price
+        ) {
+          flag = false;
+        }
+      }
+    });
+  }
+  if (flag === true) {
+    allProductsInBasket.push(objWithInfo);
+    updateLocalStorage(allProductsInBasket, "productsInBasket");
+  }
+}
+/////////////////////////////////////////////////}
+
+/////////////////////breadcrumbs{
+const servicesBreadCrumbs = document.querySelector(
+  ".breadcrumbs-services-title"
+);
+
+const basketBreadCrumbs = document.querySelector(".basket__title");
+
+function breadCrumbsProductName(productName, breadCrumbsEl) {
+  if (productName && breadCrumbsEl) {
+    breadCrumbsEl.textContent = productName.textContent;
+  }
+}
+breadCrumbsProductName(productName, breadCrumbsEl);
+breadCrumbsProductName(servicesBreadCrumbs, breadCrumbsEl);
+breadCrumbsProductName(basketBreadCrumbs, breadCrumbsEl);
+////////////////////////////////}
 
 //////////////////////////////////Global
 
@@ -595,16 +646,15 @@ function headerFixed() {
     }
   }
 }
-window.addEventListener("scroll", headerFixed);
 
 function changeHeaderTextColorWhite(className) {
   const productPageHeader = document.querySelectorAll(className);
-  Array.from(productPageHeader).forEach((btn) => btn.classList.remove('style'));
+  [...productPageHeader].forEach((btn) => btn.classList.remove("style"));
 }
 
 function changeHeaderTextColorBlack(className) {
   const changeColor = document.querySelectorAll(className);
-  Array.from(changeColor).forEach((btn) => btn.classList.add('style'));
+  [...changeColor].forEach((btn) => btn.classList.add("style"));
 }
 
 if (document.querySelector(".breadcrumbs") !== null) {
@@ -612,24 +662,33 @@ if (document.querySelector(".breadcrumbs") !== null) {
   changeHeaderTextColorBlack(".header__pages-btn");
 }
 
-const servicesBreadCrumbs = document.querySelector(
-  ".breadcrumbs-services-title"
-);
-
-const basketBreadCrumbs = document.querySelector(
-  ".basket__title"
-);
-
-function breadCrumbsProductName(productName, breadCrumbsEl) {
-  if (productName && breadCrumbsEl) {
-    breadCrumbsEl.textContent = productName.textContent;
-  }
+function updateLocalStorage(items, localArrName) {
+  localStorage.setItem(localArrName, JSON.stringify(items));
 }
-breadCrumbsProductName(productName, breadCrumbsEl);
-breadCrumbsProductName(servicesBreadCrumbs, breadCrumbsEl);
-breadCrumbsProductName(basketBreadCrumbs, breadCrumbsEl);
 
-function clickHandler(target) {
+function countForLikeOrBasket(className) {
+  document.querySelectorAll(className).forEach((count) => {
+    count.textContent = allProductsInBasket.length;
+  });
+}
+
+function addClassAnimationOnTimer(countBtn) {
+  countBtn.classList.add("animation");
+  setTimeout(function () {
+    removeClassAnimation(countBtn);
+  }, 1000);
+}
+
+function removeClassAnimation(countBtn) {
+  countBtn.classList.remove("animation");
+}
+
+function deleteEmptyLocalArr(arrName) {
+  localStorage.removeItem(arrName);
+}
+
+function clickHandler(e) {
+  const target = e.target;
   if (target.classList.contains("contacts__form-btn")) {
     e.preventDefault();
     target.setAttribute("disabled", "disabled");
@@ -670,11 +729,45 @@ function clickHandler(target) {
     target.classList.toggle("active");
     headerMobMenu.classList.toggle("active");
   }
+
+  if (target.classList.contains("product__basket-btn")) {
+    const objProductInfo = makeObjProductInfo();
+    checkAndPushObjInStore(objProductInfo);
+    countForLikeOrBasket(".js-basket__count");
+    addClassAnimationOnTimer(headerBasketBtn);
+  }
+  if (target.classList.contains("product__like-btn")) {
+    const headerLikeBtn = document.querySelector(".media__btn--likes");
+    addClassAnimationOnTimer(headerLikeBtn);
+  }
+
+  if (target.classList.contains("basket__card-delete")) {
+    for (let i = 0; i < allProductsInBasket.length; i++) {
+      if (allProductsInBasket[i].id === +target.closest(".basket__card").id) {
+        target.closest(".basket__card").remove();
+        allProductsInBasket.splice(i, 1);
+        updateLocalStorage(allProductsInBasket, "productsInBasket");
+      }
+    }
+    countForLikeOrBasket(".js-basket__count");
+    addClassAnimationOnTimer(headerBasketBtn);
+    document.querySelector(".js-list__count").textContent =
+    allProductsInBasket.length;
+    if(basketList.children.length === 0) {
+      deleteEmptyLocalArr('productsInBasket')
+      document.querySelector('.basket__msg').classList.add('show') 
+      document.querySelector('.basket__table').classList.remove('show') 
+    }
+    countSumAllMoney()
+  }
+
+  if(target.classList.contains('basket__submit')) {
+
+  }
 }
 
 document.addEventListener("click", (e) => {
-  const target = e.target;
-  clickHandler(target);
+  clickHandler(e);
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -703,6 +796,71 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     });
   });
+});
+
+function addCardOnBasketPage(parentList, productObj) {
+  parentList.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="basket__card" id='${productObj.id}'>
+    <div class="basket__card-top">
+        <img class="basket__card-photo js-product__img" src="${productObj.img}" alt="фото товару">
+        <div class="basket__card-info">
+            <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' readonly>
+            <span><input class="basket__card-count js-amount__product" type="number" name="productCount" value="1" min="1">шт.</span>
+        </div>
+    </div>
+    <div class="basket__card-bottom">
+        <span class="basket__card-price"><input class="js-price__value" type='text' value='${productObj.price}' readonly></span>
+        <button class="basket__card-delete" type="button"></button>
+    </div>
+  </div>
+  `
+  );
+}
+
+
+function countSumAllMoney() {
+  let allMoney = 0
+  document.querySelectorAll('.js-price__value').forEach(priceValue => {
+    allMoney += +priceValue.value.replace('грн', '');
+  })
+  document.querySelector('.js-all__money').value = allMoney + 'грн';
+}
+
+function basketCalculation(){
+  const allInputsCount = document.querySelectorAll('.js-amount__product')
+  allInputsCount.forEach(input => {
+    input.addEventListener('input', (e) => {
+      const target = e.target
+      allProductsInBasket.forEach(product => {
+        if(product.id === +target.closest('.basket__card').id) {
+          let price = product.price.replace('грн', '')
+          target.closest('.basket__card').querySelector('.js-price__value').value = +target.value * +price + 'грн'
+        }
+      })
+      countSumAllMoney()
+    })
+  }) 
+  countSumAllMoney()
+}
+
+window.addEventListener("load", () => {
+  countForLikeOrBasket(".js-basket__count");
+  if (document.querySelector(".basket")) {
+    if (allProductsInBasket.length > 0) {
+      document.querySelector(".basket__table").classList.add("show");
+      document.querySelector(".js-list__count").textContent =
+        allProductsInBasket.length;
+      
+      allProductsInBasket.forEach((product) => {
+        addCardOnBasketPage(basketList, product);
+      });
+    } else {
+      document.querySelector(".basket__msg").classList.add("show");
+    }
+    basketCalculation()
+  }
 });
 
 window.addEventListener("scroll", headerFixed);

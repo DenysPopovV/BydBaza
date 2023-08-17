@@ -45,14 +45,17 @@
                                 <a class="header__btn copy__btn" href="">Галерея</a>
                             </li>
                             <li class="header__pages-item media__item">
-                                <span>0</span>
+                                
                                 <a class="header__pages-btn media__btn media__btn--basket"
-                                    href="basket-page.html"></a>
+                                    href="basket-page.html">
+                                    <span class="js-basket__count"></span>
+                                </a>
                             </li>
                             <li class="header__pages-item media__item">
-                                <span>0</span>
                                 <a class="header__pages-btn media__btn media__btn--likes"
-                                    href=""></a>
+                                    href="">
+                                    <span>0</span>
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -80,7 +83,7 @@
                     </li>
                     <li class="mobile__item">
                         <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
-                            <span>0</span>
+                            <span class="js-basket__count">0</span>
                         </a>
                     </li>
                     <li class="mobile__item">
@@ -200,7 +203,7 @@
         <h3 class="new-products__title title">
             Нові товари
         </h3>
-       <div class="swiper-products"> 
+        <div class="swiper-products">
             <div class="new-products__list swiper-wrapper">
                 <div class="new-products__item swiper-slide">
                     <a class="new-products__link" href="product-page.html">
@@ -224,12 +227,14 @@
                     </a>
                 </div>
                 <div class="new-products__item swiper-slide">
-                    <a class="new-products__link" href="#">
+                    <a class="new-products__link" href="product-page.html">
                         <div class="new-products__info">
                             <div class="new-products__absolute">
                                 <input class="new-products__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="new-products__label" for="like[0]"></label>
+                                    id="like[1]">
+                                <label class="new-products__label" for="like[1]">
+                                    <span class="sr-only">кнопка для вподобання товару</span>
+                                </label>
                             </div>
                             <img class="new-products__img" src="" alt="фото товара">
                             <span class="new-products__instock">В наявності</span>
@@ -238,17 +243,19 @@
                             <span class="new-products__name">Назва товару</span>
                             <span class="new-products__description">Опис</span>
                         </div>
-                        <span class="new-products__price">1399 грн</span>
-                        <a class="new-products__btn accent-product-btn" href="#">Замовити</a>
+                        <span class="new-products__price">7399 грн</span>
+                        <a class="new-products__btn accent-product-btn" href="product-page-stone.html">Замовити</a>
                     </a>
                 </div>
                 <div class="new-products__item swiper-slide">
-                    <a class="new-products__link" href="#">
+                    <a class="new-products__link" href="product-page.html">
                         <div class="new-products__info">
                             <div class="new-products__absolute">
                                 <input class="new-products__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="new-products__label" for="like[0]"></label>
+                                    id="like[2]">
+                                <label class="new-products__label" for="like[2]">
+                                    <span class="sr-only">кнопка для вподобання товару</span>
+                                </label>
                             </div>
                             <img class="new-products__img" src="" alt="фото товара">
                             <span class="new-products__instock">В наявності</span>
@@ -257,79 +264,64 @@
                             <span class="new-products__name">Назва товару</span>
                             <span class="new-products__description">Опис</span>
                         </div>
-                        <span class="new-products__price">1399 грн</span>
-                        <a class="new-products__btn accent-product-btn" href="#">Замовити</a>
+                        <span class="new-products__price">3999 грн</span>
+                        <a class="new-products__btn accent-product-btn" href="product-page.html">Замовити</a>
                     </a>
                 </div>
                 <div class="new-products__item swiper-slide">
-                    <a class="new-products__link" href="#">
+                    <a class="new-products__link" href="product-page.html">
                         <div class="new-products__info">
                             <div class="new-products__absolute">
                                 <input class="new-products__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="new-products__label" for="like[0]"></label>
+                                    id="like[3]">
+                                <label class="new-products__label" for="like[3]">
+                                    <span class="sr-only">кнопка для вподобання товару</span>
+                                </label>
                             </div>
                             <img class="new-products__img" src="" alt="фото товара">
                             <span class="new-products__instock">В наявності</span>
                         </div>
                         <div class="new-products__flex">
-                            <span class="new-products__name">Назва товару</span>
+                            <span class="new-products__name">plutka</span>
                             <span class="new-products__description">Опис</span>
                         </div>
-                        <span class="new-products__price">1399 грн</span>
-                        <a class="new-products__btn accent-product-btn"  href="#">Замовити</a>
+                        <span class="new-products__price">1000 грн</span>
+                        <a class="new-products__btn accent-product-btn" href="product-page.html">Замовити</a>
                     </a>
                 </div>
                 <div class="new-products__item swiper-slide">
-                    <a class="new-products__link" href="#">
+                    <a class="new-products__link" href="product-page.html">
                         <div class="new-products__info">
                             <div class="new-products__absolute">
                                 <input class="new-products__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="new-products__label" for="like[0]"></label>
+                                    id="like[4]">
+                                <label class="new-products__label" for="like[4]">
+                                    <span class="sr-only">кнопка для вподобання товару</span>
+                                </label>
                             </div>
                             <img class="new-products__img" src="" alt="фото товара">
                             <span class="new-products__instock">В наявності</span>
                         </div>
                         <div class="new-products__flex">
-                            <span class="new-products__name">Назва товару</span>
+                            <span class="new-products__name">kirpich</span>
                             <span class="new-products__description">Опис</span>
                         </div>
-                        <span class="new-products__price">1399 грн</span>
-                        <a class="new-products__btn accent-product-btn" href="#">Замовити</a>
+                        <span class="new-products__price">399 грн</span>
+                        <a class="new-products__btn accent-product-btn" href="product-page.html">Замовити</a>
                     </a>
                 </div>
-                <div class="new-products__item swiper-slide">
-                    <a class="new-products__link" href="#">
-                        <div class="new-products__info">
-                            <div class="new-products__absolute">
-                                <input class="new-products__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="new-products__label" for="like[0]"></label>
-                            </div>
-                            <img class="new-products__img" src="" alt="фото товара">
-                            <span class="new-products__instock">В наявності</span>
-                        </div>
-                        <div class="new-products__flex">
-                            <span class="new-products__name">Назва товару</span>
-                            <span class="new-products__description">Опис</span>
-                        </div>
-                        <span class="new-products__price">1399 грн</span>
-                        <a class="new-products__btn accent-product-btn" href="#">Замовити</a>
-                    </a>
-                </div>
-            </div>
-        </div> 
 
-        <div class="new-products__swiper-arrow">
-            <div class="new-products__arrow-prev accent-button-arrow">
-                <span class="sr-only">button for scroll swiper left</span>
             </div>
-            <div class="new-products__arrow-next accent-button-arrow">
-                <span class="sr-only">button for scroll swiper right</span>
+
+            <div class="new-products__swiper-arrow">
+                <div class="new-products__arrow-prev accent-button-arrow">
+                    <span class="sr-only">button for scroll swiper left</span>
+                </div>
+                <div class="new-products__arrow-next accent-button-arrow">
+                    <span class="sr-only">button for scroll swiper right</span>
+                </div>
             </div>
         </div>
-    </div>
 </section>
             <section class="contacts" id="contact">
   <div class="container">

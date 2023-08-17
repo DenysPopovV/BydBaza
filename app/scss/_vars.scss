@@ -7,3 +7,21 @@ $white: #fff;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+@keyframes count-bounce {
+    25% {
+        transform: scale(.85);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    75% {
+        transform: scale(.95);
+    }
+
+    100% {
+        transform: none;
+    }
+}
