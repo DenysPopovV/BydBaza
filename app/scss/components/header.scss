@@ -48,6 +48,7 @@
 
         @include mxw($lg) {
             flex-wrap: wrap;
+            justify-content: center;
         }
     }
 

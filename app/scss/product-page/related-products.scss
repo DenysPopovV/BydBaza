@@ -197,4 +197,10 @@
         }
     }
 
+    &__btn {
+        &::after{
+            display: none;
+        }
+    }
+
 }

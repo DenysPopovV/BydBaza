@@ -629,7 +629,8 @@ breadCrumbsProductName(productName, breadCrumbsEl);
 breadCrumbsProductName(servicesBreadCrumbs, breadCrumbsEl);
 breadCrumbsProductName(basketBreadCrumbs, breadCrumbsEl);
 
-function clickHandler(target) {
+function clickHandler(e) {
+  const target = e.target;
   if (target.classList.contains("contacts__form-btn")) {
     e.preventDefault();
     target.setAttribute("disabled", "disabled");
@@ -637,6 +638,7 @@ function clickHandler(target) {
     removeActiveGroupClass(".contacts__form-group");
     removeInputValue(contactsForm);
   }
+
   if (target.classList.contains("blog-cards__popup-close")) {
     bodyLock.classList.remove("lock");
     target.closest(".blog-cards__popup").classList.remove("active");
@@ -673,8 +675,7 @@ function clickHandler(target) {
 }
 
 document.addEventListener("click", (e) => {
-  const target = e.target;
-  clickHandler(target);
+  clickHandler(e);
 });
 
 document.addEventListener("DOMContentLoaded", function () {
