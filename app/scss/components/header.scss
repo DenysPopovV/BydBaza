@@ -140,6 +140,10 @@
 
     &__menu {
         padding-left: 30px;
+        @include mxw($lg) {
+            padding-left: 0;
+        }
+
 
         @include mxw($md) {
             display: none;

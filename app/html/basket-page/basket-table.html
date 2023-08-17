@@ -1,14 +1,7 @@
 <section class="basket">
   <div class="container">
     <h3 class="basket__title title">Корзина</h3>
-    <div class="basket__top">
-      <span class="basket__text">
-        К-сть товару(<span class="basket__count list-js">0</span>)
-      </span>
-      <span class="basket__text">
-        Загальна сума: <span class="basket__count cash-js">0</span>грн
-      </span>
-    </div>
+    <span class="basket__msg">У вас немає доданих товарів...</span>
     <div class="basket__table">
         <div class="basket__list">
             <div class="basket__card">
@@ -24,50 +17,17 @@
                     <button class="basket__card-delete" type="button"></button>
                 </div>
             </div>
-            <div class="basket__card">
-                <div class="basket__card-top">
-                    <img class="basket__card-photo" src="" alt="фото товару">
-                    <div class="basket__card-info">
-                        <span class="basket__card-name">Назва товару</span>
-                        <span><input class="basket__card-count" type="number" name="" id="" value="1" min-value="1">шт.</span>
-                    </div>
-                </div>
-                <div class="basket__card-bottom">
-                    <span class="basket__card-price"><span class="price-value">0</span>грн</span>
-                    <button class="basket__card-delete" type="button"></button>
-                </div>
-            </div>
-            <div class="basket__card">
-                <div class="basket__card-top">
-                    <img class="basket__card-photo" src="" alt="фото товару">
-                    <div class="basket__card-info">
-                        <span class="basket__card-name">Назва товару</span>
-                        <span><input class="basket__card-count" type="number" name="" id="" value="1" min-value="1">шт.</span>
-                    </div>
-                </div>
-                <div class="basket__card-bottom">
-                    <span class="basket__card-price"><span class="price-value">0</span>грн</span>
-                    <button class="basket__card-delete" type="button"></button>
-                </div>
-            </div>
-            <div class="basket__card">
-                <div class="basket__card-top">
-                    <img class="basket__card-photo" src="" alt="фото товару">
-                    <div class="basket__card-info">
-                        <span class="basket__card-name">Назва товару</span>
-                        <span><input class="basket__card-count" type="number" name="" id="" value="1" min-value="1">шт.</span>
-                    </div>
-                </div>
-                <div class="basket__card-bottom">
-                    <span class="basket__card-price"><span class="price-value">0</span>грн</span>
-                    <button class="basket__card-delete" type="button"></button>
-                </div>
-            </div>
-            
         </div>
-
+        <div class="basket__top">
+            <span class="basket__text">
+              К-сть товару(<span class="basket__count list-js">0</span>)
+            </span>
+            <span class="basket__text">
+              Загальна сума: <span class="basket__count cash-js">0</span>грн
+            </span>
+          </div>
         <div class="basket__btn">
-            <button class="basket__submit" type="button">Замовити</button>
+            <button class="basket__submit" type="button" disabled>Замовити</button>
         </div>
     </div>
   </div>

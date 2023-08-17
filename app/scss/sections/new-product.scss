@@ -69,6 +69,12 @@
         }
     }
 
+    &__btn{
+        &::after{
+            display: none;
+        }
+    }
+
     &__info {
         position: relative;
         z-index: 2;
