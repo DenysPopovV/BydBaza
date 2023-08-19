@@ -24,7 +24,7 @@ const contactsForm = document.forms.contactForm,
   popupLink = document.querySelector(".popup-link");
 
 const patterns = {
-  adressPattern: /[\p{L}\d\s.,\-]{2,}/,
+  adressPattern: /[а-яА-ЯЁё0-9\s.,\-]{2,}/,
   textPattern: /[а-яА-ЯЁё]{2,}/,
   namePattern: /^[а-яА-ЯҐґЄєІіЇї'-]{2,}$/,
   phonePattern: /^0\d{9}$/,
@@ -37,7 +37,7 @@ const messages = {
   errorName: "Від двох символів, лише кирилиця, без пробілів",
   errorPhone: "Починайте з нуля, введіть 10 символів",
   errorMail: "Не менше 6 символів, знак @ та домен пошти",
-  errorAdress:"Не менше 2 символів",
+  errorAdress:"Не менше двох символів",
   correct: "Все правильно, заповнюйте далі!",
 };
 
