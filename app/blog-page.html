@@ -17,7 +17,7 @@
             <div class="header__top copy__top">
                 <div class="header__center-fix">
                     <div class="header__logo-box copy__logo-box">
-                        <a href="index.html"><img class="header__logo copy__logo" src="images/logo.png" alt="Логотип компанії"></a>
+                        <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg" alt="Логотип компанії"></a>
                         <button class="header__mobile-btn" type="button">
                             <span></span>
                         </button>
@@ -43,14 +43,16 @@
                                 <a class="header__btn copy__btn" href="">Галерея</a>
                             </li>
                             <li class="header__pages-item media__item">
-                                <span>0</span>
                                 <a class="header__pages-btn media__btn media__btn--basket"
-                                    href="basket-page.html"></a>
+                                    href="basket-page.html">
+                                    <span class="js-basket__count"></span>
+                                </a>
                             </li>
                             <li class="header__pages-item media__item">
-                                <span>0</span>
                                 <a class="header__pages-btn media__btn media__btn--likes"
-                                    href=""></a>
+                                    href="">
+                                    <span>0</span>
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -67,7 +69,7 @@
                         <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
                     </li> -->
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#new-product">new</a>
+                        <a class="mobile__link close-js" href="index.html#new-products">new</a>
                     </li>
 
                     <li class="mobile__item">
@@ -81,7 +83,7 @@
                     </li>
                     <li class="mobile__item">
                         <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
-                            <span>0</span>
+                            <span class="js-basket__count">0</span>
                         </a>
                     </li>
                     <li class="mobile__item">
