@@ -19,9 +19,12 @@ const contactsForm = document.forms.contactForm,
   allProductsInBasket =
     JSON.parse(localStorage.getItem("productsInBasket")) || [],
   headerBasketBtn = document.querySelector(".media__btn--basket"),
-  basketList = document.querySelector(".basket__list");
+  basketList = document.querySelector(".basket__list"),
+  orderForm = document.forms.orderForm,
+  popupLink = document.querySelector(".popup-link");
 
 const patterns = {
+  adressPattern: /[\p{L}\d\s.,\-]{2,}/,
   textPattern: /[а-яА-ЯЁё]{2,}/,
   namePattern: /^[а-яА-ЯҐґЄєІіЇї'-]{2,}$/,
   phonePattern: /^0\d{9}$/,
@@ -34,6 +37,7 @@ const messages = {
   errorName: "Від двох символів, лише кирилиця, без пробілів",
   errorPhone: "Починайте з нуля, введіть 10 символів",
   errorMail: "Не менше 6 символів, знак @ та домен пошти",
+  errorAdress:"Не менше 2 символів",
   correct: "Все правильно, заповнюйте далі!",
 };
 
@@ -374,43 +378,21 @@ function ratingStar(stars) {
 }
 ratingStar(stars);
 
-//form-order {
-function openFormOrder(parentElClassName) {
-  document.querySelector(parentElClassName).classList.add("show");
-}
-function closeFormOrder(parentElClassName) {
+function closePopup(parentElClassName) {
   document.querySelector(parentElClassName).classList.remove("show");
 }
 
-function showLastStageAddInfo() {
-  const dotsInFormStages = document.querySelector(".product-form__stages"),
-    lastStageNameProduct = document.querySelector(".last-stage__name"),
-    productName = document.querySelector(".js-product__name"),
-    priceProduct = document.querySelector(".product__price"),
-    priceOfOrderProduct = document.querySelectorAll(".last-stage__price"),
-    countOfProductsOrder = document.querySelector(".last-stage__count");
+// ----------------------- Order Form --------------------------------
 
-  if (checkFormSuccess(".second-stage__group", document.forms.orderForm)) {
-    closeFormOrder(".second-stage");
-    openFormOrder(".last-stage");
-    dotsInFormStages.children[1].classList.add("success");
-    lastStageNameProduct.textContent = productName.textContent;
-    priceOfOrderProduct[0].textContent = priceProduct.textContent;
-    priceOfOrderProduct[1].textContent =
-      +priceProduct.textContent.split("г")[0] * +countOfProductsOrder.value +
-      "грн";
-  }
-}
-
-function formOrderHandler(target) {
+function formOrderInput(target) {
   switch (target.name) {
     case "firstName":
       checkFieldOnInput(
         target,
         patterns.textPattern,
         messages.errorName,
-        ".first-stage__group",
-        ".first-stage__msg"
+        ".basket__input-group",
+        ".basket__validation-msg"
       );
       break;
     case "lastName":
@@ -418,8 +400,8 @@ function formOrderHandler(target) {
         target,
         patterns.namePattern,
         messages.errorName,
-        ".first-stage__group",
-        ".first-stage__msg"
+        ".basket__input-group",
+        ".basket__validation-msg"
       );
       break;
     case "phoneNumber":
@@ -427,8 +409,8 @@ function formOrderHandler(target) {
         target,
         patterns.phonePattern,
         messages.errorPhone,
-        ".first-stage__group",
-        ".first-stage__msg"
+        ".basket__input-group",
+        ".basket__validation-msg"
       );
       break;
     case "email":
@@ -436,57 +418,117 @@ function formOrderHandler(target) {
         target,
         patterns.emailPattern,
         messages.errorMail,
-        ".first-stage__group",
-        ".first-stage__msg"
+        ".basket__input-group",
+        ".basket__validation-msg"
       );
       break;
-    case "location":
-      target.nextElementSibling.textContent = "";
-      target.addEventListener("blur", (e) => {
-        if (target.value.length > 3) {
-          target.closest(".second-stage__group").classList.add("success");
-          target.nextElementSibling.textContent = "";
-          showLastStageAddInfo(target);
-        }
-      });
+    case "baseLocation":
+      checkFieldOnInput(
+        target,
+        patterns.textPattern,
+        messages.errorName,
+        ".basket__input-group",
+        ".basket__validation-msg"
+      );
+      break;
+    case "postAdres":
+      checkFieldOnInput(
+        target,
+        patterns.adressPattern,
+        messages.errorAdress,
+        ".basket__input-group",
+        ".basket__validation-msg"
+      );
       break;
   }
+}
 
-  if (checkFormSuccess(".first-stage__group", document.forms.orderForm)) {
-    closeFormOrder(".first-stage");
-    openFormOrder(".second-stage");
-    document
-      .querySelector(".product-form__stages")
-      .children[0].classList.add("success");
-  }
+function focusAndBlurEvent(input) {
+  input.addEventListener("focus", (e) => {
+    checkFieldOnFocus(
+      e.target,
+      ".basket__input-group",
+      ".basket__validation-msg"
+    );
+  });
+  input.addEventListener("blur", (e) => {
+    checkFieldOnBlur(
+      e.target,
+      ".basket__input-group",
+      ".basket__validation-msg"
+    );
+  });
+}
 
-  if (target.classList.contains("second-stage__checkbox")) {
-    target.closest(".second-stage__group").classList.add("success");
+function onLoadCheckFocusBlur() {
+  for (const input of orderForm.elements) {
+    const deliveryType = document.querySelectorAll(".basket__radio");
+    const locationItems = document.querySelectorAll(".location-js");
+    if (
+      input.name !== "individualCount" &&
+      input.name !== "productCount" &&
+      input.name !== "sumOrder" &&
+      input.name !== "deleteIndividualCart"
+    )
+      deliveryType.forEach((item) => {
+        if (item.checked && item.classList.contains("delivery-js")) {
+          document
+            .querySelector(".basket__location-info")
+            .classList.remove("hide");
+          checkOrderButtonDisabled(orderForm.orderFormBtn);
+          if (input.type !== "radio" && input.type !== "submit") {
+            focusAndBlurEvent(input);
+          }
+          locationItems.forEach((item) => {
+            item.removeAttribute("disabled");
+            item.nextElementSibling.style.display = "block";
+            if (item.value === "") {
+              item.parentElement.classList.remove("success");
+              orderForm.orderFormBtn.classList.remove("success");
+            }
+          });
+        } else if (item.checked && item.classList.contains("pickup-js")) {
+          checkOrderButtonDisabled(orderForm.orderFormBtn);
+          document
+            .querySelector(".basket__location-info")
+            .classList.add("hide");
+          if (
+            input.type !== "radio" &&
+            input.type !== "submit" &&
+            input.name !== "baseLocation" &&
+            input.name !== "postAdres"
+          ) {
+            focusAndBlurEvent(input);
+          }
+          locationItems.forEach((item) => {
+            item.value = "";
+            item.setAttribute("disabled", "disabled");
+            item.parentElement.classList.remove("error");
+            item.parentElement.classList.add("success");
+            item.nextElementSibling.style.display = "none";
+          });
+        }
+      });
   }
-  showLastStageAddInfo(target);
+}
+
+function checkOrderButtonDisabled(btnName) {
+  if (checkFormSuccess(".basket__input-group", orderForm)) {
+    btnName.removeAttribute("disabled");
+    btnName.classList.add("success");
+  } else {
+    btnName.setAttribute("disabled", "disabled");
+  }
 }
 
 function orderFormValidation(formName) {
   formName.addEventListener("input", (e) => {
     const target = e.target;
-    formOrderHandler(target);
+    formOrderInput(target);
+    checkOrderButtonDisabled(orderForm.orderFormBtn);
+    onLoadCheckFocusBlur();
   });
-
-  for (const input of formName.elements) {
-    if (
-      input.type !== "radio" &&
-      !input.classList.contains("second-stage__input") &&
-      !input.classList.contains("js-form__submit") &&
-      !input.classList.contains("last-stage__count")
-    ) {
-      input.addEventListener("focus", (e) => {
-        checkFieldOnFocus(e.target, ".first-stage__group", ".first-stage__msg");
-      });
-      input.addEventListener("blur", (e) => {
-        checkFieldOnBlur(e.target, ".first-stage__group", ".first-stage__msg");
-      });
-    }
-  }
+  onLoadCheckFocusBlur();
 }
 
 function removeSuccessGroup(groupName) {
@@ -494,25 +536,34 @@ function removeSuccessGroup(groupName) {
     group.classList.remove("success");
   });
 }
-function resetForm() {
-  document.forms.orderForm.reset();
-  removeSuccessGroup(".product-form__stage");
-  removeSuccessGroup(".second-stage__group");
-  removeSuccessGroup(".first-stage__group");
-  document.querySelectorAll(".first-stage__msg").forEach((msg) => {
-    msg.textContent = messages.errorRequired;
+
+function makeOrderInfo() {
+  [...orderForm.elements].forEach((element) => {
+    if (element.tagName === "INPUT") {
+      if (element.type === "radio" && element.checked) {
+        const label = orderForm.querySelector(
+          "label[for='" + element.id + "']"
+        );
+        if (label) {
+          console.log(label.textContent);
+        }
+      } else if (element.type !== "radio" && element.type !== "checkbox") {
+        if (element.type === "checkbox") {
+          console.log(element.checked ? label.textContent : "");
+        } else {
+          console.log(element.value);
+        }
+      }
+    }
   });
-  document.querySelectorAll(".form-order__stage").forEach((stage) => {
-    stage.classList.remove("show");
-  });
-  document.querySelector(".first-stage").classList.add("show");
-  document.querySelector(".second-stage__msg-input").textContent =
-    messages.errorRequired;
-  closeFormOrder(".product-form");
-  closeFormOrder(".last-stage");
-  openFormOrder(".first-stage");
 }
-// }
+
+if (orderForm) {
+  orderFormValidation(orderForm);
+  checkOrderButtonDisabled(orderForm.orderFormBtn);
+}
+
+// ----------------------- Related Product Slider --------------------------------
 
 const relatedSwiper = new Swiper(".related__swiper", {
   direction: "horizontal",
@@ -607,6 +658,9 @@ function checkAndPushObjInStore(objWithInfo) {
   if (flag === true) {
     allProductsInBasket.push(objWithInfo);
     updateLocalStorage(allProductsInBasket, "productsInBasket");
+    addClassAnimationOnTimer(headerBasketBtn);
+    bodyLock.classList.add("lock");
+    document.querySelector(".popup-msg").classList.add("show");
   }
 }
 /////////////////////////////////////////////////}
@@ -676,7 +730,7 @@ function addClassAnimationOnTimer(countBtn) {
   countBtn.classList.add("animation");
   setTimeout(function () {
     removeClassAnimation(countBtn);
-  }, 1000);
+  }, 3000);
 }
 
 function removeClassAnimation(countBtn) {
@@ -687,6 +741,19 @@ function deleteEmptyLocalArr(arrName) {
   localStorage.removeItem(arrName);
 }
 
+function upDateBasketInfo() {
+  countForLikeOrBasket(".js-basket__count");
+  addClassAnimationOnTimer(headerBasketBtn);
+  document.querySelector(".js-list__count").textContent =
+    allProductsInBasket.length;
+  if (basketList.children.length === 0) {
+    deleteEmptyLocalArr("productsInBasket");
+    document.querySelector(".basket__msg").classList.add("show");
+    document.querySelector(".basket__table").classList.remove("show");
+  }
+  countSumAllMoney();
+}
+
 function clickHandler(e) {
   const target = e.target;
   if (target.classList.contains("contacts__form-btn")) {
@@ -695,21 +762,18 @@ function clickHandler(e) {
     target.classList.remove("success");
     removeActiveGroupClass(".contacts__form-group");
     removeInputValue(contactsForm);
+    bodyLock.classList.add("lock");
+    document.querySelector(".popup-msg").classList.add("show");
   }
+
   if (target.classList.contains("blog-cards__popup-close")) {
     bodyLock.classList.remove("lock");
     target.closest(".blog-cards__popup").classList.remove("active");
   }
 
-  if (target.classList.contains("js-popup__form")) {
-    bodyLock.classList.add("lock");
-    openFormOrder(".product-form");
-    orderFormValidation(document.forms.orderForm);
-  }
-  if (target.classList.contains("close-popup-form")) {
+  if (target.classList.contains("close-popup")) {
     bodyLock.classList.remove("lock");
-    closeFormOrder(".product-form");
-    resetForm();
+    closePopup(".popup-msg");
   }
 
   if (target.classList.contains("js-form__submit")) {
@@ -730,12 +794,12 @@ function clickHandler(e) {
     headerMobMenu.classList.toggle("active");
   }
 
-  if (target.classList.contains("product__basket-btn")) {
+  if (target.classList.contains("js-popup__form")) {
     const objProductInfo = makeObjProductInfo();
     checkAndPushObjInStore(objProductInfo);
     countForLikeOrBasket(".js-basket__count");
-    addClassAnimationOnTimer(headerBasketBtn);
   }
+
   if (target.classList.contains("product__like-btn")) {
     const headerLikeBtn = document.querySelector(".media__btn--likes");
     addClassAnimationOnTimer(headerLikeBtn);
@@ -749,20 +813,31 @@ function clickHandler(e) {
         updateLocalStorage(allProductsInBasket, "productsInBasket");
       }
     }
-    countForLikeOrBasket(".js-basket__count");
-    addClassAnimationOnTimer(headerBasketBtn);
-    document.querySelector(".js-list__count").textContent =
-    allProductsInBasket.length;
-    if(basketList.children.length === 0) {
-      deleteEmptyLocalArr('productsInBasket')
-      document.querySelector('.basket__msg').classList.add('show') 
-      document.querySelector('.basket__table').classList.remove('show') 
-    }
-    countSumAllMoney()
+    upDateBasketInfo();
   }
 
-  if(target.classList.contains('basket__submit')) {
-
+  if (target.classList.contains("basket__submit")) {
+    e.preventDefault();
+    target.setAttribute("disabled", "disabled");
+    target.classList.remove("success");
+    const locationItems = document.querySelectorAll(".location-js");
+    locationItems.forEach((item) => {
+      item.classList.remove("success");
+      item.removeAttribute("disabled");
+    });
+    document.querySelector(".basket__location-info").classList.remove("hide");
+    bodyLock.classList.add("lock");
+    document.querySelector(".popup-msg").classList.add("show");
+    makeOrderInfo();
+    orderForm.reset();
+    allProductsInBasket.length = 0;
+    updateLocalStorage(allProductsInBasket, "productsInBasket");
+    countForLikeOrBasket(".js-basket__count");
+    if (allProductsInBasket.length === 0) {
+      deleteEmptyLocalArr("productsInBasket");
+      document.querySelector(".basket__msg").classList.add("show");
+      document.querySelector(".basket__table").classList.remove("show");
+    }
   }
 }
 
@@ -806,43 +881,45 @@ function addCardOnBasketPage(parentList, productObj) {
     <div class="basket__card-top">
         <img class="basket__card-photo js-product__img" src="${productObj.img}" alt="фото товару">
         <div class="basket__card-info">
-            <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' readonly>
+            <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' name='individualCount' readonly>
             <span><input class="basket__card-count js-amount__product" type="number" name="productCount" value="1" min="1">шт.</span>
         </div>
     </div>
     <div class="basket__card-bottom">
-        <span class="basket__card-price"><input class="js-price__value" type='text' value='${productObj.price}' readonly></span>
-        <button class="basket__card-delete" type="button"></button>
+        <span class="basket__card-price"><input class="js-price__value" type='text' value='${productObj.price}' name='sumOrder' readonly></span>
+        <button class="basket__card-delete" type="button" name='deleteIndividualCart'></button>
     </div>
   </div>
   `
   );
 }
 
-
 function countSumAllMoney() {
-  let allMoney = 0
-  document.querySelectorAll('.js-price__value').forEach(priceValue => {
-    allMoney += +priceValue.value.replace('грн', '');
-  })
-  document.querySelector('.js-all__money').value = allMoney + 'грн';
+  let allMoney = 0;
+  document.querySelectorAll(".js-price__value").forEach((priceValue) => {
+    allMoney += +priceValue.value.replace("грн", "");
+  });
+  document.querySelector(".js-all__money").value = allMoney + "грн";
 }
 
-function basketCalculation(){
-  const allInputsCount = document.querySelectorAll('.js-amount__product')
-  allInputsCount.forEach(input => {
-    input.addEventListener('input', (e) => {
-      const target = e.target
-      allProductsInBasket.forEach(product => {
-        if(product.id === +target.closest('.basket__card').id) {
-          let price = product.price.replace('грн', '')
-          target.closest('.basket__card').querySelector('.js-price__value').value = +target.value * +price + 'грн'
+function basketCalculation() {
+  const allInputsCount = document.querySelectorAll(".js-amount__product");
+  allInputsCount.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      const target = e.target;
+      allProductsInBasket.forEach((product) => {
+        if (product.id === +target.closest(".basket__card").id) {
+          let price = product.price.replace("грн", "");
+          target
+            .closest(".basket__card")
+            .querySelector(".js-price__value").value =
+            +target.value * +price + "грн";
         }
-      })
-      countSumAllMoney()
-    })
-  }) 
-  countSumAllMoney()
+      });
+      countSumAllMoney();
+    });
+  });
+  countSumAllMoney();
 }
 
 window.addEventListener("load", () => {
@@ -852,15 +929,21 @@ window.addEventListener("load", () => {
       document.querySelector(".basket__table").classList.add("show");
       document.querySelector(".js-list__count").textContent =
         allProductsInBasket.length;
-      
+
       allProductsInBasket.forEach((product) => {
         addCardOnBasketPage(basketList, product);
       });
     } else {
       document.querySelector(".basket__msg").classList.add("show");
     }
-    basketCalculation()
+    basketCalculation();
   }
 });
 
 window.addEventListener("scroll", headerFixed);
+
+window.addEventListener("pageshow", function (e) {
+  if (e.persisted) {
+    window.location.reload();
+  }
+});

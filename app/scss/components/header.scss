@@ -4,6 +4,10 @@
     &__wrapper {
         z-index: 1000;
         padding: 10px 5px;
+
+        @include mxw($sm) {
+            z-index: 1001;
+        }
     }
 
     &__top {
@@ -49,6 +53,7 @@
         @include mxw($lg) {
             justify-content: center;
             flex-wrap: wrap;
+            justify-content: center;
         }
     }
 
@@ -120,19 +125,19 @@
                 top: 9px;
                 transform: rotate(-42deg);
             }
-
         }
 
         @include mxw($md) {
             display: block;
         }
-
     }
 
     &__logo {
         margin-bottom: 0;
         width: 200px;
         height: 43px;
+        object-fit: contain;
+        transform: translateY(-7px);
 
         @include mxw($xs) {
             margin-bottom: 0;
@@ -210,16 +215,10 @@
 
         &.animation {
             animation: count-bounce .5s;
-            animation-delay: .3s;
+            animation-delay: .5s;
         }
-
-        
     }
-
-
 }
-
-
 
 .mobile {
     z-index: 10000;
@@ -233,7 +232,7 @@
     bottom: 0;
     transition: all .3s linear;
     text-align: center;
-    padding: 50px 20px 30px;
+    padding: 20px 20px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -255,13 +254,15 @@
         span {
             position: absolute;
             font-size: 12px;
-            color: $white;
-            padding: 1px 4px;
+            color: #fff;
+            width: 16px;
+            height: 16px;
+            text-align: center;
             border-radius: 50%;
-            background-color: $accent;
+            background-color: #fb6201;
             right: -1px;
-            top: -5px;
-            z-index: 1000;
+            top: -4px;
+            z-index: 10;
         }
 
         &::after {

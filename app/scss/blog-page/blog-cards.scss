@@ -180,7 +180,7 @@
         padding: 138px 125px;
         background-image: url('../images/bg.png');
         background-color: $white;
-        z-index: 100;
+        z-index: 1001;
         &.active {
             display: block;
         }

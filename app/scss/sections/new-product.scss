@@ -35,7 +35,7 @@
         }
 
         @include mxw($lg) {
-            overflow-x: hidden;
+            overflow: hidden;
         }
         @include mxw($sm) {
             margin-bottom: 0;
@@ -70,6 +70,7 @@
     }
 
     &__btn{
+       padding: 10px 0;
         &::after{
             display: none;
         }
@@ -83,17 +84,42 @@
     &__absolute {
         z-index: 2;
         position: absolute;
-        right: 20px;
-        top: 20px;
+        right: -1px;
+        top: 0;
+        background-color: $text;
+        border-bottom: 4px inset $accent;
+        border-left: 4px solid $accent;
+        border-radius: 0 0 0 10px ;
     }
 
     &__label {
+        position: relative;
         display: block;
-        width: 37px;
-        height: 36px;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-image: url('../images/icons/like.svg');
+        width: 45px;
+        height: 45px;
+
+        &::after{
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('../images/icons/like.svg');
+        }
+
+        @include mxw($sm) {
+            width: 30px;
+            height: 30px;
+
+            &::after{
+                width: 24px;
+                height: 24px;
+            }
+        }
     }
 
     .new-products__checkbox:checked+.new-products__label {
@@ -116,13 +142,17 @@
         font-size: 18px;
         line-height: 22px;
         color: $white;
+        background-color: #3d3d3d;
+        padding: 2px;
     }
 
     &__img {
         width: 100%;
         height: 379px;
-        background-color: #4E4E4E;
+        border: 1px solid $text;
         margin-bottom: 18px;
+        object-fit: contain;
+        background-color: $white;
 
         @include mxw($sm) {
             height: 256px;
@@ -185,6 +215,7 @@
     }
 
     &__swiper-arrow {
+        transform: translateY(50px);
         display: flex;
         position: relative;
         justify-content: center;

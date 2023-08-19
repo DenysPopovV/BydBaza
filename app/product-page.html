@@ -17,7 +17,7 @@
             <div class="header__top copy__top">
                 <div class="header__center-fix">
                     <div class="header__logo-box copy__logo-box">
-                        <a href="index.html"><img class="header__logo copy__logo" src="images/logo.png" alt="Логотип компанії"></a>
+                        <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg" alt="Логотип компанії"></a>
                         <button class="header__mobile-btn" type="button">
                             <span></span>
                         </button>
@@ -69,7 +69,7 @@
                         <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
                     </li> -->
                     <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#new-product">new</a>
+                        <a class="mobile__link close-js" href="index.html#new-products">new</a>
                     </li>
 
                     <li class="mobile__item">
@@ -122,7 +122,7 @@
 </section>
             <section class="product">
     <div class="container">
-        <h1 class="product__title js-product__name">Kirpich</h1>
+        <h1 class="product__title js-product__name">Дубові Двері</h1>
 
         <div class="product__rating">
             <div class="product__stars">
@@ -140,24 +140,19 @@
         </div>
 
         <div class="product__wrapper">
-            <img class="product__img" src="images/logo.png" alt="Фотографія товару">
+            <img class="product__img" src="images/door.png" alt="Фотографія товару">
 
             <div class="product__content">
                 <div class="product__info">
                     <div class="product__box">
                         <span class="product__stock">В наявності</span>
-                        <span class="product__price">1399<span>грн</span></span>
+                        <span class="product__price">8000<span>грн</span></span>
                     </div>
                     <div class="product__btns">
                         <button class="product__btn accent-product-btn js-popup__form" type="button">Замовити</button>
                         <div class="product__store">
                             <button class="product__like-btn accent-product-btn" type="button">
                                 <span class="sr-only">кнопка для вподобання цього товару</span>
-                                <img src="images/icons/like.svg" alt="Вподобати товар">
-                            </button>
-                            <button class="product__basket-btn accent-product-btn" type="button">
-                                <span class="sr-only">кнопка для додавання цього товару до корзини</span>
-                                <img src="images/icons/backet-for-btn.svg" alt="Корзина товару">
                             </button>
                         </div>
                     </div>
@@ -236,102 +231,34 @@
             </div>
         </div>
 
-
-        <div class="product-form">
-            <form action="" class="form-order" name="orderForm">
-                <span class="last-stage__close close-popup-form"></span>
-                <div class="form-order__stage show first-stage">
-                    <div class="first-stage__group">
-                        <input class="first-stage__input input-style" type="text" id="firstName" name="firstName"
-                            placeholder="Введіть ваше ім'я" required>
-                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
-                    </div>
-                    <div class="first-stage__group">
-                        <input class="first-stage__input input-style" type="text" id="lastName" name="lastName"
-                            placeholder="Введіть ваше прізвище">
-                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
-                    </div>
-                    <div class="first-stage__group">
-                        <input class="first-stage__input input-style" type="tel" id="phoneNumber" name="phoneNumber"
-                            placeholder="Введіть ваш номер">
-                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
-                    </div>
-                    <div class="first-stage__group">
-                        <input class="first-stage__input input-style" type="email" id="email" name="email"
-                            placeholder="Введіть ваш email">
-                        <div class="first-stage__msg">Це поле обов'язкове. Не може бути порожнім</div>
-                    </div>
-                </div>
-
-                <div class="form-order__stage second-stage">
-                    <div class="second-stage__group">
-                        <label class="second-stage__title stage-title" for="location">Впишіть населений пункт отримувача</label>
-                        <input class="second-stage__input input-style" type="text" id="location" name="location"
-                            placeholder="Львів">
-                        <div class="second-stage__msg-input">Це поле обов'язкове. Не може бути порожнім</div>
-                    </div>
-                    <div class="second-stage__group">
-                        <span class="second-stage__title stage-title">Спосіб отримання замовлення</span>
-                        <ul class="second-stage__delivery">
-                            <span class="second-stage__msg">Вартість прораховується індивідуально</span>
-                            <li class="second-stage__item">
-                                <input class="second-stage__checkbox sr-only" type="radio" id="novaPoshta" name="delivery">
-                                <label class="second-stage__label  novaPoshta" for="novaPoshta">Доставка БудБаза</label>
-                            </li>
-                            <li class="second-stage__item">
-                                <input class="second-stage__checkbox sr-only" type="radio" id="samovuviz" name="delivery">
-                                <label class="second-stage__label" for="samovuviz">Самовивіз</label>
-                            </li>
-                        </ul>
-                        
-                    </div>
-                    <div class="second-stage__group">
-                        <span class="second-stage__title stage-title">Спосіб оплати</span>
-                        <ul class="second-stage__pay">
-                            <li class="second-stage__item">
-                                <input class="second-stage__checkbox sr-only" type="radio" id="online" name="pay">
-                                <label class="second-stage__label" for="online">Карткою або електронним гаманцем</label>
-                            </li>
-                            <li class="last-stage__item">
-                                <input class="second-stage__checkbox sr-only" type="radio" id="offline" name="pay">
-                                <label class="second-stage__label" for="offline">Післяплата</label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="form-order__stage last-stage">
-                    <span class="last-stage__title stage-title">Товари в замовленні</span>
-                    <div class="last-stage__product">
-                        <div class="last-stage__img">
-                            <img src="" alt="">
-                        </div>
-                        <div class="last-stage__info">
-                            <span class="last-stage__name js-product__name">name</span>
-                            <div class="last-stage__pay">
-                               <span class="last-stage__box"><input class="last-stage__count" type="number" name="" id="" value="1" min="1"> .шт</span>
-                                <span class="last-stage__price"> <span>грн</span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="last-stage__finish">
-                        <span class="last-stage__text">Усього до оплати</span>
-                        <span class="last-stage__price bold"> <span>грн</span></span>
-                    </div>
-
-                    <button class="last-stage__submit accent-product-btn js-form__submit" type="submit">
-                        Замовити
-                    </button>
-                </div>
-            </form>
-
-            <div class="product-form__stages">
-                <span class="product-form__stage">1</span>
-                <span class="product-form__stage">2</span>
-                <span class="product-form__stage">3</span>
+        <div class="popup-msg">
+            <span class="popup-msg__close close-popup"></span>
+            <div class="popup-msg__text">
+                <p>
+                    Доброго дня!
+                </p>
+                <p>
+                    Ваш товар додано до кошика.  Продовжуйте покупки або перейдіть до оформлення замовлення <a class="popup-link" href="basket-page.html">тут</a>.
+                </p>
             </div>
+            <ul class="popup-msg__media media">
+                <li class="popup-msg__item media__item">
+                    <a class="popup-msg__btn media__btn media__btn--inst"
+                        href="https://www.instagram.com/budbazakam/" target="_blank"></a>
+                </li>
+                <li class="popup-msg__item media__item">
+                    <a class="popup-msg__btn media__btn media__btn--facebook"
+                        href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                        target="_blank"></a>
+                </li>
+                <li class="popup-msg__item media__item">
+                    <a class="popup-msg__btn media__btn media__btn--location"
+                        href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
+                </li>
+            </ul>
         </div>
+
+        
     </div>
 </section>
             <section class="related">
@@ -459,7 +386,7 @@
     <div class="container">
         <div class="footer__top copy__top">
             <div class="footer__logo-box copy__logo-box">
-                <a href="index.html"><img class="footer__logo copy__logo" src="images/logo.png" alt="логотип магазину"></a>
+                <a href="index.html"><img class="footer__logo copy__logo" src="images/logo.svg" alt="логотип магазину"></a>
                 <a class="footer__catalog catalog-btn" href="index.html#new-products">Каталог</a>
             </div>
             <ul class="footer__menu copy__menu">
