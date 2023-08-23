@@ -1,0 +1,349 @@
+<section class="catalog">
+    <div class="container">
+        <h3 class="catalog__title title">Каталог</h3>
+
+        <div class="catalog__table">
+            <div class="catalog__filter-box">
+                <button class="catalog__filter-title catalog-btn-js" type="button">Оберіть категорію</button>
+                <ul class="catalog__filter-list">
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--repair" data-filter="Ремонт">Ремонт</button>
+                    </li>
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--tools" data-filter="Інструменти">Інструменти</button>
+                    </li>
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--floor" data-filter="Покриття-для-підлоги">Покриття для підлоги</button>
+                    </li>
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--plumbing" data-filter="Сантехніка">Сантехніка</button>
+                    </li>
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--lighting" data-filter="Освітлення">Освітлення</button>
+                    </li>
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--garden" data-filter="Сад-Город">Сад Город</button>
+                    </li>
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--furniture" data-filter="Для-Дому">Для Дому</button>
+                    </li>
+                    <li class="catalog__filter-item">
+                        <button class="catalog__filter-btn catalog__filter-btn--all active" data-filter="Усі">Усі</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="catalog__card-box">
+                <div class="catalog__sort">
+                    <button class="catalog__sort-name sort-btn-js" type="button">Сортувати товари за</button>
+                    <ul class="catalog__sort-list">
+                        <li class="catalog__sort-item">
+                            <button class="catalog__sort-btn" data-filter="cheap">Мін. ціна</button>
+                        </li>
+                        <li class="catalog__sort-item">
+                            <button class="catalog__sort-btn" data-filter="expensive">Макс. ціна</button>
+                        </li>
+                        <li class="catalog__sort-item">
+                            <button class="catalog__sort-btn" data-filter="popular">Популярні Товари</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="catalog__card-list">
+                    <div class="catalog__card" id="Ремонт">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Ремонт</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">100</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">2000</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Ремонт">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Ремонт</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">200</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">1000</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Інструменти">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Інструменти</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">200</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">150000</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Інструменти">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Інструменти</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">300</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">800</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Покриття-для-підлоги">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Покриття-для-підлоги</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">300</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">1200</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Покриття-для-підлоги">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Покриття-для-підлоги</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">400</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">350</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Сантехніка">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Сантехніка</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">400</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">5000</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Сантехніка">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Сантехніка</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">500</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">3000</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Освітлення">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Освітлення</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">500</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">22000</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Освітлення">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Освітлення</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">600</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">1900</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Сад-Город">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Сад-Город</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">600</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">1700</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Сад-Город">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Сад-Город</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">700</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">600</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Для-Дому">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="images/candle.png" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Свічка</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">900</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">150</span>грн</span>
+                        </a>
+                    </div>
+                    <div class="catalog__card" id="Для-Дому">
+                        <a class="catalog__card-link" href="product-page.html">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="images/glass.png" alt="фото товара">
+                                <span class="catalog__card-instock">В наявності</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">Шклянка</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">800</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">220</span>грн</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

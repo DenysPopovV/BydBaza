@@ -21,7 +21,8 @@ const contactsForm = document.forms.contactForm,
   headerBasketBtn = document.querySelector(".media__btn--basket"),
   basketList = document.querySelector(".basket__list"),
   orderForm = document.forms.orderForm,
-  popupLink = document.querySelector(".popup-link");
+  popupLink = document.querySelector(".popup-link"),
+  allProductsInCatalog = [];
 
 const patterns = {
   adressPattern: /[а-яА-ЯЁё0-9\s.,\-]{2,}/,
@@ -37,7 +38,7 @@ const messages = {
   errorName: "Від двох символів, лише кирилиця, без пробілів",
   errorPhone: "Починайте з нуля, введіть 10 символів",
   errorMail: "Не менше 6 символів, знак @ та домен пошти",
-  errorAdress:"Не менше двох символів",
+  errorAdress: "Не менше двох символів",
   correct: "Все правильно, заповнюйте далі!",
 };
 
@@ -666,11 +667,10 @@ function checkAndPushObjInStore(objWithInfo) {
 /////////////////////////////////////////////////}
 
 /////////////////////breadcrumbs{
-const servicesBreadCrumbs = document.querySelector(
-  ".breadcrumbs-services-title"
-);
+const servicesBreadCrumbs = document.querySelector(".title");
 
-const basketBreadCrumbs = document.querySelector(".basket__title");
+const basketBreadCrumbs = document.querySelector(".title");
+const catalogBreadCrumbs = document.querySelector(".title");
 
 function breadCrumbsProductName(productName, breadCrumbsEl) {
   if (productName && breadCrumbsEl) {
@@ -680,17 +680,220 @@ function breadCrumbsProductName(productName, breadCrumbsEl) {
 breadCrumbsProductName(productName, breadCrumbsEl);
 breadCrumbsProductName(servicesBreadCrumbs, breadCrumbsEl);
 breadCrumbsProductName(basketBreadCrumbs, breadCrumbsEl);
+breadCrumbsProductName(catalogBreadCrumbs, breadCrumbsEl);
 ////////////////////////////////}
 
-//////////////////////////////////Global
+// ------------------------------- Basket Page --------------------------------
+
+function addCardOnBasketPage(parentList, productObj) {
+  parentList.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="basket__card" id='${productObj.id}'>
+    <div class="basket__card-top">
+        <img class="basket__card-photo js-product__img" src="${productObj.img}" alt="фото товару">
+        <div class="basket__card-info">
+            <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' name='individualCount' readonly>
+            <span><input class="basket__card-count js-amount__product" type="number" name="productCount" value="1" min="1">шт.</span>
+        </div>
+    </div>
+    <div class="basket__card-bottom">
+        <span class="basket__card-price"><input class="js-price__value" type='text' value='${productObj.price}' name='sumOrder' readonly></span>
+        <button class="basket__card-delete" type="button" name='deleteIndividualCart'></button>
+    </div>
+  </div>
+  `
+  );
+}
+
+function countSumAllMoney() {
+  let allMoney = 0;
+  document.querySelectorAll(".js-price__value").forEach((priceValue) => {
+    allMoney += +priceValue.value.replace("грн", "");
+  });
+  document.querySelector(".js-all__money").value = allMoney + "грн";
+}
+
+function basketCalculation() {
+  const allInputsCount = document.querySelectorAll(".js-amount__product");
+  allInputsCount.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      const target = e.target;
+      allProductsInBasket.forEach((product) => {
+        if (product.id === +target.closest(".basket__card").id) {
+          let price = product.price.replace("грн", "");
+          target
+            .closest(".basket__card")
+            .querySelector(".js-price__value").value =
+            +target.value * +price + "грн";
+        }
+      });
+      countSumAllMoney();
+    });
+  });
+  countSumAllMoney();
+}
+
+// ---------------------------- Catalog Page --------------------------------
+
+const mobBtnCategories = document.querySelector(".catalog-btn-js");
+const mobBtnSort = document.querySelector(".sort-btn-js");
+const allCategoriesBtns = document.querySelectorAll(".catalog__filter-btn");
+const allSortBtns = document.querySelectorAll(".catalog__sort-btn");
+
+function addActiveClassOnFiltersCategorise(itemsArr, className) {
+  itemsArr.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      item.closest(className).classList.remove("hide");
+      if (!e.target.classList.contains("active")) {
+        for (let item of itemsArr) {
+          item.classList.remove("active");
+        }
+        e.target.classList.add("active");
+      }
+    });
+  });
+}
+
+function addActiveOnParenBtnList(btn) {
+  if (!btn.nextElementSibling.classList.contains("hide")) {
+    btn.nextElementSibling.classList.add("hide");
+  } else {
+    btn.nextElementSibling.classList.remove("hide");
+  }
+}
+
+function makeCardObj(card) {
+  const cardInfo = {
+    id: card.id,
+    name: card.querySelector(".catalog__card-name").textContent,
+    price: +card.querySelector(".js-card-price").textContent,
+    instock: card.querySelector(".catalog__card-instock").textContent,
+    popular: card.querySelector(".catalog__card-popular").textContent,
+    link: card.querySelector(".catalog__card-link").getAttribute("href"),
+    img: card.querySelector(".catalog__card-img").getAttribute("src"),
+  };
+  return cardInfo;
+}
+
+function makeCardObjInArr() {
+  const cardsChildrens = document.querySelector(".catalog__card-list").children;
+
+    [...cardsChildrens].forEach((card) => {
+      allProductsInCatalog.push(makeCardObj(card))
+    });
+    updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
+}
+
+function makeCard(cardObj) {
+  const cardsParentEl = document.querySelector(".catalog__card-list");
+  cardsParentEl.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="catalog__card" id="${cardObj.id}">
+                        <a class="catalog__card-link" href="${cardObj.link}">
+                            <div class="catalog__card-info">
+                                <div class="catalog__card-absolute">
+                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                        id="like[0]">
+                                    <label class="catalog__card-label" for="like[0]">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </label>
+                                </div>
+                                <img class="catalog__card-img" src="${cardObj.img}" alt="фото товара">
+                                <span class="catalog__card-instock">${cardObj.instock}</span>
+                            </div>
+                            <div class="catalog__card-flex">
+                                <span class="catalog__card-name">${cardObj.name}</span>
+                                <span class="catalog__card-description">Опис</span>
+                                <span class="catalog__card-popular sr-only">${cardObj.popular}</span>
+                            </div>
+                            <span class="catalog__card-price"><span class="js-card-price">${cardObj.price}</span>грн</span>
+                        </a>
+                    </div>
+  `
+  );
+}
+
+function makeFilter() {
+  allCategoriesBtns.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const target = e.target;
+      let targetFilter = target.dataset.filter;
+      let filteredArr = allProductsInCatalog;
+      document.querySelector(".catalog__card-list").innerHTML = "";
+      [...allSortBtns].forEach(btn =>{
+        if(btn.classList.contains('active') && btn.dataset.filter === 'cheap'){
+          filteredArr = allProductsInCatalog.sort((current , next)=> current.price - next.price);
+        }
+        if(btn.classList.contains('active') && btn.dataset.filter === 'expensive'){
+          filteredArr = allProductsInCatalog.sort((current , next)=> next.price - current.price);
+        }
+        if(btn.classList.contains('active') && btn.dataset.filter === 'popular'){
+          filteredArr = allProductsInCatalog.sort((current , next)=> next.popular - current.popular);
+        }
+      })
+      if (targetFilter === "Усі") {
+        [...allProductsInCatalog].forEach((card) => {
+          makeCard(card);
+        });
+        updateLocalStorage(allProductsInCatalog, 'filteredArr')
+      } else {
+        filteredArr = [...filteredArr].filter(
+          (task) => task.id === targetFilter
+        );
+        [...filteredArr].forEach((card) => {
+          makeCard(card);
+        });
+        updateLocalStorage(filteredArr, 'filteredArr')
+      }
+    });
+  });
+}
+
+function makeSortingCheapDear(){
+  [...allSortBtns].forEach(btn =>{
+    btn.addEventListener('click', (e) =>{
+      document.querySelector('.catalog__card-list').innerHTML = '';
+      let sortResultNum = [];
+      const target = e.target;
+      let targetFilter = target.dataset.filter;
+      allFilteredCards =
+      JSON.parse(localStorage.getItem("filteredArr")) || allProductsInCatalog;
+      if(targetFilter === 'cheap'){
+        sortResultNum = allFilteredCards.sort((current , next)=> current.price - next.price);
+      }
+      if(targetFilter === 'expensive'){
+        sortResultNum = allFilteredCards.sort((current , next)=> next.price - current.price);
+      }
+      if(targetFilter === 'popular'){
+        sortResultNum = allFilteredCards.sort((current , next)=> next.popular - current.popular);
+      }
+      sortResultNum.forEach(item => {
+          makeCard(item)
+      })
+      updateLocalStorage(sortResultNum, 'filteredArr')
+    })
+  })
+}
+
+if (document.querySelector(".catalog")) {
+  makeFilter();
+  makeCardObjInArr();
+  addActiveClassOnFiltersCategorise(allCategoriesBtns, ".catalog__filter-list");
+  addActiveClassOnFiltersCategorise(allSortBtns, ".catalog__sort-list");
+  makeSortingCheapDear()
+}
+
+// --------------------------- Global Events ---------------------------------------
 
 function headerFixed() {
   const scrollTop = document.documentElement.scrollTop;
-  headerWrapper.classList.toggle("sticky", scrollTop >= 100);
-  headerWrapper.classList.toggle("animation", scrollTop >= 200);
-  headerWrapper.classList.toggle("opacity", scrollTop >= 350);
+  headerWrapper.classList.toggle("sticky", scrollTop >= 50);
+  headerWrapper.classList.toggle("animation", scrollTop >= 100);
+  headerWrapper.classList.toggle("opacity", scrollTop >= 175);
 
-  if (document.querySelector(".breadcrumbs") !== null) {
+  if (document.querySelector(".inner-page") !== null) {
     if (scrollTop >= 100) {
       changeHeaderTextColorWhite(".header__btn");
       changeHeaderTextColorWhite(".header__pages-btn");
@@ -711,7 +914,7 @@ function changeHeaderTextColorBlack(className) {
   [...changeColor].forEach((btn) => btn.classList.add("style"));
 }
 
-if (document.querySelector(".breadcrumbs") !== null) {
+if (document.querySelector(".inner-page") !== null) {
   changeHeaderTextColorBlack(".header__btn");
   changeHeaderTextColorBlack(".header__pages-btn");
 }
@@ -839,6 +1042,14 @@ function clickHandler(e) {
       document.querySelector(".basket__table").classList.remove("show");
     }
   }
+
+  if (target.classList.contains("catalog-btn-js")) {
+    addActiveOnParenBtnList(target);
+  }
+
+  if (target.classList.contains("sort-btn-js")) {
+    addActiveOnParenBtnList(target);
+  }
 }
 
 document.addEventListener("click", (e) => {
@@ -873,54 +1084,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function addCardOnBasketPage(parentList, productObj) {
-  parentList.insertAdjacentHTML(
-    "beforeend",
-    `
-  <div class="basket__card" id='${productObj.id}'>
-    <div class="basket__card-top">
-        <img class="basket__card-photo js-product__img" src="${productObj.img}" alt="фото товару">
-        <div class="basket__card-info">
-            <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' name='individualCount' readonly>
-            <span><input class="basket__card-count js-amount__product" type="number" name="productCount" value="1" min="1">шт.</span>
-        </div>
-    </div>
-    <div class="basket__card-bottom">
-        <span class="basket__card-price"><input class="js-price__value" type='text' value='${productObj.price}' name='sumOrder' readonly></span>
-        <button class="basket__card-delete" type="button" name='deleteIndividualCart'></button>
-    </div>
-  </div>
-  `
-  );
-}
-
-function countSumAllMoney() {
-  let allMoney = 0;
-  document.querySelectorAll(".js-price__value").forEach((priceValue) => {
-    allMoney += +priceValue.value.replace("грн", "");
-  });
-  document.querySelector(".js-all__money").value = allMoney + "грн";
-}
-
-function basketCalculation() {
-  const allInputsCount = document.querySelectorAll(".js-amount__product");
-  allInputsCount.forEach((input) => {
-    input.addEventListener("input", (e) => {
-      const target = e.target;
-      allProductsInBasket.forEach((product) => {
-        if (product.id === +target.closest(".basket__card").id) {
-          let price = product.price.replace("грн", "");
-          target
-            .closest(".basket__card")
-            .querySelector(".js-price__value").value =
-            +target.value * +price + "грн";
-        }
-      });
-      countSumAllMoney();
-    });
-  });
-  countSumAllMoney();
-}
+// ---------------------------- Window Events --------------------------------
 
 window.addEventListener("load", () => {
   countForLikeOrBasket(".js-basket__count");
@@ -937,6 +1101,9 @@ window.addEventListener("load", () => {
       document.querySelector(".basket__msg").classList.add("show");
     }
     basketCalculation();
+  }
+  if (document.querySelector(".catalog")) {
+    localStorage.removeItem('filteredArr');
   }
 });
 
