@@ -631,6 +631,7 @@ const relatedSwiper = new Swiper(".related__swiper", {
   },
 });
 //////////////////////////// }
+
 //////////////////////////////////// basket-page {
 function makeObjProductInfo() {
   const productInfo = {
@@ -667,20 +668,14 @@ function checkAndPushObjInStore(objWithInfo) {
 /////////////////////////////////////////////////}
 
 /////////////////////breadcrumbs{
-const servicesBreadCrumbs = document.querySelector(".title");
-
-const basketBreadCrumbs = document.querySelector(".title");
-const catalogBreadCrumbs = document.querySelector(".title");
-
+const titleBreadCrumbs = document.querySelector(".title");
 function breadCrumbsProductName(productName, breadCrumbsEl) {
   if (productName && breadCrumbsEl) {
     breadCrumbsEl.textContent = productName.textContent;
   }
 }
-breadCrumbsProductName(productName, breadCrumbsEl);
-breadCrumbsProductName(servicesBreadCrumbs, breadCrumbsEl);
-breadCrumbsProductName(basketBreadCrumbs, breadCrumbsEl);
-breadCrumbsProductName(catalogBreadCrumbs, breadCrumbsEl);
+breadCrumbsProductName(titleBreadCrumbs, breadCrumbsEl);
+
 ////////////////////////////////}
 
 // ------------------------------- Basket Page --------------------------------
@@ -791,26 +786,26 @@ function makeCard(cardObj) {
     "beforeend",
     `
   <div class="catalog__card" id="${cardObj.id}">
-                        <a class="catalog__card-link" href="${cardObj.link}">
-                            <div class="catalog__card-info">
-                                <div class="catalog__card-absolute">
-                                    <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                        id="like[0]">
-                                    <label class="catalog__card-label" for="like[0]">
-                                        <span class="sr-only">кнопка для вподобання товару</span>
-                                    </label>
-                                </div>
-                                <img class="catalog__card-img" src="${cardObj.img}" alt="фото товара">
-                                <span class="catalog__card-instock">${cardObj.instock}</span>
-                            </div>
-                            <div class="catalog__card-flex">
-                                <span class="catalog__card-name">${cardObj.name}</span>
-                                <span class="catalog__card-description">Опис</span>
-                                <span class="catalog__card-popular sr-only">${cardObj.popular}</span>
-                            </div>
-                            <span class="catalog__card-price"><span class="js-card-price">${cardObj.price}</span>грн</span>
-                        </a>
-                    </div>
+    <a class="catalog__card-link" href="${cardObj.link}">
+        <div class="catalog__card-info">
+            <div class="catalog__card-absolute">
+                <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                    id="like[0]">
+                <label class="catalog__card-label" for="like[0]">
+                    <span class="sr-only">кнопка для вподобання товару</span>
+                </label>
+            </div>
+            <img class="catalog__card-img" src="${cardObj.img}" alt="фото товара">
+            <span class="catalog__card-instock">${cardObj.instock}</span>
+        </div>
+        <div class="catalog__card-flex">
+            <span class="catalog__card-name">${cardObj.name}</span>
+            <span class="catalog__card-description">Опис</span>
+            <span class="catalog__card-popular sr-only">${cardObj.popular}</span>
+        </div>
+        <span class="catalog__card-price"><span class="js-card-price">${cardObj.price}</span>грн</span>
+    </a>
+  </div>
   `
   );
 }
@@ -884,6 +879,17 @@ if (document.querySelector(".catalog")) {
   addActiveClassOnFiltersCategorise(allSortBtns, ".catalog__sort-list");
   makeSortingCheapDear()
 }
+
+//---------------------------- Gallery Page ----------------------------------------------
+
+const gallerySwiper = new Swiper(".gallery__slider", {
+  direction: "horizontal",
+  initialSlide: 1,
+  navigation: {
+    nextEl: ".gallery__arrow-next",
+    prevEl: ".gallery__arrow-prev",
+  },
+});
 
 // --------------------------- Global Events ---------------------------------------
 
@@ -1060,9 +1066,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const headerBox = document.querySelector(".header__top");
   const headerHeight = headerBox.offsetHeight;
   const scrollLinks = document.querySelectorAll(".scroll");
-
-  // const bodyStyles = window.getComputedStyle(document.body);
-  // const zoomValue = parseFloat(bodyStyles.zoom);
   scrollLinks.forEach(function (link) {
     link.addEventListener("click", function (event) {
       event.preventDefault();
