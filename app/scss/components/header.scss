@@ -2,7 +2,7 @@
     position: relative;
 
     &__wrapper {
-        z-index: 1000;
+        z-index: 1001;
         padding: 10px 5px;
 
         @include mxw($sm) {
@@ -51,9 +51,8 @@
         justify-content: space-between;
 
         @include mxw($lg) {
-            justify-content: center;
-            flex-wrap: wrap;
-            justify-content: center;
+            justify-content: space-between;
+            // flex-wrap: wrap;
         }
     }
 

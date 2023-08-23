@@ -149,7 +149,7 @@ main {
             margin-right: 0;
         }
 
-        @include mxw($md) {
+        @include mxw($lg) {
             margin-right: 20px;
         }
     }
