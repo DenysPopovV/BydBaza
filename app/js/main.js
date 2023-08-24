@@ -1039,7 +1039,7 @@ function clickHandler(e) {
     document.querySelector(".popup-msg").classList.add("show");
     makeOrderInfo();
     orderForm.reset();
-    allProductsInBasket.length = 0;
+    allProductsInBasket.length = 0
     updateLocalStorage(allProductsInBasket, "productsInBasket");
     countForLikeOrBasket(".js-basket__count");
     if (allProductsInBasket.length === 0) {
