@@ -114,54 +114,38 @@
 
 
         <main class="main">
-            <section class="gallery inner-page">
-  <div class="gallery__container">
-    <div class="gallery__box">
-      <div class="gallery__left">
-        <span class="gallery__title"><span>Наша</span> Галерея</span>
-        <div class="gallery__text">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-            lacus vel facilisis. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-          </p>
-        </div>
-        <a class="gallery__btn" href="">Сконтактуйтесь з нами</a>
-      </div>
-      <div class="gallery__rigth">
-        <div class="gallery__main-img">
-          <img src="" alt="головне фото галереї">
-        </div>
-      </div>
+            <section class="breadcrumbs inner-page">
+    <div class="container">
+        <a class="breadcrumbs__home breadcrumbs--style" href="index.html">Головна сторінка</a>
+        <span class="js-breadcrumbs__title breadcrumbs--style"></span>
     </div>
-    <div class="gallery__bottom">
-      <div class="gallery__slider">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="" alt="Картинка БудБази">
-          </div>
-          <div class="swiper-slide">
-            <img src="" alt="Картинка БудБази">
-          </div>
-          <div class="swiper-slide">
-            <img src="" alt="Картинка БудБази">
-          </div>
-          <div class="swiper-slide">
-            <img src="" alt="Картинка БудБази">
-          </div>
+</section>
+            <section class="like">
+    <div class="container">
+        <div class="like__table">
+            <div class="artical like__card" id="Ремонт">
+                <a class="artical__card-link like__card-link" href="product-page.html">
+                    <div class="artical__card-info like__card-info">
+                        <div class="artical__card-absolute like__card-absolute">
+                            <input class="artical__card-checkbox like__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                id="like[0]">
+                            <label class="artical__card-label like__card-label" for="like[0]">
+                                <span class="sr-only">кнопка для вподобання товару</span>
+                            </label>
+                        </div>
+                        <img class="artical__card-img like__card-img" src="images/glass.png" alt="фото товара">
+                        <span class="artical__card-instock like__card-instock">В наявності</span>
+                    </div>
+                    <div class="artical__card-flex like__card-flex">
+                        <span class="artical__card-name like__card-name">Шклянка</span>
+                        <span class="artical__card-description like__card-description">Опис</span>
+                        <span class="artical__card-popular like__card-popular sr-only">800</span>
+                    </div>
+                    <span class="artical__card-price like__card-price"><span class="js-card-price">220</span>грн</span>
+                </a>
+            </div>
         </div>
-      </div>
-      <div class="gallery__swiper-arrow">
-        <div class="gallery__arrow-prev">
-          <span class="sr-only">button for scroll swiper left</span>
-        </div>
-        <div class="gallery__arrow-next">
-          <span class="sr-only">button for scroll swiper right</span>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
         </main>
 
