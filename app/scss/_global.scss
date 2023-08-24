@@ -411,3 +411,144 @@ main {
         transform: rotate(-45deg);
     }
 }
+
+.artical{
+    position: relative;
+    width: 310px;
+
+    @include mxw($md) {
+        &::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 2px;
+            background-color: $accent;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+
+    }
+
+
+&__card-info {
+    position: relative;
+}
+
+&__card-absolute {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 0 0 10px;
+}
+
+&__card-label {
+    position: relative;
+    display: block;
+    width: 45px;
+    height: 45px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('../images/icons/like.svg');
+        filter: invert(100%) sepia(90%) saturate(7461%) hue-rotate(146deg) brightness(107%) contrast(109%);
+    }
+
+    @include mxw($sm) {
+        width: 30px;
+        height: 30px;
+
+        &::after {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+&__card-instock {
+    display: block;
+    position: absolute;
+    bottom: 14px;
+    left: 13px;
+    font-size: 18px;
+    line-height: 22px;
+    color: $white;
+    background-color: #3d3d3d;
+    padding: 2px;
+}
+
+&__card-img {
+    width: 100%;
+    height: 320px;
+    border: 1px solid $text;
+    margin-bottom: 18px;
+    object-fit: contain;
+    background-color: $white;
+
+    @include mxw($sm) {
+        height: 256px;
+        margin-bottom: 15px;
+    }
+}
+
+&__card-flex {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 11px;
+}
+
+&__card-name {
+    @include line-clamp(1);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+
+    @include mxw($sm) {
+        font-size: 17px;
+    }
+}
+
+&__card-description {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '';
+        bottom: 3px;
+        height: 1px;
+        width: 100%;
+        left: 0;
+        background-color: $accent;
+    }
+
+    @include mxw($sm) {
+        font-size: 16px;
+    }
+}
+
+&__card-price {
+    position: relative;
+    display: block;
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 500;
+    margin-bottom: 20px;
+
+    @include mxw($sm) {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+}
+}

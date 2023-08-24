@@ -1,0 +1,22 @@
+.like{
+    padding-top: 60px;
+    
+    @include mxw($sm){
+        padding-top: 30px;
+    }
+
+    &__table{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 30px;
+
+        @include mxw($vlg){
+            grid-template-columns: repeat(3,1fr);
+        }
+        @include mxw($lg){
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+}
