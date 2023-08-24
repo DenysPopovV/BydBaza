@@ -268,9 +268,9 @@ questionTabBtns.forEach((btn) => {
     tabsAction(target);
   });
 });
-/////////////////////////// }
 
-/////////////////////blog-page {
+// ------------------------------- Blog Page -------------------------------------
+
 function renameHeroTitleBlogPage() {
   if (document.querySelector(".blog-cards")) {
     document.querySelector(".hero__name").textContent = "БудБлог";
@@ -318,9 +318,9 @@ cardBtns.forEach((btn) => {
     bodyLock.classList.add("lock");
   });
 });
-////////////// }
 
-////////////////////////product-page {
+// ------------------------------- Product Page ------------------------------------
+
 function productTabs(target) {
   const contentEl = document.querySelector(`div#${target.id}`);
   if (!target.classList.contains("active")) {
@@ -383,7 +383,7 @@ function closePopup(parentElClassName) {
   document.querySelector(parentElClassName).classList.remove("show");
 }
 
-// ----------------------- Order Form --------------------------------
+// ----------------------------- Order Form --------------------------------
 
 function formOrderInput(target) {
   switch (target.name) {
@@ -630,9 +630,22 @@ const relatedSwiper = new Swiper(".related__swiper", {
     },
   },
 });
-//////////////////////////// }
 
-//////////////////////////////////// basket-page {
+// ----------------------------- Breadcrumbs ----------------------------------
+
+const titleBreadCrumbs = document.querySelector(".title");
+function breadCrumbsProductName(productName, breadCrumbsEl) {
+  if (productName && breadCrumbsEl) {
+    breadCrumbsEl.textContent = productName.textContent;
+  } else if (document.querySelector(".like")){
+    breadCrumbsEl.textContent = 'Вподобані товари';
+  }
+}
+breadCrumbsProductName(titleBreadCrumbs, breadCrumbsEl);
+
+
+// ------------------------------- Basket Page --------------------------------
+
 function makeObjProductInfo() {
   const productInfo = {
     id: Math.floor(Math.random() * 1000),
@@ -665,20 +678,6 @@ function checkAndPushObjInStore(objWithInfo) {
     document.querySelector(".popup-msg").classList.add("show");
   }
 }
-/////////////////////////////////////////////////}
-
-/////////////////////breadcrumbs{
-const titleBreadCrumbs = document.querySelector(".title");
-function breadCrumbsProductName(productName, breadCrumbsEl) {
-  if (productName && breadCrumbsEl) {
-    breadCrumbsEl.textContent = productName.textContent;
-  }
-}
-breadCrumbsProductName(titleBreadCrumbs, breadCrumbsEl);
-
-////////////////////////////////}
-
-// ------------------------------- Basket Page --------------------------------
 
 function addCardOnBasketPage(parentList, productObj) {
   parentList.insertAdjacentHTML(
@@ -785,25 +784,25 @@ function makeCard(cardObj) {
   cardsParentEl.insertAdjacentHTML(
     "beforeend",
     `
-  <div class="catalog__card" id="${cardObj.id}">
-    <a class="catalog__card-link" href="${cardObj.link}">
-        <div class="catalog__card-info">
-            <div class="catalog__card-absolute">
-                <input class="catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
+  <div class="artical catalog__card" id="${cardObj.id}">
+    <a class="artical__card-link catalog__card-link" href="${cardObj.link}">
+        <div class="artical__card-info catalog__card-info">
+            <div class="artical__card-absolute catalog__card-absolute">
+                <input class="artical__card-checkbox catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
                     id="like[0]">
-                <label class="catalog__card-label" for="like[0]">
+                <label class="artical__card-label catalog__card-label" for="like[0]">
                     <span class="sr-only">кнопка для вподобання товару</span>
                 </label>
             </div>
-            <img class="catalog__card-img" src="${cardObj.img}" alt="фото товара">
-            <span class="catalog__card-instock">${cardObj.instock}</span>
+            <img class="artical__card-img catalog__card-img" src="${cardObj.img}" alt="фото товара">
+            <span class="artical__card-instock catalog__card-instock">${cardObj.instock}</span>
         </div>
-        <div class="catalog__card-flex">
-            <span class="catalog__card-name">${cardObj.name}</span>
-            <span class="catalog__card-description">Опис</span>
-            <span class="catalog__card-popular sr-only">${cardObj.popular}</span>
+        <div class="artical__card-flex catalog__card-flex">
+            <span class="artical__card-name catalog__card-name">${cardObj.name}</span>
+            <span class="artical__card-description catalog__card-description">Опис</span>
+            <span class="artical__card-popular catalog__card-popular sr-only">${cardObj.popular}</span>
         </div>
-        <span class="catalog__card-price"><span class="js-card-price">${cardObj.price}</span>грн</span>
+        <span class="artical__card- catalog__card-price"><span class="js-card-price">${cardObj.price}</span>грн</span>
     </a>
   </div>
   `

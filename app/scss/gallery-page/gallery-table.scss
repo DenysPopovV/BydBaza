@@ -22,6 +22,9 @@
         display: flex;
         justify-content: end;
         margin-bottom: 100px;
+        @include mxw($sm) {
+            margin-bottom: 60px;
+        }
     }
 
     &__left {
@@ -32,8 +35,6 @@
         transform: translateY(-50%);
         @include mxw($md) {
             margin-left: 70px;
-            top: 0;
-            transform: translateY(0);
         }
         @include mxw($sm) {
             margin-left: 10px;
@@ -57,7 +58,7 @@
 
         @include mxw($sm) {
             padding: 0;
-            padding-top: 10px;
+            padding-top: 0;
             font-size: 42px;
         }
         @include mxw($xs) {
@@ -149,7 +150,16 @@
         background-color: #aaa;
 
         @include mxw($sm) {
-            height: calc(100vh - 139px);
+            height: 300px;
+        }
+    }
+
+    &__main-img{
+        width: 100%;
+        height: 100%;
+        img{
+            height: 100%;
+            object-fit: cover;
         }
     }
     &__bottom {
@@ -159,6 +169,10 @@
     &__slider {
         width: 100%;
         height: 800px;
+        @include mxw($md) {
+            height: calc(100dvh - 130px);
+        }
+
     }
 
     .swiper-slide {
@@ -166,6 +180,8 @@
             object-fit: cover;
             height: 100%;
             width: 100%;
+            background-color: #aaa;
+            border-left: 1px solid $text;
         }
     }
 
@@ -209,5 +225,8 @@
         left: 20px;
         top: 30%;
         transform: rotate(180deg);
+        @include mxw($sm) {
+            top: 26%;
+        }
     }
 }
