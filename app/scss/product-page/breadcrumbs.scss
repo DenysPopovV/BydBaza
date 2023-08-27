@@ -13,6 +13,7 @@
 
         @include mxw($sm) {
             font-size: 16px;
+            padding-right: 40px;
         }
 
         @include mxw($xs) {
@@ -34,7 +35,7 @@
             @include mxw($sm) {
                 width: 10px;
                 height: 10px;
-                right: 20px;
+                right: 10px;
             }
         }
 

@@ -632,12 +632,13 @@ const titleBreadCrumbs = document.querySelector(".title");
 function breadCrumbsProductName(productName, breadCrumbsEl) {
   if (productName && breadCrumbsEl) {
     breadCrumbsEl.textContent = productName.textContent;
-  } else if (document.querySelector(".like")){
-    breadCrumbsEl.textContent = 'Вподобані товари';
+  } else if (document.querySelector(".like")) {
+    breadCrumbsEl.textContent = "Вподобані товари";
+  } else if (document.querySelector(".privecy")) {
+    breadCrumbsEl.textContent = "Політика конфіденційності";
   }
 }
 breadCrumbsProductName(titleBreadCrumbs, breadCrumbsEl);
-
 
 // ------------------------------- Basket Page --------------------------------
 
@@ -647,6 +648,7 @@ function makeObjProductInfo() {
     name: document.querySelector(".js-product__name").textContent,
     price: document.querySelector(".product__price").textContent,
     img: document.querySelector(".product__img").getAttribute("src"),
+    link: window.location.href,
   };
   return productInfo;
 }
@@ -677,20 +679,23 @@ function checkAndPushObjInStore(objWithInfo) {
 function addCardOnBasketPage(parentList, productObj) {
   parentList.insertAdjacentHTML(
     "beforeend",
-    `
+    ` 
   <div class="basket__card" id='${productObj.id}'>
     <div class="basket__card-top">
+      <a class='basket__link' href="${productObj.link}">
         <img class="basket__card-photo js-product__img" src="${productObj.img}" alt="фото товару">
-        <div class="basket__card-info">
-            <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' name='individualCount' readonly>
-            <span><input class="basket__card-count js-amount__product" type="number" name="productCount" value="1" min="1">шт.</span>
-        </div>
+      </a>  
+      <div class="basket__card-info">
+          <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' name='individualCount' readonly>
+          <span><input class="basket__card-count js-amount__product" type="number" name="productCount" value="1" min="1">шт.</span>
+      </div>
     </div>
     <div class="basket__card-bottom">
         <span class="basket__card-price"><input class="js-price__value" type='text' value='${productObj.price}' name='sumOrder' readonly></span>
         <button class="basket__card-delete" type="button" name='deleteIndividualCart'></button>
     </div>
   </div>
+  
   `
   );
 }
@@ -755,12 +760,13 @@ function addActiveOnParenBtnList(btn) {
 function makeCardObj(card) {
   const cardInfo = {
     id: card.id,
-    name: card.querySelector(".catalog__card-name").textContent,
+    statusLike: "off",
+    name: card.querySelector(".artical__card-name").textContent,
     price: +card.querySelector(".js-card-price").textContent,
-    instock: card.querySelector(".catalog__card-instock").textContent,
-    popular: card.querySelector(".catalog__card-popular").textContent,
-    link: card.querySelector(".catalog__card-link").getAttribute("href"),
-    img: card.querySelector(".catalog__card-img").getAttribute("src"),
+    instock: card.querySelector(".artical__card-instock").textContent,
+    popular: card.querySelector(".artical__card-popular").textContent,
+    link: card.querySelector(".artical__card-link").getAttribute("href"),
+    img: card.querySelector(".artical__card-img").getAttribute("src"),
   };
   return cardInfo;
 }
@@ -768,27 +774,25 @@ function makeCardObj(card) {
 function makeCardObjInArr() {
   const cardsChildrens = document.querySelector(".catalog__card-list").children;
 
-    [...cardsChildrens].forEach((card) => {
-      allProductsInCatalog.push(makeCardObj(card))
-    });
-    updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
+  [...cardsChildrens].forEach((card) => {
+    allProductsInCatalog.push(makeCardObj(card));
+  });
+  updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
 }
 
-function makeCard(cardObj) {
+function makeCard(cardObj, like) {
   const cardsParentEl = document.querySelector(".catalog__card-list");
   cardsParentEl.insertAdjacentHTML(
     "beforeend",
     `
-  <div class="artical catalog__card" id="${cardObj.id}">
+  <div class="artical catalog__card  ${like}" id="${cardObj.id}">
+    <div class="artical__card-absolute catalog__card-absolute">
+        <button class="artical__card-like catalog__card-like">
+            <span class="sr-only">кнопка для вподобання товару</span>
+        </button>
+    </div>
     <a class="artical__card-link catalog__card-link" href="${cardObj.link}">
         <div class="artical__card-info catalog__card-info">
-            <div class="artical__card-absolute catalog__card-absolute">
-                <input class="artical__card-checkbox catalog__card-checkbox sr-only" name="likeCheckbox" type="checkbox"
-                    id="like[0]">
-                <label class="artical__card-label catalog__card-label" for="like[0]">
-                    <span class="sr-only">кнопка для вподобання товару</span>
-                </label>
-            </div>
             <img class="artical__card-img catalog__card-img" src="${cardObj.img}" alt="фото товара">
             <span class="artical__card-instock catalog__card-instock">${cardObj.instock}</span>
         </div>
@@ -811,59 +815,92 @@ function makeFilter() {
       let targetFilter = target.dataset.filter;
       let filteredArr = allProductsInCatalog;
       document.querySelector(".catalog__card-list").innerHTML = "";
-      [...allSortBtns].forEach(btn =>{
-        if(btn.classList.contains('active') && btn.dataset.filter === 'cheap'){
-          filteredArr = allProductsInCatalog.sort((current , next)=> current.price - next.price);
+      [...allSortBtns].forEach((btn) => {
+        if (
+          btn.classList.contains("active") &&
+          btn.dataset.filter === "cheap"
+        ) {
+          filteredArr = allProductsInCatalog.sort(
+            (current, next) => current.price - next.price
+          );
         }
-        if(btn.classList.contains('active') && btn.dataset.filter === 'expensive'){
-          filteredArr = allProductsInCatalog.sort((current , next)=> next.price - current.price);
+        if (
+          btn.classList.contains("active") &&
+          btn.dataset.filter === "expensive"
+        ) {
+          filteredArr = allProductsInCatalog.sort(
+            (current, next) => next.price - current.price
+          );
         }
-        if(btn.classList.contains('active') && btn.dataset.filter === 'popular'){
-          filteredArr = allProductsInCatalog.sort((current , next)=> next.popular - current.popular);
+        if (
+          btn.classList.contains("active") &&
+          btn.dataset.filter === "popular"
+        ) {
+          filteredArr = allProductsInCatalog.sort(
+            (current, next) => next.popular - current.popular
+          );
         }
-      })
+      });
       if (targetFilter === "Усі") {
         [...allProductsInCatalog].forEach((card) => {
-          makeCard(card);
+          if (card.statusLike === "on") {
+            makeCard(card, "like-card");
+          } else {
+            makeCard(card, "");
+          }
         });
-        updateLocalStorage(allProductsInCatalog, 'filteredArr')
+        updateLocalStorage(allProductsInCatalog, "filteredArr");
       } else {
         filteredArr = [...filteredArr].filter(
           (task) => task.id === targetFilter
         );
         [...filteredArr].forEach((card) => {
-          makeCard(card);
+          if (card.statusLike === "on") {
+            makeCard(card, "like-card");
+          } else {
+            makeCard(card, "");
+          }
         });
-        updateLocalStorage(filteredArr, 'filteredArr')
+        updateLocalStorage(filteredArr, "filteredArr");
       }
     });
   });
 }
 
-function makeSortingCheapDear(){
-  [...allSortBtns].forEach(btn =>{
-    btn.addEventListener('click', (e) =>{
-      document.querySelector('.catalog__card-list').innerHTML = '';
+function makeSortingCheapDear() {
+  [...allSortBtns].forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      document.querySelector(".catalog__card-list").innerHTML = "";
       let sortResultNum = [];
       const target = e.target;
       let targetFilter = target.dataset.filter;
       allFilteredCards =
-      JSON.parse(localStorage.getItem("filteredArr")) || allProductsInCatalog;
-      if(targetFilter === 'cheap'){
-        sortResultNum = allFilteredCards.sort((current , next)=> current.price - next.price);
+        JSON.parse(localStorage.getItem("filteredArr")) || allProductsInCatalog;
+      if (targetFilter === "cheap") {
+        sortResultNum = allFilteredCards.sort(
+          (current, next) => current.price - next.price
+        );
       }
-      if(targetFilter === 'expensive'){
-        sortResultNum = allFilteredCards.sort((current , next)=> next.price - current.price);
+      if (targetFilter === "expensive") {
+        sortResultNum = allFilteredCards.sort(
+          (current, next) => next.price - current.price
+        );
       }
-      if(targetFilter === 'popular'){
-        sortResultNum = allFilteredCards.sort((current , next)=> next.popular - current.popular);
+      if (targetFilter === "popular") {
+        sortResultNum = allFilteredCards.sort(
+          (current, next) => next.popular - current.popular
+        );
       }
-      sortResultNum.forEach(item => {
-          makeCard(item)
-      })
-      updateLocalStorage(sortResultNum, 'filteredArr')
-    })
-  })
+      sortResultNum.forEach((item) => {
+        if (item.statusLike === "on") {
+          makeCard(item, "like-card");
+        } else {
+          makeCard(item, "");
+        }
+      });
+      updateLocalStorage(sortResultNum, "filteredArr");
+    });
+  });
 }
 
 if (document.querySelector(".catalog")) {
@@ -871,7 +908,7 @@ if (document.querySelector(".catalog")) {
   makeCardObjInArr();
   addActiveClassOnFiltersCategorise(allCategoriesBtns, ".catalog__filter-list");
   addActiveClassOnFiltersCategorise(allSortBtns, ".catalog__sort-list");
-  makeSortingCheapDear()
+  makeSortingCheapDear();
 }
 
 //---------------------------- Gallery Page ----------------------------------------------
@@ -884,6 +921,212 @@ const gallerySwiper = new Swiper(".gallery__slider", {
     prevEl: ".gallery__arrow-prev",
   },
 });
+
+//---------------------------- Like Page --------------------------------
+
+const allProductsInLiked =
+  JSON.parse(localStorage.getItem("likedProductsArr")) || [];
+
+function msgShow() {
+  if (allProductsInLiked.length === 0) {
+    document.querySelector(".like__msg").textContent =
+      "У вас немає доданих товарів...";
+  } else {
+    document.querySelector(".like__msg").textContent = "";
+  }
+}
+
+function makeLikeProductObj(card) {
+  const cardInfo = {
+    name: card.querySelector(".artical__card-name").textContent,
+    price: +card.querySelector(".js-card-price").textContent,
+    instock: card.querySelector(".artical__card-instock").textContent,
+    link: card.querySelector(".artical__card-link").getAttribute("href"),
+    img: card.querySelector(".artical__card-img").getAttribute("src"),
+  };
+  return cardInfo;
+}
+
+function addClassLikeCardOnLoad() {
+  allProductsInCatalog.forEach((card, index) => {
+    allProductsInLiked.forEach((obj) => {
+      let count = 0;
+      for (key in obj) {
+        if (obj[key] === card[key]) {
+          count++;
+        }
+        if (count === 4) {
+          card.statusLike = "on";
+          document
+            .querySelector(".catalog__card-list")
+            .children[index].classList.add("like-card");
+        }
+      }
+    });
+    updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
+    updateLocalStorage(allProductsInLiked, "likedProductsArr");
+  });
+}
+
+function giveKeyOnOffForLikeStatus(arr, objProduct, status) {
+  arr.forEach((card, index) => {
+    let count = 0;
+    for (key in card) {
+      if (card[key] === objProduct[key]) {
+        count++;
+      }
+      if (count === 4) {
+        allProductsInCatalog[index].statusLike = status;
+      }
+    }
+  });
+}
+
+function makeLikedCards(productObj) {
+  const likeParent = document.querySelector(".like__table");
+  likeParent.insertAdjacentHTML(
+    "beforeend",
+    `
+          <div class="artical like__card like-card" id="${productObj.id}">
+            <div class="artical__card-absolute like__card-absolute">
+              <button class="artical__card-like like__card-like">
+                  <span class="sr-only">кнопка для вподобання товару</span>
+              </button>
+            </div>
+            <a class="artical__card-link like__card-link" href="${productObj.link}">
+                <div class="artical__card-info like__card-info">
+                    <img class="artical__card-img like__card-img" src="${productObj.img}" alt="фото товара">
+                    <span class="artical__card-instock like__card-instock">${productObj.instock}</span>
+                </div>
+                <div class="artical__card-flex like__card-flex">
+                    <span class="artical__card-name like__card-name">${productObj.name}</span>
+                    <span class="artical__card-description like__card-description">Опис</span>
+                    <span class="artical__card-popular like__card-popular sr-only">${productObj.popular}</span>
+                </div>
+                <span class="artical__card-price like__card-price"><span class="js-card-price">${productObj.price}</span>грн</span>
+            </a>
+          </div> 
+      `
+  );
+}
+
+function removeObjFromLocalStorage(target, arrWithAllProducts) {
+  arrWithAllProducts.forEach((card, index) => {
+    let count = 0;
+    const targetCardObj = makeCardObj(target.closest(".artical"));
+    for (key in card) {
+      if (card[key] === targetCardObj[key]) {
+        count++;
+      }
+      if (count === 4) {
+        allProductsInLiked.splice(index, 1);
+      }
+    }
+  });
+}
+
+function btnLikeHandler(target) {
+  if (target.classList.contains("artical__card-like")) {
+    let objLikedProject = makeLikeProductObj(target.closest(".artical"));
+    if (!target.closest(".artical").classList.contains("like-card")) {
+      allProductsInLiked.push(objLikedProject);
+      updateLocalStorage(allProductsInLiked, "likedProductsArr");
+      target.classList.add("active");
+      target.closest(".artical").classList.add("like-card");
+      giveKeyOnOffForLikeStatus(allProductsInCatalog, objLikedProject, "on");
+      updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
+    } else {
+      removeObjFromLocalStorage(target, allProductsInLiked);
+      giveKeyOnOffForLikeStatus(allProductsInCatalog, objLikedProject, "off");
+      target.classList.remove("active");
+      target.closest(".artical").classList.remove("like-card");
+      updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
+      updateLocalStorage(allProductsInLiked, "likedProductsArr");
+    }
+    countForLikeOrBasket(".js-like__count", allProductsInLiked);
+  }
+}
+
+function addClassLikeOnButton() {
+  if (
+    document
+      .querySelector(".product__like-btn")
+      .classList.contains("like-color")
+  ) {
+    document.querySelector(".product__like-btn").classList.remove("like-color");
+  } else {
+    document.querySelector(".product__like-btn").classList.add("like-color");
+  }
+}
+
+function likeBtnHandler(target) {
+  const likeProductObj = makeObjProductInfo();
+  delete likeProductObj.id;
+  likeProductObj.price = +likeProductObj.price.replace("грн", "");
+  likeProductObj.instock =
+    document.querySelector(".product__stock").textContent;
+  addClassLikeOnButton();
+  if (!target.classList.contains("like-color")) {
+    allProductsInLiked.forEach((obj, index) => {
+      let count = 0;
+      for (let key in obj) {
+        if (obj[key] === likeProductObj[key]) {
+          count++;
+        }
+      }
+      if (count > 3) {
+        allProductsInLiked.splice(index, 1);
+        countForLikeOrBasket(".js-like__count", allProductsInLiked);
+        updateLocalStorage(allProductsInLiked, "likedProductsArr");
+      }
+    });
+  } else {
+    allProductsInLiked.push(likeProductObj);
+    updateLocalStorage(allProductsInLiked, "likedProductsArr");
+    countForLikeOrBasket(".js-like__count", allProductsInLiked);
+  }
+}
+
+if (document.querySelector(".catalog")) {
+  document
+    .querySelector(".catalog__card-list")
+    .addEventListener("click", (e) => {
+      const target = e.target;
+      btnLikeHandler(target);
+    });
+
+  window.addEventListener("load", () => {
+    addClassLikeCardOnLoad();
+  });
+}
+
+if (document.querySelector(".like")) {
+  document.querySelector(".like__table").addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.classList.contains("artical__card-like")) {
+      removeObjFromLocalStorage(target, allProductsInLiked);
+      countForLikeOrBasket(".js-like__count", allProductsInLiked);
+      giveKeyOnOffForLikeStatus(
+        allProductsInCatalog,
+        makeCardObj(target.closest(".artical")),
+        "off"
+      );
+      updateLocalStorage(allProductsInLiked, "likedProductsArr");
+      updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
+      target.closest(".artical").remove();
+      msgShow();
+    }
+  });
+}
+
+if (document.querySelector(".product")) {
+  document
+    .querySelector(".product__like-btn ")
+    .addEventListener("click", (e) => {
+      const target = e.target;
+      likeBtnHandler(target);
+    });
+}
 
 // --------------------------- Global Events ---------------------------------------
 
@@ -923,9 +1166,9 @@ function updateLocalStorage(items, localArrName) {
   localStorage.setItem(localArrName, JSON.stringify(items));
 }
 
-function countForLikeOrBasket(className) {
-  document.querySelectorAll(className).forEach((count) => {
-    count.textContent = allProductsInBasket.length;
+function countForLikeOrBasket(className, arr) {
+  document.querySelectorAll(className).forEach((element) => {
+    element.textContent = arr.length;
   });
 }
 
@@ -945,7 +1188,7 @@ function deleteEmptyLocalArr(arrName) {
 }
 
 function upDateBasketInfo() {
-  countForLikeOrBasket(".js-basket__count");
+  countForLikeOrBasket(".js-basket__count", allProductsInBasket);
   addClassAnimationOnTimer(headerBasketBtn);
   document.querySelector(".js-list__count").textContent =
     allProductsInBasket.length;
@@ -1000,7 +1243,7 @@ function clickHandler(e) {
   if (target.classList.contains("js-popup__form")) {
     const objProductInfo = makeObjProductInfo();
     checkAndPushObjInStore(objProductInfo);
-    countForLikeOrBasket(".js-basket__count");
+    countForLikeOrBasket(".js-basket__count", allProductsInBasket);
   }
 
   if (target.classList.contains("product__like-btn")) {
@@ -1035,7 +1278,7 @@ function clickHandler(e) {
     orderForm.reset();
     allProductsInBasket.length = 0;
     updateLocalStorage(allProductsInBasket, "productsInBasket");
-    countForLikeOrBasket(".js-basket__count");
+    countForLikeOrBasket(".js-basket__count", allProductsInBasket);
     if (allProductsInBasket.length === 0) {
       deleteEmptyLocalArr("productsInBasket");
       document.querySelector(".basket__msg").classList.add("show");
@@ -1084,7 +1327,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // ---------------------------- Window Events --------------------------------
 
 window.addEventListener("load", () => {
-  countForLikeOrBasket(".js-basket__count");
   if (document.querySelector(".basket")) {
     if (allProductsInBasket.length > 0) {
       document.querySelector(".basket__table").classList.add("show");
@@ -1099,9 +1341,42 @@ window.addEventListener("load", () => {
     }
     basketCalculation();
   }
+
   if (document.querySelector(".catalog")) {
-    localStorage.removeItem('filteredArr');
+    localStorage.removeItem("filteredArr");
   }
+
+  if (document.querySelector(".like")) {
+    allProductsInLiked.forEach((product) => {
+      makeLikedCards(product);
+    });
+    msgShow();
+  }
+
+  if (document.querySelector(".product")) {
+    const likeProductObj = makeObjProductInfo();
+    delete likeProductObj.id;
+    likeProductObj.price = +likeProductObj.price.replace("грн", "");
+    likeProductObj.instock =
+      document.querySelector(".product__stock").textContent;
+
+    allProductsInLiked.forEach((obj, index) => {
+      let count = 0;
+      for (let key in obj) {
+        if (obj[key] === likeProductObj[key]) {
+          count++;
+        }
+        if (count > 3) {
+          document
+            .querySelector(".product__like-btn")
+            .classList.add("like-color");
+        }
+      }
+      
+    });
+  }
+  countForLikeOrBasket(".js-basket__count", allProductsInBasket);
+  countForLikeOrBasket(".js-like__count", allProductsInLiked);
 });
 
 window.addEventListener("scroll", headerFixed);
