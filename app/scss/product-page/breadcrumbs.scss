@@ -23,17 +23,17 @@
             position: absolute;
             content: '';
             width: 21px;
-            height: 25px;
+            height: 15px;
             right: 11px;
+            top: 57%;
+            transform: translateY(-50%);
             background-image: url('../images/icons/arrow-breadcrumbs.svg');
             background-repeat: no-repeat;
             background-size: contain;
 
             @include mxw($sm) {
                 width: 10px;
-                height: 15px;
-                top: 1px;
-                top: 2px;
+                height: 10px;
                 right: 20px;
             }
         }

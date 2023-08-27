@@ -87,6 +87,11 @@ main {
             background-image: url('../images/icons/location.svg');
         }
 
+        &--tell::after {
+            background-image: url('../images/tell.png');
+            // filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(286deg) brightness(103%) contrast(103%);
+        }
+
         &--basket::after,
         &--likes::after {
             top: 15px;

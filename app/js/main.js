@@ -271,13 +271,6 @@ questionTabBtns.forEach((btn) => {
 
 // ------------------------------- Blog Page -------------------------------------
 
-function renameHeroTitleBlogPage() {
-  if (document.querySelector(".blog-cards")) {
-    document.querySelector(".hero__name").textContent = "БудБлог";
-  }
-}
-renameHeroTitleBlogPage();
-
 let scrollDownHeight;
 function addBlogCardsOnLoad(item) {
   for (let i = 0; i < 3; i++) {
@@ -301,6 +294,8 @@ function addCardsOnClick() {
         loadMoreBtn.textContent = "Очікуйте згодом";
       }
     }
+  } else {
+    loadMoreBtn.textContent = "Очікуйте згодом";
   }
 }
 

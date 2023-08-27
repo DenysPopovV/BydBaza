@@ -46,10 +46,7 @@
         text-transform: uppercase;
         font-size: 62px;
         font-weight: 700;
-        background: var(--linear-orange, linear-gradient(180deg, #FE8C00 0%, #F83600 100%));
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: rgba(0, 0, 0, 0);
+        color: $accent;
         transform: translateY(28px);
 
         @include mxw($md) {
@@ -138,6 +135,7 @@
             &::after {
                 width: 40px;
                 right: -30px;
+                // display: none;
             }
         }
     }
@@ -167,9 +165,10 @@
     }
 
     &__slider {
-        width: 100%;
-        height: 800px;
+        width: 50%;
+        height: 600px;
         @include mxw($md) {
+            width: 100%;
             height: calc(100dvh - 130px);
         }
 
