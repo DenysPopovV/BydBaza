@@ -59,6 +59,11 @@
 
         &:nth-child(3) {
             text-align: right;
+
+            @include mxw($sm) {
+                height: 180px;
+                text-align: center;
+            }
         }
 
         @include mxw($sm) {
@@ -95,7 +100,10 @@
     &__media {
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 20px;
+        margin-top: 5px;
+        @include mxw($sm) {
+            margin-top: 10px;
+        }
     }
 
     &__item {
@@ -126,6 +134,10 @@
 
         &:hover {
             color: $accent;
+        }
+        @include mxw($sm) {
+            font-size: 16px;
+            margin-bottom: 5px;
         }
     }
 
