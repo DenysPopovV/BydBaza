@@ -694,7 +694,9 @@ function addCardOnBasketPage(parentList, productObj) {
     </div>
     <div class="basket__card-bottom">
         <span class="basket__card-price"><input class="js-price__value" type='text' value='${productObj.price}' name='sumOrder' readonly></span>
-        <button class="basket__card-delete" type="button" name='deleteIndividualCart'></button>
+        <button class="basket__card-delete" type="button" name='deleteIndividualCart'>
+          <span class="sr-only">Кнопка для видалення товару з корзини</span>
+        </button>
     </div>
   </div>
   
