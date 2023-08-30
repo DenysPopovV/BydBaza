@@ -100,6 +100,7 @@
     }
 
     &__box{
+        margin-bottom: 40px;
         @include mxw($md) {
             display: flex;
             align-items: center;
@@ -138,15 +139,22 @@
         font-weight: 800;
         font-size: 38px;
         line-height: 46px;
-        margin-bottom: 50px;
 
         @include mxw($sm) {
             font-size: 24px;
-            margin-bottom: 0;
         }
 
         @include mxw($xs) {
-            font-size: 14px;
+            font-size: 22px;
+        }
+    }
+
+    &__art{
+        @include mxw($sm) {
+            font-size: 16px;
+        }
+        @include mxw($xs) {
+            font-size: 12px;
         }
     }
 

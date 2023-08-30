@@ -1,0 +1,42 @@
+.privecy{
+    padding: 60px 0;
+
+    @include mxw($sm) {
+        padding: 30px 0;
+        font-size: 16px;
+    }
+
+    &__top{
+        p{
+            margin-bottom: 40px;
+        }
+    }
+
+    &__item{
+        margin-bottom: 20px;
+        &:last-child{
+            margin-bottom: 40px;
+        }
+    }
+
+    &__name,
+    &__info{
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-size: 22px;
+    }
+
+    &__contacts{
+        margin-bottom: 20px;
+    }
+
+    &__media{
+        display: block;
+    }
+
+    &__bottom{
+        margin: 40px 0 0 0;
+    }
+    
+}

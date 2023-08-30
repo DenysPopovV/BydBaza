@@ -1,6 +1,6 @@
 .like{
-    padding-top: 60px;
-    
+    padding: 60px 0;
+ 
     @include mxw($sm){
         padding-top: 30px;
     }

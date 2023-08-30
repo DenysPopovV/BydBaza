@@ -271,13 +271,6 @@ questionTabBtns.forEach((btn) => {
 
 // ------------------------------- Blog Page -------------------------------------
 
-function renameHeroTitleBlogPage() {
-  if (document.querySelector(".blog-cards")) {
-    document.querySelector(".hero__name").textContent = "БудБлог";
-  }
-}
-renameHeroTitleBlogPage();
-
 let scrollDownHeight;
 function addBlogCardsOnLoad(item) {
   for (let i = 0; i < 3; i++) {
@@ -301,6 +294,8 @@ function addCardsOnClick() {
         loadMoreBtn.textContent = "Очікуйте згодом";
       }
     }
+  } else {
+    loadMoreBtn.textContent = "Очікуйте згодом";
   }
 }
 
@@ -639,6 +634,8 @@ function breadCrumbsProductName(productName, breadCrumbsEl) {
     breadCrumbsEl.textContent = productName.textContent;
   } else if (document.querySelector(".like")) {
     breadCrumbsEl.textContent = "Вподобані товари";
+  } else if (document.querySelector(".privecy")) {
+    breadCrumbsEl.textContent = "Політика конфіденційності";
   }
 }
 breadCrumbsProductName(titleBreadCrumbs, breadCrumbsEl);
@@ -652,6 +649,7 @@ function makeObjProductInfo() {
     price: document.querySelector(".product__price").textContent,
     img: document.querySelector(".product__img").getAttribute("src"),
     link: window.location.href,
+    art: document.querySelector(".product__art").textContent,
   };
   return productInfo;
 }
@@ -691,6 +689,7 @@ function addCardOnBasketPage(parentList, productObj) {
       <div class="basket__card-info">
           <input class="basket__card-name js-product__name" type='text' value='${productObj.name}' name='individualCount' readonly>
           <span><input class="basket__card-count js-amount__product" type="number" name="productCount" value="1" min="1">шт.</span>
+          <input class="basket__card-name js-product__name" type='text' value='${productObj.art}' name='' readonly>
       </div>
     </div>
     <div class="basket__card-bottom">
@@ -804,7 +803,7 @@ function makeCard(cardObj, like) {
             <span class="artical__card-description catalog__card-description">Опис</span>
             <span class="artical__card-popular catalog__card-popular sr-only">${cardObj.popular}</span>
         </div>
-        <span class="artical__card- catalog__card-price"><span class="js-card-price">${cardObj.price}</span>грн</span>
+        <span class="artical__card-price catalog__card-price"><span class="js-card-price">${cardObj.price}</span>грн</span>
     </a>
   </div>
   `
