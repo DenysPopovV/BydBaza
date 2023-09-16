@@ -400,4 +400,21 @@
             justify-content: center;
         }
     }
+
+
+}
+
+.pagination__box {
+    display: flex;
+    justify-content: center;
+   
+
+    button {
+        display: block;
+        background: $accent;
+        font-size: 14px;
+        color: $white;
+        padding: 10px 15px;
+        border-radius: 50% ;
+    }
 }

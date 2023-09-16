@@ -182,6 +182,10 @@
             }
         }
 
+        &.disabled {
+            opacity: 0.5;
+        }
+
         @include mxw($xs) {
             margin-right: 0;
             padding: 7px 60px;

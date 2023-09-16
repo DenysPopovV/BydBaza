@@ -784,8 +784,10 @@ function makeCardObjInArr() {
   updateLocalStorage(allProductsInCatalog, "cardsInCatalog");
 }
 
-function makeCard(cardObj, like) {
+function makeCard(cardObj) {
   const cardsParentEl = document.querySelector(".catalog__card-list");
+  let like = cardObj.statusLike === "on" ? "like-card" : "";
+
   cardsParentEl.insertAdjacentHTML(
     "beforeend",
     `
@@ -845,26 +847,24 @@ function makeFilter() {
           );
         }
       });
+      
+
       if (targetFilter === "Усі") {
-        [...allProductsInCatalog].forEach((card) => {
-          if (card.statusLike === "on") {
-            makeCard(card, "like-card");
-          } else {
-            makeCard(card, "");
-          }
-        });
+        let countOfEnd = filteredArr.length < 12 ? filteredArr.length : 12;
+        for(let i = 0; i < countOfEnd; i++) {
+          makeCard(filteredArr[i]);
+        }
+        addPaginationDots(filteredArr);
         updateLocalStorage(allProductsInCatalog, "filteredArr");
       } else {
         filteredArr = [...filteredArr].filter(
           (task) => task.id === targetFilter
         );
-        [...filteredArr].forEach((card) => {
-          if (card.statusLike === "on") {
-            makeCard(card, "like-card");
-          } else {
-            makeCard(card, "");
-          }
-        });
+        countOfEnd = filteredArr.length < 12 ? filteredArr.length : 12;
+        for(let i = 0; i < countOfEnd; i++) {
+          makeCard(filteredArr[i]);
+        }
+        addPaginationDots(filteredArr);
         updateLocalStorage(filteredArr, "filteredArr");
       }
     });
@@ -895,13 +895,10 @@ function makeSortingCheapDear() {
           (current, next) => next.popular - current.popular
         );
       }
-      sortResultNum.forEach((item) => {
-        if (item.statusLike === "on") {
-          makeCard(item, "like-card");
-        } else {
-          makeCard(item, "");
-        }
-      });
+      let countOfEnd = sortResultNum.length < 12 ? sortResultNum.length : 12;
+      for(let i = 0; i < countOfEnd; i++) {
+        makeCard(sortResultNum[i]);
+      }
       updateLocalStorage(sortResultNum, "filteredArr");
     });
   });
@@ -1297,6 +1294,13 @@ function clickHandler(e) {
   if (target.classList.contains("sort-btn-js")) {
     addActiveOnParenBtnList(target);
   }
+
+  if (target.classList.contains("js-pagination__btn")) {
+    const allFilteredCards =
+      JSON.parse(localStorage.getItem("filteredArr")) || allProductsInCatalog;
+
+    addPaginationToCatalog(allFilteredCards, target);
+  }
 }
 
 document.addEventListener("click", (e) => {
@@ -1329,6 +1333,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ---------------------------- Window Events --------------------------------
+
+function addDisabledStock() {
+  const stock = document.querySelector('.product__stock')
+console.log(stock.textContent.toLowerCase())
+  if(stock.textContent.toLowerCase() === 'немає в наявності'){
+    document.querySelector('.js-popup__form').setAttribute('disabled', '') 
+    document.querySelector('.js-popup__form').classList.add('disabled')
+  }
+}
+
+
 
 window.addEventListener("load", () => {
   if (document.querySelector(".basket")) {
@@ -1376,8 +1391,9 @@ window.addEventListener("load", () => {
             .classList.add("like-color");
         }
       }
-      
     });
+
+    addDisabledStock()
   }
   countForLikeOrBasket(".js-basket__count", allProductsInBasket);
   countForLikeOrBasket(".js-like__count", allProductsInLiked);
@@ -1390,3 +1406,45 @@ window.addEventListener("pageshow", function (e) {
     window.location.reload();
   }
 });
+
+const paginationBtnsParent = document.querySelector(".pagination__box");
+const catalogList = document.querySelector(".catalog__card-list");
+
+function addPaginationDots(products) {
+  let countBtn = Math.ceil(products.length / 12);
+  paginationBtnsParent.innerHTML = "";
+  if(countBtn > 1) {
+    for (let i = 0; i < countBtn; i++) {
+      paginationBtnsParent.insertAdjacentHTML(
+        "beforeend",
+        `
+        <button class="pagination__btn js-pagination__btn">${i + 1}</button>
+      `
+      );
+    }
+  }
+}
+
+function addPaginationOnLoad(products) {
+  if (products.length > 12) {
+    catalogList.innerHTML = "";
+    for (let i = 0; i < 12; i++) {
+      makeCard(allProductsInCatalog[i]);
+    }
+    addPaginationDots(allProductsInCatalog);
+  }
+}
+
+function addPaginationToCatalog(products, target) {
+  let start = +target.textContent * 12 - 12;
+  let end =
+    products.length < +target.textContent * 12
+      ? products.length
+      : +target.textContent * 12;
+  catalogList.innerHTML = "";
+  for (let i = start; i < end; i++) {
+    makeCard(products[i]);
+  }
+}
+
+addPaginationOnLoad(allProductsInCatalog);
