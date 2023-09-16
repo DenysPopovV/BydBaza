@@ -411,10 +411,19 @@
 
     button {
         display: block;
-        background: $accent;
+        background-color: rgba(251, 98, 1, 0.3);
         font-size: 14px;
-        color: $white;
+        color: $text;
+        font-weight: 600;
         padding: 10px 15px;
         border-radius: 50% ;
+        margin-right: 10px;
+        width: 38px;
+        height: 38px;
+        // opacity: 0.4;
+        &.active {
+            // background-color: $accent;
+            box-shadow: 0 0 0 2px $accent;
+        }
     }
 }

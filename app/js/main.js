@@ -1,3 +1,4 @@
+
 const contactsForm = document.forms.contactForm,
   questionTabBtns = document.querySelectorAll(".question__plus"),
   questionTabAnswer = document.querySelectorAll(".question__answer"),
@@ -1427,12 +1428,19 @@ function addPaginationDots(products) {
 
 function addPaginationOnLoad(products) {
   if (products.length > 12) {
+    
     catalogList.innerHTML = "";
     for (let i = 0; i < 12; i++) {
       makeCard(allProductsInCatalog[i]);
     }
     addPaginationDots(allProductsInCatalog);
+    const paginationBtn = document.querySelectorAll('.pagination__btn');
+    paginationBtn[0].classList.add('active')
   }
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // "smooth" робить прокрутку плавною
 }
 
 function addPaginationToCatalog(products, target) {
@@ -1445,6 +1453,16 @@ function addPaginationToCatalog(products, target) {
   for (let i = start; i < end; i++) {
     makeCard(products[i]);
   }
+  const paginationBtn = document.querySelectorAll('.pagination__btn');
+  console.log(target)
+  if(!target.classList.contains('active')) {
+    [...paginationBtn].forEach(item => {
+      item.classList.remove('active')
+    })
+    target.classList.add('active')
+  }
+  
+  scrollToTop()
 }
 
 addPaginationOnLoad(allProductsInCatalog);
