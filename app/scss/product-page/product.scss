@@ -1,5 +1,6 @@
 .product {
     padding-bottom: 150px;
+    padding-top: 50px;
 
     @include mxw($sm) {
         padding-bottom: 70px;
