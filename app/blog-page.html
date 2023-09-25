@@ -1,360 +1,358 @@
 <!DOCTYPE html>
 <html lang="ua">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.min.css">
-    <title>WebStore-BydBaza</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>WebStore-BydBaza</title>
 </head>
+
 <body>
 
-    <section class="header">
+  <section class="header">
 
     <div class="header__wrapper copy">
-        <div class="container">
-            <div class="header__top copy__top">
-                <div class="header__center-fix">
-                    <div class="header__logo-box copy__logo-box">
-                        <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg" alt="Логотип компанії"></a>
-                        <button class="header__mobile-btn" type="button">
-                            <span></span>
-                        </button>
-                    </div>
-                    <nav class="header__navigation">
-                        <ul class="header__menu copy__menu">
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="catalog-page.html">Каталог</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn copy__btn--catalog" href="index.html#new-products">NEW</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="gallery-page.html">Галерея</a>
-                            </li>
-                            <li class="header__pages-item media__item">
-                                <a class="header__pages-btn media__btn media__btn--basket"
-                                    href="basket-page.html">
-                                    <span class="js-basket__count"></span>
-                                    <span class="sr-only">Кнопка сторінки з товарами у корзині</span>
-                                </a>
-                            </li>
-                            <li class="header__pages-item media__item">
-                                <a class="header__pages-btn media__btn media__btn--likes"
-                                    href="like-page.html">
-                                    <span class="js-like__count"></span>
-                                    <span class="sr-only">Кнопка сторінки з уподобаними товарами</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    
-                    
-                </div>
+      <div class="container">
+        <div class="header__top copy__top">
+          <div class="header__center-fix">
+            <div class="header__logo-box copy__logo-box">
+              <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg"
+                  alt="Логотип компанії"></a>
+              <button class="header__mobile-btn" type="button">
+                <span></span>
+              </button>
             </div>
-            <div class="mobile">
-                <ul class="mobile__list">
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="catalog-page.html">каталог</a>
-                    </li>
-                    <!-- <li class="mobile__item">
+            <nav class="header__navigation">
+              <ul class="header__menu copy__menu">
+                <li class="header__item copy__item">
+                  <a class="header__btn copy__btn" href="catalog-page.html">Каталог</a>
+                </li>
+                <li class="header__item copy__item">
+                  <a class="header__btn copy__btn copy__btn--catalog" href="index.html#new-products">NEW</a>
+                </li>
+                <li class="header__item copy__item">
+                  <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
+                </li>
+                <li class="header__item copy__item">
+                  <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
+                </li>
+                <li class="header__item copy__item">
+                  <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
+                </li>
+                <li class="header__item copy__item">
+                  <a class="header__btn copy__btn" href="gallery-page.html">Галерея</a>
+                </li>
+                <li class="header__pages-item media__item">
+                  <a class="header__pages-btn media__btn media__btn--basket" href="basket-page.html">
+                    <span class="js-basket__count"></span>
+                    <span class="sr-only">Кнопка сторінки з товарами у корзині</span>
+                  </a>
+                </li>
+                <li class="header__pages-item media__item">
+                  <a class="header__pages-btn media__btn media__btn--likes" href="like-page.html">
+                    <span class="js-like__count"></span>
+                    <span class="sr-only">Кнопка сторінки з уподобаними товарами</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+
+          </div>
+        </div>
+        <div class="mobile">
+          <ul class="mobile__list">
+            <li class="mobile__item">
+              <a class="mobile__link close-js" href="catalog-page.html">каталог</a>
+            </li>
+            <!-- <li class="mobile__item">
                         <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
                     </li> -->
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#new-products">new</a>
-                    </li>
+            <li class="mobile__item">
+              <a class="mobile__link close-js" href="index.html#new-products">new</a>
+            </li>
 
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="gallery-page.html">Галерея</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
-                            <span class="js-basket__count">0</span>
-                        </a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link mobile__link--like close-js" href="like-page.html">Вподобані товари
-                            <span class="js-like__count"></span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="mobile__box">
-                    <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з нами</a>
-                    <ul class="mobile__icons media">
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/" target="_blank"></a>
-                        </li>
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--facebook" href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083" target="_blank"></a>
-                        </li>
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--location" href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
-                        </li>
-                      </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-
-
-        <main class="main">
-            <!-- <h1 class="sr-only">Діліться Знаннями разом з 'БудБаза': Блог про Ремонт та Будівництво</h1> -->
-            
-            
-            <section class="blog-cards inner-page">
-  <div class="container">
-    <div class="blog-cards__title title">БудБлог</div>
-  </div>
-  <div class="blog-cards__container">
-    <ul class="blog-cards__list">
-      <li class="blog-cards__item">
-        <img class="blog-cards__img" src="" alt="фото карточки блогу" />
-        <ul class="blog-cards__addtime">
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo"> Admin</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Business</span>
-          </li>
-        </ul>
-        <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
-        <button class="blog-cards__btn" type="button" id="tab1">
-          детальніше
-        </button>
-      </li>
-      <li class="blog-cards__item">
-        <img class="blog-cards__img" src="" alt="фото карточки блогу" />
-        <ul class="blog-cards__addtime">
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo"> Admin</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Business</span>
-          </li>
-        </ul>
-        <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
-        <button class="blog-cards__btn" type="button" id="tab1">
-          детальніше
-        </button>
-      </li>
-      <li class="blog-cards__item">
-        <img class="blog-cards__img" src="" alt="фото карточки блогу" />
-        <ul class="blog-cards__addtime">
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo"> Admin</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Business</span>
-          </li>
-        </ul>
-        <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
-        <button class="blog-cards__btn" type="button" id="tab1">
-          детальніше
-        </button>
-      </li>
-      <li class="blog-cards__item">
-        <img class="blog-cards__img" src="" alt="фото карточки блогу" />
-        <ul class="blog-cards__addtime">
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo"> Admin</span>
-          </li>
-          <li class="blog-cards__addblock">
-            <span class="blog-crads__addinfo">Business</span>
-          </li>
-        </ul>
-        <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
-        <button class="blog-cards__btn" type="button" id="tab1">
-          детальніше
-        </button>
-      </li>
-    </ul>
-    <div class="blog-cards__popup" id="tab1">
-      <button class="blog-cards__popup-close">
-        <span class="sr-only">Закрити вікно блогу</span>
-      </button>
-      <h3 class="blog-cards__popup-name">The Desolate Beauty of Greenland</h3>
-      <div class="blog-cards__popup-info">
-        <div class="blog-cars__popup-media">
-          <img class="blog-cards__popup-img" src="" alt="фото картки блогу" />
-          <ul class="blog-cards__media media">
-            <li class="blog-cards__media-item media__item">
-              <a
-                class="blog-cards__media-btn media__btn media__btn--inst"
-                href="https://www.instagram.com/budbazakam/"
-                target="_blank"
-              >
-                <span class="sr-only">Посилання для інстаграма</span>
+            <li class="mobile__item">
+              <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
+            </li>
+            <li class="mobile__item">
+              <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
+            </li>
+            <li class="mobile__item">
+              <a class="mobile__link close-js" href="gallery-page.html">Галерея</a>
+            </li>
+            <li class="mobile__item">
+              <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
+                <span class="js-basket__count">0</span>
               </a>
             </li>
-            <li class="blog-cards__media-item media__item">
-              <a
-                class="blog-cards__media-btn media__btn media__btn--facebook"
+            <li class="mobile__item">
+              <a class="mobile__link mobile__link--like close-js" href="like-page.html">Вподобані товари
+                <span class="js-like__count"></span>
+              </a>
+            </li>
+          </ul>
+          <div class="mobile__box">
+            <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з нами</a>
+            <ul class="mobile__icons media">
+              <li class="mobile__media-item media__item">
+                <a class="mobile__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/"
+                  target="_blank"></a>
+              </li>
+              <li class="mobile__media-item media__item">
+                <a class="mobile__media-btn media__btn media__btn--facebook"
+                  href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                  target="_blank"></a>
+              </li>
+              <li class="mobile__media-item media__item">
+                <a class="mobile__media-btn media__btn media__btn--location"
+                  href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <main class="main">
+    <h1 class="sr-only">Діліться Знаннями разом з 'БудБаза': Блог про Ремонт та Будівництво</h1>
+
+
+    <section class="blog-cards inner-page">
+      <div class="container">
+        <div class="blog-cards__title title">БудБлог</div>
+      </div>
+      <div class="blog-cards__container">
+        <ul class="blog-cards__list">
+          <li class="blog-cards__item">
+            <img class="blog-cards__img" src="" alt="фото карточки блогу" />
+            <ul class="blog-cards__addtime">
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo"> Admin</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Business</span>
+              </li>
+            </ul>
+            <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
+            <button class="blog-cards__btn" type="button" id="tab1">
+              детальніше
+            </button>
+          </li>
+          <li class="blog-cards__item">
+            <img class="blog-cards__img" src="" alt="фото карточки блогу" />
+            <ul class="blog-cards__addtime">
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo"> Admin</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Business</span>
+              </li>
+            </ul>
+            <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
+            <button class="blog-cards__btn" type="button" id="tab1">
+              детальніше
+            </button>
+          </li>
+          <li class="blog-cards__item">
+            <img class="blog-cards__img" src="" alt="фото карточки блогу" />
+            <ul class="blog-cards__addtime">
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo"> Admin</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Business</span>
+              </li>
+            </ul>
+            <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
+            <button class="blog-cards__btn" type="button" id="tab1">
+              детальніше
+            </button>
+          </li>
+          <li class="blog-cards__item">
+            <img class="blog-cards__img" src="" alt="фото карточки блогу" />
+            <ul class="blog-cards__addtime">
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Aug, 24th, 2021</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo"> Admin</span>
+              </li>
+              <li class="blog-cards__addblock">
+                <span class="blog-crads__addinfo">Business</span>
+              </li>
+            </ul>
+            <h3 class="blog-cards__name">The Desolate Beauty of Greenland</h3>
+            <button class="blog-cards__btn" type="button" id="tab1">
+              детальніше
+            </button>
+          </li>
+        </ul>
+        <div class="blog-cards__popup" id="tab1">
+          <button class="blog-cards__popup-close">
+            <span class="sr-only">Закрити вікно блогу</span>
+          </button>
+          <h3 class="blog-cards__popup-name">The Desolate Beauty of Greenland</h3>
+          <div class="blog-cards__popup-info">
+            <div class="blog-cars__popup-media">
+              <img class="blog-cards__popup-img" src="" alt="фото картки блогу" />
+              <ul class="blog-cards__media media">
+                <li class="blog-cards__media-item media__item">
+                  <a class="blog-cards__media-btn media__btn media__btn--inst"
+                    href="https://www.instagram.com/budbazakam/" target="_blank">
+                    <span class="sr-only">Посилання для інстаграма</span>
+                  </a>
+                </li>
+                <li class="blog-cards__media-item media__item">
+                  <a class="blog-cards__media-btn media__btn media__btn--facebook"
+                    href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                    target="_blank">
+                    <span class="sr-only">Посилання для Фейсбука</span>
+                  </a>
+                </li>
+                <li class="blog-cards__media-item media__item">
+                  <a class="blog-cards__media-btn media__btn media__btn--location"
+                    href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank">
+                    <span class="sr-only">Посилання на дзвінок</span>
+                  </a>
+                </li>
+                <li class="blog-cards__media-item media__item">
+                  <a class="blog-cards__media-btn blog-cards__media-btn--tell media__btn media__btn--tell"
+                    href="tel:343243243243">
+                    <span class="sr-only">Посилання на дзвінок</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="blog-cards__popup-text">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book. It has survived not
+                only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s
+                with the release of Letraset Lorem
+              </p>
+              <p>
+                Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since
+                the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only
+                five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s
+                with the release of Letraset
+              </p>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book. It has survived not
+                only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s
+                with the release of Letraset Lorem
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blog-cards__load">
+        <button class="blog-cards__content-btn" type="button" id="loadMore">
+          Більше
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="footer">
+    <div class="container">
+      <div class="footer__box">
+        <div class="footer__box-one">
+          <a href="index.html"><img class="footer__logo" src="images/logo.svg" alt="логотип магазину"></a>
+          <a class="footer__conect-btn" href="index.html#contact">Cконтактуйтесь з нами</a>
+        </div>
+        <div class="footer__box-one">
+          <ul class="footer__navigation">
+            <li class="footer__navigation-item">
+              <a class="footer__navigation-btn" href="catalog-page.html">Каталог</a>
+            </li>
+            <li class="footer__navigation-item">
+              <a class="footer__navigation-btn" href="services-page.html">Сервіси</a>
+            </li>
+            <li class="footer__navigation-item">
+              <a class="footer__navigation-btn" href="like-page.html">Вподобані товари</a>
+            </li>
+            <li class="footer__navigation-item">
+              <a class="footer__navigation-btn" href="basket-page.html">Корзина</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__box-one">
+          <a class="footer__location"
+            href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu"
+            target="_blank">м. Кам’янка-Бузька вул.Федьковича, №74
+          </a>
+          <a class="footer__tell" href="tel:380962770324">
+            тел: 0(96)-277-03-24
+            <span class="sr-only">Посилання на дзвінок</span>
+          </a>
+          <a class="footer__location"
+            href="https://www.google.com.ua/maps/place/%D0%91%D1%83%D0%B4%D0%91%D0%B0%D0%B7%D0%B0/@50.2068476,24.3872429,19z/data=!4m9!1m2!2m1!1z0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCBj0LzRgi4g0JTQvtCx0YDQvtGC0LLRltGAINCy0YPQuy7QntC30LXRgNC90LAsIDI!3m5!1s0x47252e3c04484cf7:0x50f2bde53136ce2b!8m2!3d50.206977!4d24.3883516!16s%2Fg%2F11c46j749t?hl=ru&entry=ttu"
+            target="_blank">
+            cмт. Добротвір вул.Озерна, №2
+          </a>
+          <a class="footer__tell" href="tel:380986020679">
+            тел: 0(98)-602-06-79
+            <span class="sr-only">Посилання на дзвінок</span>
+          </a>
+
+          <ul class="footer__media media">
+            <li class="footer__item media__item">
+              <a class="footer__media-btn media__btn media__btn--facebook"
                 href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
-                target="_blank"
-              >
+                target="_blank">
                 <span class="sr-only">Посилання для Фейсбука</span>
               </a>
             </li>
-            <li class="blog-cards__media-item media__item">
-              <a
-                class="blog-cards__media-btn media__btn media__btn--location"
-                href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"
-              >
-                <span class="sr-only">Посилання на дзвінок</span>
-              </a>
-            </li>
-            <li class="blog-cards__media-item media__item">
-              <a
-                class="blog-cards__media-btn blog-cards__media-btn--tell media__btn media__btn--tell"
-                href="tel:343243243243"
-              >
-                <span class="sr-only">Посилання на дзвінок</span>
+            <li class="footer__item media__item">
+              <a class="footer__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/"
+                target="_blank">
+                <span class="sr-only">Посилання для інстаграма</span>
               </a>
             </li>
           </ul>
         </div>
-        <div class="blog-cards__popup-text">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset Lorem
-          </p>
-          <p>
-            Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only
-            five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset
-          </p>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset Lorem
-          </p>
-        </div>
+      </div>
+      <div class="footer__privecy">
+        <span class="footer__privecy-text">© 2023 BudBaza. All rights reserved.</span>
+        <span class="footer__privecy-text"><a href="privecy-page.html">Privacy Policy</a> <a
+            href="https://t.me/p_popov777" target="_blank">Розробка сайтів</a></span>
       </div>
     </div>
   </div>
-  <div class="blog-cards__load">
-    <button class="blog-cards__content-btn" type="button" id="loadMore">
-      Більше
-    </button>
-  </div>
-</section>
 
-        </main>   
-        
-     <div class="footer">
-    <div class="container">
-        <div class="footer__box">
-            <div class="footer__box-one">
-                <a href="index.html"><img class="footer__logo" src="images/logo.svg" alt="логотип магазину"></a>
-                <a class="footer__conect-btn" href="index.html#contact">Cконтактуйтесь з нами</a>
-            </div>
-            <div class="footer__box-one">
-                <ul class="footer__navigation">
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="catalog-page.html">Каталог</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="services-page.html">Сервіси</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="like-page.html">Вподобані товари</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="basket-page.html">Корзина</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer__box-one">
-                <a class="footer__location"
-                    href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu"
-                    target="_blank">м. Кам’янка-Бузька вул.Федьковича, №74
-                </a>
-                <a class="footer__tell" href="tel:380962770324">
-                    тел: 0(96)-277-03-24
-                    <span class="sr-only">Посилання на дзвінок</span>
-                </a>
-                <a class="footer__location"
-                    href="https://www.google.com.ua/maps/place/%D0%91%D1%83%D0%B4%D0%91%D0%B0%D0%B7%D0%B0/@50.2068476,24.3872429,19z/data=!4m9!1m2!2m1!1z0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCBj0LzRgi4g0JTQvtCx0YDQvtGC0LLRltGAINCy0YPQuy7QntC30LXRgNC90LAsIDI!3m5!1s0x47252e3c04484cf7:0x50f2bde53136ce2b!8m2!3d50.206977!4d24.3883516!16s%2Fg%2F11c46j749t?hl=ru&entry=ttu"
-                    target="_blank">
-                    cмт. Добротвір вул.Озерна, №2
-                </a>
-                <a class="footer__tell" href="tel:380986020679">
-                    тел: 0(98)-602-06-79
-                    <span class="sr-only">Посилання на дзвінок</span>
-                </a>
-                
-                <ul class="footer__media media">
-                    <li class="footer__item media__item">
-                        <a class="footer__media-btn media__btn media__btn--facebook"
-                            href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
-                            target="_blank">
-                            <span class="sr-only">Посилання для Фейсбука</span>
-                        </a>
-                    </li>
-                    <li class="footer__item media__item">
-                        <a class="footer__media-btn media__btn media__btn--inst"
-                            href="https://www.instagram.com/budbazakam/" target="_blank">
-                            <span class="sr-only">Посилання для інстаграма</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__privecy">
-            <span class="footer__privecy-text">© 2023 BudBaza. All rights reserved.</span>
-            <span class="footer__privecy-text"><a href="privecy-page.html">Privacy Policy</a> <a
-                    href="https://t.me/p_popov777" target="_blank">Розробка сайтів</a></span>
-        </div>
-    </div>
-</div> 
-        
-        <script src="js/main.min.js"></script>
+  <script src="js/main.min.js"></script>
 
 
 
-    </body>
+</body>
 
 </html>

@@ -1,462 +1,485 @@
 <!DOCTYPE html>
 <html lang="ua">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.min.css">
     <title>WebStore-BydBaza</title>
 </head>
+
 <body>
 
     <section class="header">
 
-    <div class="header__wrapper copy">
-        <div class="container">
-            <div class="header__top copy__top">
-                <div class="header__center-fix">
-                    <div class="header__logo-box copy__logo-box">
-                        <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg" alt="Логотип компанії"></a>
-                        <button class="header__mobile-btn" type="button">
-                            <span></span>
-                        </button>
-                    </div>
-                    <nav class="header__navigation">
-                        <ul class="header__menu copy__menu">
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="catalog-page.html">Каталог</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn copy__btn--catalog" href="index.html#new-products">NEW</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="gallery-page.html">Галерея</a>
-                            </li>
-                            <li class="header__pages-item media__item">
-                                <a class="header__pages-btn media__btn media__btn--basket"
-                                    href="basket-page.html">
-                                    <span class="js-basket__count"></span>
-                                    <span class="sr-only">Кнопка сторінки з товарами у корзині</span>
-                                </a>
-                            </li>
-                            <li class="header__pages-item media__item">
-                                <a class="header__pages-btn media__btn media__btn--likes"
-                                    href="like-page.html">
-                                    <span class="js-like__count"></span>
-                                    <span class="sr-only">Кнопка сторінки з уподобаними товарами</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    
-                    
-                </div>
-            </div>
-            <div class="mobile">
-                <ul class="mobile__list">
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="catalog-page.html">каталог</a>
-                    </li>
-                    <!-- <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
-                    </li> -->
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#new-products">new</a>
-                    </li>
-
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="gallery-page.html">Галерея</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
-                            <span class="js-basket__count">0</span>
-                        </a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link mobile__link--like close-js" href="like-page.html">Вподобані товари
-                            <span class="js-like__count"></span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="mobile__box">
-                    <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з нами</a>
-                    <ul class="mobile__icons media">
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/" target="_blank"></a>
-                        </li>
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--facebook" href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083" target="_blank"></a>
-                        </li>
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--location" href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
-                        </li>
-                      </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-
-
-        <main class="main">
-            <section class="breadcrumbs inner-page">
-    <div class="container">
-        <a class="breadcrumbs__home breadcrumbs--style" href="index.html">Головна сторінка</a>
-        <span class="js-breadcrumbs__title breadcrumbs--style"></span>
-    </div>
-</section>
-            <section class="product">
-    <div class="container">
-        <h1 class="product__title js-product__name">Дубові Двері</h1>
-
-        <div class="product__rating">
-            <div class="product__stars">
-                <span class="sr-only">Оцінка цього товру</span>
-                <img src="images/icons/star.svg" alt="1-зірочка">
-                <img src="images/icons/star.svg" alt="2-зірочка">
-                <img src="images/icons/star.svg" alt="3-зірочка">
-                <img src="images/icons/star.svg" alt="4-зірочка">
-                <img src="images/icons/star.svg" alt="5-зірочка">
-            </div>
-
-            <div class="product__reviews-count">
-                <span>Відгуки (<span class="js-reviews__count">0</span>)</span>
-            </div>
-        </div>
-
-        <div class="product__wrapper">
-            <img class="product__img" src="images/door.png" alt="Фотографія товару">
-
-            <div class="product__content">
-                <div class="product__info">
-                    <div class="product__box">
-                        <span class="product__stock">Немає в наявності</span>
-                        <span class="product__price">8000<span>грн</span></span>
-                        <span class="product__art"><span>арт.</span>254875</span>
-                    </div>
-                    <div class="product__btns">
-                        <button class="product__btn accent-product-btn js-popup__form" type="button">Замовити</button>
-                        <div class="product__store">
-                            <button class="product__like-btn accent-product-btn" type="button">
-                                <span class="sr-only">кнопка для вподобання цього товару</span>
+        <div class="header__wrapper copy">
+            <div class="container">
+                <div class="header__top copy__top">
+                    <div class="header__center-fix">
+                        <div class="header__logo-box copy__logo-box">
+                            <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg"
+                                    alt="Логотип компанії"></a>
+                            <button class="header__mobile-btn" type="button">
+                                <span></span>
                             </button>
                         </div>
+                        <nav class="header__navigation">
+                            <ul class="header__menu copy__menu">
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="catalog-page.html">Каталог</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn copy__btn--catalog"
+                                        href="index.html#new-products">NEW</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="gallery-page.html">Галерея</a>
+                                </li>
+                                <li class="header__pages-item media__item">
+                                    <a class="header__pages-btn media__btn media__btn--basket" href="basket-page.html">
+                                        <span class="js-basket__count"></span>
+                                        <span class="sr-only">Кнопка сторінки з товарами у корзині</span>
+                                    </a>
+                                </li>
+                                <li class="header__pages-item media__item">
+                                    <a class="header__pages-btn media__btn media__btn--likes" href="like-page.html">
+                                        <span class="js-like__count"></span>
+                                        <span class="sr-only">Кнопка сторінки з уподобаними товарами</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+
+                    </div>
+                </div>
+                <div class="mobile">
+                    <ul class="mobile__list">
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="catalog-page.html">каталог</a>
+                        </li>
+                        <!-- <li class="mobile__item">
+                        <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
+                    </li> -->
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="index.html#new-products">new</a>
+                        </li>
+
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
+                        </li>
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
+                        </li>
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="gallery-page.html">Галерея</a>
+                        </li>
+                        <li class="mobile__item">
+                            <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
+                                <span class="js-basket__count">0</span>
+                            </a>
+                        </li>
+                        <li class="mobile__item">
+                            <a class="mobile__link mobile__link--like close-js" href="like-page.html">Вподобані товари
+                                <span class="js-like__count"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mobile__box">
+                        <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з
+                            нами</a>
+                        <ul class="mobile__icons media">
+                            <li class="mobile__media-item media__item">
+                                <a class="mobile__media-btn media__btn media__btn--inst"
+                                    href="https://www.instagram.com/budbazakam/" target="_blank"></a>
+                            </li>
+                            <li class="mobile__media-item media__item">
+                                <a class="mobile__media-btn media__btn media__btn--facebook"
+                                    href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                                    target="_blank"></a>
+                            </li>
+                            <li class="mobile__media-item media__item">
+                                <a class="mobile__media-btn media__btn media__btn--location"
+                                    href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <main class="main">
+        <section class="breadcrumbs inner-page">
+            <div class="container">
+                <a class="breadcrumbs__home breadcrumbs--style" href="index.html">Головна сторінка</a>
+                <span class="js-breadcrumbs__title breadcrumbs--style"></span>
+            </div>
+        </section>
+        <section class="product">
+            <div class="container">
+                <h1 class="product__title js-product__name">Дубові Двері</h1>
+
+                <div class="product__rating">
+                    <div class="product__stars">
+                        <span class="sr-only">Оцінка цього товру</span>
+                        <img src="images/icons/star.svg" alt="1-зірочка">
+                        <img src="images/icons/star.svg" alt="2-зірочка">
+                        <img src="images/icons/star.svg" alt="3-зірочка">
+                        <img src="images/icons/star.svg" alt="4-зірочка">
+                        <img src="images/icons/star.svg" alt="5-зірочка">
+                    </div>
+
+                    <div class="product__reviews-count">
+                        <span>Відгуки (<span class="js-reviews__count">0</span>)</span>
                     </div>
                 </div>
 
+                <div class="product__wrapper">
+                    <img class="product__img" src="images/door.png" alt="Фотографія товару">
 
-                <div class="product-tabs">
-                    <div class="product-tabs__btns">
-                        <button class="product-tabs__btn active" type="button" id="tab1">Про товар</button>
-                        <button class="product-tabs__btn" type="button" id="tab2">Характеристики</button>
-                        <button class="product-tabs__btn" type="button" id="tab3">Відгуки (<span
-                                class="js-reviews__count">0</span>)</button>
-                    </div>
+                    <div class="product__content">
+                        <div class="product__info">
+                            <div class="product__box">
+                                <span class="product__stock">Немає в наявності</span>
+                                <span class="product__price">8000<span>грн</span></span>
+                                <span class="product__art"><span>арт.</span>254875</span>
+                            </div>
+                            <div class="product__btns">
+                                <button class="product__btn accent-product-btn js-popup__form"
+                                    type="button">Замовити</button>
+                                <div class="product__store">
+                                    <button class="product__like-btn accent-product-btn" type="button">
+                                        <span class="sr-only">кнопка для вподобання цього товару</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="product-tabs__content tab-about active" id="tab1">
-                        <div class="tab-about__text">
-                            <p>
-                                Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie,
-                                dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem
-                                sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                                sit amet feugiat lectus.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product-tabs__content tab-characteristics" id="tab2">
-                        <div class="tab-characteristics__text">
-                            <p>
-                                Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie,
-                                dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem
-                                sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                                sit amet feugiat lectus.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product-tabs__content tab-reviews" id="tab3">
-                        <div class="tab-reviews__swiper">
-                            <div class="tab-reviews__wrapper swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tab-reviews__date">
-                                        <span>24.10.2001</span>
-                                    </div>
-                                    <div class="tab-reviews__text">
-                                        <p>
-                                            Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
-                                            molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla
-                                            accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.
-                                            Maecenas eget condimentum velit, sit amet feugiat lectus.
-                                        </p>
+
+                        <div class="product-tabs">
+                            <div class="product-tabs__btns">
+                                <button class="product-tabs__btn active" type="button" id="tab1">Про товар</button>
+                                <button class="product-tabs__btn" type="button" id="tab2">Характеристики</button>
+                                <button class="product-tabs__btn" type="button" id="tab3">Відгуки (<span
+                                        class="js-reviews__count">0</span>)</button>
+                            </div>
+
+                            <div class="product-tabs__content tab-about active" id="tab1">
+                                <div class="tab-about__text">
+                                    <p>
+                                        Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
+                                        molestie,
+                                        dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus
+                                        sem
+                                        sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum
+                                        velit,
+                                        sit amet feugiat lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="product-tabs__content tab-characteristics" id="tab2">
+                                <div class="tab-characteristics__text">
+                                    <p>
+                                        Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
+                                        molestie,
+                                        dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus
+                                        sem
+                                        sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum
+                                        velit,
+                                        sit amet feugiat lectus.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="product-tabs__content tab-reviews" id="tab3">
+                                <div class="tab-reviews__swiper">
+                                    <div class="tab-reviews__wrapper swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="tab-reviews__date">
+                                                <span>24.10.2001</span>
+                                            </div>
+                                            <div class="tab-reviews__text">
+                                                <p>
+                                                    Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
+                                                    turpis
+                                                    molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
+                                                    fringilla
+                                                    accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed
+                                                    risus.
+                                                    Maecenas eget condimentum velit, sit amet feugiat lectus.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="tab-reviews__date">
+                                                <span>24.10.2001</span>
+                                            </div>
+                                            <div class="tab-reviews__text">
+                                                <p>
+                                                    Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
+                                                    turpis
+                                                    molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
+                                                    fringilla
+                                                    accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed
+                                                    risus.
+                                                    Maecenas eget condimentum velit, sit amet feugiat lectus.
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="tab-reviews__date">
-                                        <span>24.10.2001</span>
+                                <div class="tab-reviews__arrows">
+                                    <div class="tab-reviews__arrow-prev accent-button-arrow">
+                                        <span class="sr-only">button for scroll swiper left</span>
                                     </div>
-                                    <div class="tab-reviews__text">
-                                        <p>
-                                            Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
-                                            molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla
-                                            accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.
-                                            Maecenas eget condimentum velit, sit amet feugiat lectus.
-                                        </p>
+                                    <div class="tab-reviews__arrow-next accent-button-arrow">
+                                        <span class="sr-only">button for scroll swiper right</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-reviews__arrows">
-                            <div class="tab-reviews__arrow-prev accent-button-arrow">
-                                <span class="sr-only">button for scroll swiper left</span>
-                            </div>
-                            <div class="tab-reviews__arrow-next accent-button-arrow">
-                                <span class="sr-only">button for scroll swiper right</span>
-                            </div>
+                    </div>
+                </div>
+
+                <div class="popup-msg">
+                    <span class="popup-msg__close close-popup"></span>
+                    <div class="popup-msg__text">
+                        <p>
+                            Доброго дня!
+                        </p>
+                        <p>
+                            Ваш товар додано до кошика. Продовжуйте покупки або перейдіть до оформлення замовлення <a
+                                class="popup-link" href="basket-page.html">тут</a>.
+                        </p>
+                    </div>
+                    <ul class="popup-msg__media media">
+                        <li class="popup-msg__item media__item">
+                            <a class="popup-msg__btn media__btn media__btn--inst"
+                                href="https://www.instagram.com/budbazakam/" target="_blank"></a>
+                        </li>
+                        <li class="popup-msg__item media__item">
+                            <a class="popup-msg__btn media__btn media__btn--facebook"
+                                href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                                target="_blank"></a>
+                        </li>
+                        <li class="popup-msg__item media__item">
+                            <a class="popup-msg__btn media__btn media__btn--location"
+                                href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </section>
+        <section class="related">
+            <div class="container">
+
+                <h3 class="related__title">
+                    Вас можуть зацікавити
+                </h3>
+
+                <div class="related__swiper swiper-products">
+                    <div class="related__list swiper-wrapper">
+                        <div class="related__item swiper-slide">
+                            <a class="related__link" href="product-page.html">
+                                <div class="related__info">
+                                    <!-- <div class="related__absolute">
+                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                    id="like[0]">
+                                <label class="related__label" for="like[0]"></label>
+                            </div> -->
+                                    <img class="related__img" src="" alt="фото товара">
+                                    <span class="related__instock">В наявності</span>
+                                </div>
+                                <div class="related__flex">
+                                    <span class="related__name">Назва товару</span>
+                                    <span class="related__description">Опис</span>
+                                </div>
+                                <span class="related__price">1399 грн</span>
+                                <a class="related__btn accent-product-btn" href="product-page.html">Замовити</a>
+                            </a>
                         </div>
+                        <div class="related__item swiper-slide">
+                            <a class="related__link" href="#">
+                                <div class="related__info">
+                                    <!-- <div class="related__absolute">
+                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                    id="like[0]">
+                                <label class="related__label" for="like[0]"></label>
+                            </div> -->
+                                    <img class="related__img" src="" alt="фото товара">
+                                    <span class="related__instock">В наявності</span>
+                                </div>
+                                <div class="related__flex">
+                                    <span class="related__name">Назва товару</span>
+                                    <span class="related__description">Опис</span>
+                                </div>
+                                <span class="related__price">1399 грн</span>
+                                <a class="related__btn accent-product-btn" href="#">Замовити</a>
+                            </a>
+                        </div>
+                        <div class="related__item swiper-slide">
+                            <a class="related__link" href="#">
+                                <div class="related__info">
+                                    <!-- <div class="related__absolute">
+                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                    id="like[0]">
+                                <label class="related__label" for="like[0]"></label>
+                            </div> -->
+                                    <img class="related__img" src="" alt="фото товара">
+                                    <span class="related__instock">В наявності</span>
+                                </div>
+                                <div class="related__flex">
+                                    <span class="related__name">Назва товару</span>
+                                    <span class="related__description">Опис</span>
+                                </div>
+                                <span class="related__price">1399 грн</span>
+                                <a class="related__btn accent-product-btn" href="#">Замовити</a>
+                            </a>
+                        </div>
+                        <div class="related__item swiper-slide">
+                            <a class="related__link" href="#">
+                                <div class="related__info">
+                                    <!-- <div class="related__absolute">
+                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                    id="like[0]">
+                                <label class="related__label" for="like[0]"></label>
+                            </div> -->
+                                    <img class="related__img" src="" alt="фото товара">
+                                    <span class="related__instock">В наявності</span>
+                                </div>
+                                <div class="related__flex">
+                                    <span class="related__name">Назва товару</span>
+                                    <span class="related__description">Опис</span>
+                                </div>
+                                <span class="related__price">1399 грн</span>
+                                <a class="related__btn accent-product-btn" href="#">Замовити</a>
+                            </a>
+                        </div>
+                        <div class="related__item swiper-slide">
+                            <a class="related__link" href="#">
+                                <div class="related__info">
+                                    <!-- <div class="related__absolute">
+                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
+                                    id="like[0]">
+                                <label class="related__label" for="like[0]"></label>
+                            </div> -->
+                                    <img class="related__img" src="" alt="фото товара">
+                                    <span class="related__instock">В наявності</span>
+                                </div>
+                                <div class="related__flex">
+                                    <span class="related__name">Назва товару</span>
+                                    <span class="related__description">Опис</span>
+                                </div>
+                                <span class="related__price">1399 грн</span>
+                                <a class="related__btn accent-product-btn" href="#">Замовити</a>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="related__swiper-arrow">
+                    <div class="related__arrow-prev accent-button-arrow">
+                        <span class="sr-only">button for scroll swiper left</span>
+                    </div>
+                    <div class="related__arrow-next accent-button-arrow">
+                        <span class="sr-only">button for scroll swiper right</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="popup-msg">
-            <span class="popup-msg__close close-popup"></span>
-            <div class="popup-msg__text">
-                <p>
-                    Доброго дня!
-                </p>
-                <p>
-                    Ваш товар додано до кошика.  Продовжуйте покупки або перейдіть до оформлення замовлення <a class="popup-link" href="basket-page.html">тут</a>.
-                </p>
+    <div class="footer">
+        <div class="container">
+            <div class="footer__box">
+                <div class="footer__box-one">
+                    <a href="index.html"><img class="footer__logo" src="images/logo.svg" alt="логотип магазину"></a>
+                    <a class="footer__conect-btn" href="index.html#contact">Cконтактуйтесь з нами</a>
+                </div>
+                <div class="footer__box-one">
+                    <ul class="footer__navigation">
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="catalog-page.html">Каталог</a>
+                        </li>
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="services-page.html">Сервіси</a>
+                        </li>
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="like-page.html">Вподобані товари</a>
+                        </li>
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="basket-page.html">Корзина</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__box-one">
+                    <a class="footer__location"
+                        href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu"
+                        target="_blank">м. Кам’янка-Бузька вул.Федьковича, №74
+                    </a>
+                    <a class="footer__tell" href="tel:380962770324">
+                        тел: 0(96)-277-03-24
+                        <span class="sr-only">Посилання на дзвінок</span>
+                    </a>
+                    <a class="footer__location"
+                        href="https://www.google.com.ua/maps/place/%D0%91%D1%83%D0%B4%D0%91%D0%B0%D0%B7%D0%B0/@50.2068476,24.3872429,19z/data=!4m9!1m2!2m1!1z0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCBj0LzRgi4g0JTQvtCx0YDQvtGC0LLRltGAINCy0YPQuy7QntC30LXRgNC90LAsIDI!3m5!1s0x47252e3c04484cf7:0x50f2bde53136ce2b!8m2!3d50.206977!4d24.3883516!16s%2Fg%2F11c46j749t?hl=ru&entry=ttu"
+                        target="_blank">
+                        cмт. Добротвір вул.Озерна, №2
+                    </a>
+                    <a class="footer__tell" href="tel:380986020679">
+                        тел: 0(98)-602-06-79
+                        <span class="sr-only">Посилання на дзвінок</span>
+                    </a>
+
+                    <ul class="footer__media media">
+                        <li class="footer__item media__item">
+                            <a class="footer__media-btn media__btn media__btn--facebook"
+                                href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                                target="_blank">
+                                <span class="sr-only">Посилання для Фейсбука</span>
+                            </a>
+                        </li>
+                        <li class="footer__item media__item">
+                            <a class="footer__media-btn media__btn media__btn--inst"
+                                href="https://www.instagram.com/budbazakam/" target="_blank">
+                                <span class="sr-only">Посилання для інстаграма</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <ul class="popup-msg__media media">
-                <li class="popup-msg__item media__item">
-                    <a class="popup-msg__btn media__btn media__btn--inst"
-                        href="https://www.instagram.com/budbazakam/" target="_blank"></a>
-                </li>
-                <li class="popup-msg__item media__item">
-                    <a class="popup-msg__btn media__btn media__btn--facebook"
-                        href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
-                        target="_blank"></a>
-                </li>
-                <li class="popup-msg__item media__item">
-                    <a class="popup-msg__btn media__btn media__btn--location"
-                        href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
-                </li>
-            </ul>
-        </div>
-
-        
-    </div>
-</section>
-            <section class="related">
-    <div class="container">
-
-        <h3 class="related__title">
-            Вас можуть зацікавити
-        </h3>
-
-        <div class="related__swiper swiper-products"> 
-            <div class="related__list swiper-wrapper">
-                <div class="related__item swiper-slide">
-                    <a class="related__link" href="product-page.html">
-                        <div class="related__info">
-                            <!-- <div class="related__absolute">
-                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="related__label" for="like[0]"></label>
-                            </div> -->
-                            <img class="related__img" src="" alt="фото товара">
-                            <span class="related__instock">В наявності</span>
-                        </div>
-                        <div class="related__flex">
-                            <span class="related__name">Назва товару</span>
-                            <span class="related__description">Опис</span>
-                        </div>
-                        <span class="related__price">1399 грн</span>
-                        <a class="related__btn accent-product-btn" href="product-page.html">Замовити</a>
-                    </a>
-                </div>
-                <div class="related__item swiper-slide">
-                    <a class="related__link" href="#">
-                        <div class="related__info">
-                            <!-- <div class="related__absolute">
-                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="related__label" for="like[0]"></label>
-                            </div> -->
-                            <img class="related__img" src="" alt="фото товара">
-                            <span class="related__instock">В наявності</span>
-                        </div>
-                        <div class="related__flex">
-                            <span class="related__name">Назва товару</span>
-                            <span class="related__description">Опис</span>
-                        </div>
-                        <span class="related__price">1399 грн</span>
-                        <a class="related__btn accent-product-btn" href="#">Замовити</a>
-                    </a>
-                </div>
-                <div class="related__item swiper-slide">
-                    <a class="related__link" href="#">
-                        <div class="related__info">
-                            <!-- <div class="related__absolute">
-                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="related__label" for="like[0]"></label>
-                            </div> -->
-                            <img class="related__img" src="" alt="фото товара">
-                            <span class="related__instock">В наявності</span>
-                        </div>
-                        <div class="related__flex">
-                            <span class="related__name">Назва товару</span>
-                            <span class="related__description">Опис</span>
-                        </div>
-                        <span class="related__price">1399 грн</span>
-                        <a class="related__btn accent-product-btn" href="#">Замовити</a>
-                    </a>
-                </div>
-                <div class="related__item swiper-slide">
-                    <a class="related__link" href="#">
-                        <div class="related__info">
-                            <!-- <div class="related__absolute">
-                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="related__label" for="like[0]"></label>
-                            </div> -->
-                            <img class="related__img" src="" alt="фото товара">
-                            <span class="related__instock">В наявності</span>
-                        </div>
-                        <div class="related__flex">
-                            <span class="related__name">Назва товару</span>
-                            <span class="related__description">Опис</span>
-                        </div>
-                        <span class="related__price">1399 грн</span>
-                        <a class="related__btn accent-product-btn" href="#">Замовити</a>
-                    </a>
-                </div>
-                <div class="related__item swiper-slide">
-                    <a class="related__link" href="#">
-                        <div class="related__info">
-                            <!-- <div class="related__absolute">
-                                <input class="related__checkbox sr-only" name="likeCheckbox" type="checkbox"
-                                    id="like[0]">
-                                <label class="related__label" for="like[0]"></label>
-                            </div> -->
-                            <img class="related__img" src="" alt="фото товара">
-                            <span class="related__instock">В наявності</span>
-                        </div>
-                        <div class="related__flex">
-                            <span class="related__name">Назва товару</span>
-                            <span class="related__description">Опис</span>
-                        </div>
-                        <span class="related__price">1399 грн</span>
-                        <a class="related__btn accent-product-btn" href="#">Замовити</a>
-                    </a>
-                </div>
-              
-                
-            </div>
-        </div> 
-
-        <div class="related__swiper-arrow">
-            <div class="related__arrow-prev accent-button-arrow">
-                <span class="sr-only">button for scroll swiper left</span>
-            </div>
-            <div class="related__arrow-next accent-button-arrow">
-                <span class="sr-only">button for scroll swiper right</span>
+            <div class="footer__privecy">
+                <span class="footer__privecy-text">© 2023 BudBaza. All rights reserved.</span>
+                <span class="footer__privecy-text"><a href="privecy-page.html">Privacy Policy</a> <a
+                        href="https://t.me/p_popov777" target="_blank">Розробка сайтів</a></span>
             </div>
         </div>
     </div>
-</section>
-        </main>
 
-     <div class="footer">
-    <div class="container">
-        <div class="footer__box">
-            <div class="footer__box-one">
-                <a href="index.html"><img class="footer__logo" src="images/logo.svg" alt="логотип магазину"></a>
-                <a class="footer__conect-btn" href="index.html#contact">Cконтактуйтесь з нами</a>
-            </div>
-            <div class="footer__box-one">
-                <ul class="footer__navigation">
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="catalog-page.html">Каталог</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="services-page.html">Сервіси</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="like-page.html">Вподобані товари</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="basket-page.html">Корзина</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer__box-one">
-                <a class="footer__location"
-                    href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu"
-                    target="_blank">м. Кам’янка-Бузька вул.Федьковича, №74
-                </a>
-                <a class="footer__tell" href="tel:380962770324">
-                    тел: 0(96)-277-03-24
-                    <span class="sr-only">Посилання на дзвінок</span>
-                </a>
-                <a class="footer__location"
-                    href="https://www.google.com.ua/maps/place/%D0%91%D1%83%D0%B4%D0%91%D0%B0%D0%B7%D0%B0/@50.2068476,24.3872429,19z/data=!4m9!1m2!2m1!1z0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCBj0LzRgi4g0JTQvtCx0YDQvtGC0LLRltGAINCy0YPQuy7QntC30LXRgNC90LAsIDI!3m5!1s0x47252e3c04484cf7:0x50f2bde53136ce2b!8m2!3d50.206977!4d24.3883516!16s%2Fg%2F11c46j749t?hl=ru&entry=ttu"
-                    target="_blank">
-                    cмт. Добротвір вул.Озерна, №2
-                </a>
-                <a class="footer__tell" href="tel:380986020679">
-                    тел: 0(98)-602-06-79
-                    <span class="sr-only">Посилання на дзвінок</span>
-                </a>
-                
-                <ul class="footer__media media">
-                    <li class="footer__item media__item">
-                        <a class="footer__media-btn media__btn media__btn--facebook"
-                            href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
-                            target="_blank">
-                            <span class="sr-only">Посилання для Фейсбука</span>
-                        </a>
-                    </li>
-                    <li class="footer__item media__item">
-                        <a class="footer__media-btn media__btn media__btn--inst"
-                            href="https://www.instagram.com/budbazakam/" target="_blank">
-                            <span class="sr-only">Посилання для інстаграма</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__privecy">
-            <span class="footer__privecy-text">© 2023 BudBaza. All rights reserved.</span>
-            <span class="footer__privecy-text"><a href="privecy-page.html">Privacy Policy</a> <a
-                    href="https://t.me/p_popov777" target="_blank">Розробка сайтів</a></span>
-        </div>
-    </div>
-</div> 
-        
-        
-        <script src="js/main.min.js"></script>
+
+    <script src="js/main.min.js"></script>
 
 
 
-    </body>
+</body>
 
 </html>

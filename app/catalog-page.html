@@ -1,902 +1,306 @@
 <!DOCTYPE html>
 <html lang="ua">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.min.css">
     <title>WebStore-BydBaza</title>
 </head>
+
 <body>
 
     <section class="header">
 
-    <div class="header__wrapper copy">
-        <div class="container">
-            <div class="header__top copy__top">
-                <div class="header__center-fix">
-                    <div class="header__logo-box copy__logo-box">
-                        <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg" alt="Логотип компанії"></a>
-                        <button class="header__mobile-btn" type="button">
-                            <span></span>
-                        </button>
+        <div class="header__wrapper copy">
+            <div class="container">
+                <div class="header__top copy__top">
+                    <div class="header__center-fix">
+                        <div class="header__logo-box copy__logo-box">
+                            <a href="index.html"><img class="header__logo copy__logo" src="images/logo.svg"
+                                    alt="Логотип компанії"></a>
+                            <button class="header__mobile-btn" type="button">
+                                <span></span>
+                            </button>
+                        </div>
+                        <nav class="header__navigation">
+                            <ul class="header__menu copy__menu">
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="catalog-page.html">Каталог</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn copy__btn--catalog"
+                                        href="index.html#new-products">NEW</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
+                                </li>
+                                <li class="header__item copy__item">
+                                    <a class="header__btn copy__btn" href="gallery-page.html">Галерея</a>
+                                </li>
+                                <li class="header__pages-item media__item">
+                                    <a class="header__pages-btn media__btn media__btn--basket" href="basket-page.html">
+                                        <span class="js-basket__count"></span>
+                                        <span class="sr-only">Кнопка сторінки з товарами у корзині</span>
+                                    </a>
+                                </li>
+                                <li class="header__pages-item media__item">
+                                    <a class="header__pages-btn media__btn media__btn--likes" href="like-page.html">
+                                        <span class="js-like__count"></span>
+                                        <span class="sr-only">Кнопка сторінки з уподобаними товарами</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+
                     </div>
-                    <nav class="header__navigation">
-                        <ul class="header__menu copy__menu">
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="catalog-page.html">Каталог</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn copy__btn--catalog" href="index.html#new-products">NEW</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="index.html#contact">Контакти</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="services-page.html">Cервіси</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="blog-page.html">Блог</a>
-                            </li>
-                            <li class="header__item copy__item">
-                                <a class="header__btn copy__btn" href="gallery-page.html">Галерея</a>
-                            </li>
-                            <li class="header__pages-item media__item">
-                                <a class="header__pages-btn media__btn media__btn--basket"
-                                    href="basket-page.html">
-                                    <span class="js-basket__count"></span>
-                                    <span class="sr-only">Кнопка сторінки з товарами у корзині</span>
-                                </a>
-                            </li>
-                            <li class="header__pages-item media__item">
-                                <a class="header__pages-btn media__btn media__btn--likes"
-                                    href="like-page.html">
-                                    <span class="js-like__count"></span>
-                                    <span class="sr-only">Кнопка сторінки з уподобаними товарами</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    
-                    
                 </div>
-            </div>
-            <div class="mobile">
-                <ul class="mobile__list">
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="catalog-page.html">каталог</a>
-                    </li>
-                    <!-- <li class="mobile__item">
+                <div class="mobile">
+                    <ul class="mobile__list">
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="catalog-page.html">каталог</a>
+                        </li>
+                        <!-- <li class="mobile__item">
                         <a class="mobile__link close-js" href="index.html#opportunity">ПРОПОЗИЦІЯ ТИЖНЯ</a>
                     </li> -->
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="index.html#new-products">new</a>
-                    </li>
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="index.html#new-products">new</a>
+                        </li>
 
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link close-js" href="gallery-page.html">Галерея</a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
-                            <span class="js-basket__count">0</span>
-                        </a>
-                    </li>
-                    <li class="mobile__item">
-                        <a class="mobile__link mobile__link--like close-js" href="like-page.html">Вподобані товари
-                            <span class="js-like__count"></span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="mobile__box">
-                    <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з нами</a>
-                    <ul class="mobile__icons media">
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--inst" href="https://www.instagram.com/budbazakam/" target="_blank"></a>
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="services-page.html">Cервіси</a>
                         </li>
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--facebook" href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083" target="_blank"></a>
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="blog-page.html">БЛОГ</a>
                         </li>
-                        <li class="mobile__media-item media__item">
-                          <a class="mobile__media-btn media__btn media__btn--location" href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
+                        <li class="mobile__item">
+                            <a class="mobile__link close-js" href="gallery-page.html">Галерея</a>
                         </li>
-                      </ul>
+                        <li class="mobile__item">
+                            <a class="mobile__link mobile__link--basket close-js" href="basket-page.html">Корзина
+                                <span class="js-basket__count">0</span>
+                            </a>
+                        </li>
+                        <li class="mobile__item">
+                            <a class="mobile__link mobile__link--like close-js" href="like-page.html">Вподобані товари
+                                <span class="js-like__count"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mobile__box">
+                        <a class="mobile__contact contact-btn close-js" href="index.html#contact">Сконтактуйтесь з
+                            нами</a>
+                        <ul class="mobile__icons media">
+                            <li class="mobile__media-item media__item">
+                                <a class="mobile__media-btn media__btn media__btn--inst"
+                                    href="https://www.instagram.com/budbazakam/" target="_blank"></a>
+                            </li>
+                            <li class="mobile__media-item media__item">
+                                <a class="mobile__media-btn media__btn media__btn--facebook"
+                                    href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                                    target="_blank"></a>
+                            </li>
+                            <li class="mobile__media-item media__item">
+                                <a class="mobile__media-btn media__btn media__btn--location"
+                                    href="https://maps.app.goo.gl/japdadfRb5XbwSJa6?g_st=ic" target="_blank"></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-    
+    </section>
 
 
-        <main class="main">
-            <h1 class="sr-only">
-                Усі Будматеріали в Кам'янці-Бузькому: Широкий Вибір Товарів для Вашого Проекту та Ремонту
-            </h1>
-             <section class="breadcrumbs inner-page">
-    <div class="container">
-        <a class="breadcrumbs__home breadcrumbs--style" href="index.html">Головна сторінка</a>
-        <span class="js-breadcrumbs__title breadcrumbs--style"></span>
-    </div>
-</section>
-            <section class="catalog">
-    <div class="container">
-        <h3 class="catalog__title title">Каталог</h3>
 
-        <div class="catalog__table">
-            <div class="catalog__filter-box">
-                <button class="catalog__filter-title catalog-btn-js" type="button">Оберіть категорію</button>
-                <ul class="catalog__filter-list">
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--repair"
-                            data-filter="Ремонт">Ремонт</button>
-                    </li>
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--tools"
-                            data-filter="Інструменти">Інструменти</button>
-                    </li>
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--floor"
-                            data-filter="Покриття-для-підлоги">Покриття для підлоги</button>
-                    </li>
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--plumbing"
-                            data-filter="Сантехніка">Сантехніка</button>
-                    </li>
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--lighting"
-                            data-filter="Освітлення">Освітлення</button>
-                    </li>
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--garden" data-filter="Сад-Город">Сад
-                            Город</button>
-                    </li>
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--furniture" data-filter="Для-Дому">Для
-                            Дому</button>
-                    </li>
-                    <li class="catalog__filter-item">
-                        <button class="catalog__filter-btn catalog__filter-btn--all active"
-                            data-filter="Усі">Усі</button>
-                    </li>
-                </ul>
+    <main class="main">
+        <h1 class="sr-only">
+            Усі Будматеріали в Кам'янці-Бузькому: Широкий Вибір Товарів для Вашого Проекту та Ремонту
+        </h1>
+        <section class="breadcrumbs inner-page">
+            <div class="container">
+                <a class="breadcrumbs__home breadcrumbs--style" href="index.html">Головна сторінка</a>
+                <span class="js-breadcrumbs__title breadcrumbs--style"></span>
             </div>
-            <div class="catalog__card-box">
-                <div class="catalog__sort">
-                    <button class="catalog__sort-name sort-btn-js" type="button">Сортувати товари за</button>
-                    <ul class="catalog__sort-list">
-                        <li class="catalog__sort-item">
-                            <button class="catalog__sort-btn" data-filter="cheap">Мін. ціна</button>
+        </section>
+        <section class="catalog">
+            <div class="container">
+                <h3 class="catalog__title title">Каталог</h3>
+
+                <div class="catalog__table">
+                    <div class="catalog__filter-box">
+                        <button class="catalog__filter-title catalog-btn-js" type="button">Оберіть категорію</button>
+                        <ul class="catalog__filter-list">
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--repair"
+                                    data-filter="Ремонт">Ремонт</button>
+                            </li>
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--tools"
+                                    data-filter="Інструменти">Інструменти</button>
+                            </li>
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--floor"
+                                    data-filter="Покриття-для-підлоги">Покриття для підлоги</button>
+                            </li>
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--plumbing"
+                                    data-filter="Сантехніка">Сантехніка</button>
+                            </li>
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--lighting"
+                                    data-filter="Освітлення">Освітлення</button>
+                            </li>
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--garden"
+                                    data-filter="Сад-Город">Сад
+                                    Город</button>
+                            </li>
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--furniture"
+                                    data-filter="Для-Дому">Для
+                                    Дому</button>
+                            </li>
+                            <li class="catalog__filter-item">
+                                <button class="catalog__filter-btn catalog__filter-btn--all active"
+                                    data-filter="Усі">Усі</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="catalog__card-box">
+                        <div class="catalog__sort">
+                            <button class="catalog__sort-name sort-btn-js" type="button">Сортувати товари за</button>
+                            <ul class="catalog__sort-list">
+                                <li class="catalog__sort-item">
+                                    <button class="catalog__sort-btn" data-filter="cheap">Мін. ціна</button>
+                                </li>
+                                <li class="catalog__sort-item">
+                                    <button class="catalog__sort-btn" data-filter="expensive">Макс. ціна</button>
+                                </li>
+                                <li class="catalog__sort-item">
+                                    <button class="catalog__sort-btn" data-filter="popular">Популярні Товари</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="catalog__card-list">
+                            <div class="artical catalog__card" id="Ремонт">
+                                <div class="artical__card-absolute catalog__card-absolute">
+                                    <button class="artical__card-like catalog__card-like">
+                                        <span class="sr-only">кнопка для вподобання товару</span>
+                                    </button>
+                                </div>
+                                <a class="artical__card-link catalog__card-link" href="product-page.html">
+                                    <div class="artical__card-info catalog__card-info">
+
+                                        <img class="artical__card-img catalog__card-img" src="images/door.png"
+                                            alt="фото товара">
+                                        <span class="artical__card-instock catalog__card-instock">В наявності</span>
+                                    </div>
+                                    <div class="artical__card-flex catalog__card-flex">
+                                        <span class="artical__card-name catalog__card-name">Дубові Двері</span>
+                                        <span class="artical__card-description catalog__card-description">Опис</span>
+                                        <span class="artical__card-popular catalog__card-popular sr-only">20</span>
+                                    </div>
+                                    <span class="artical__card-price catalog__card-price"><span
+                                            class="js-card-price">8000</span>грн</span>
+                                </a>
+                            </div>
+
+
+                        </div>
+
+                        <div class="pagination__box">
+                            <!-- <button class="pagination__btn">1</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer__box">
+                <div class="footer__box-one">
+                    <a href="index.html"><img class="footer__logo" src="images/logo.svg" alt="логотип магазину"></a>
+                    <a class="footer__conect-btn" href="index.html#contact">Cконтактуйтесь з нами</a>
+                </div>
+                <div class="footer__box-one">
+                    <ul class="footer__navigation">
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="catalog-page.html">Каталог</a>
                         </li>
-                        <li class="catalog__sort-item">
-                            <button class="catalog__sort-btn" data-filter="expensive">Макс. ціна</button>
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="services-page.html">Сервіси</a>
                         </li>
-                        <li class="catalog__sort-item">
-                            <button class="catalog__sort-btn" data-filter="popular">Популярні Товари</button>
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="like-page.html">Вподобані товари</a>
+                        </li>
+                        <li class="footer__navigation-item">
+                            <a class="footer__navigation-btn" href="basket-page.html">Корзина</a>
                         </li>
                     </ul>
                 </div>
-                <div class="catalog__card-list">
-                    <div class="artical catalog__card" id="Ремонт">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
+                <div class="footer__box-one">
+                    <a class="footer__location"
+                        href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu"
+                        target="_blank">м. Кам’янка-Бузька вул.Федьковича, №74
+                    </a>
+                    <a class="footer__tell" href="tel:380962770324">
+                        тел: 0(96)-277-03-24
+                        <span class="sr-only">Посилання на дзвінок</span>
+                    </a>
+                    <a class="footer__location"
+                        href="https://www.google.com.ua/maps/place/%D0%91%D1%83%D0%B4%D0%91%D0%B0%D0%B7%D0%B0/@50.2068476,24.3872429,19z/data=!4m9!1m2!2m1!1z0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCBj0LzRgi4g0JTQvtCx0YDQvtGC0LLRltGAINCy0YPQuy7QntC30LXRgNC90LAsIDI!3m5!1s0x47252e3c04484cf7:0x50f2bde53136ce2b!8m2!3d50.206977!4d24.3883516!16s%2Fg%2F11c46j749t?hl=ru&entry=ttu"
+                        target="_blank">
+                        cмт. Добротвір вул.Озерна, №2
+                    </a>
+                    <a class="footer__tell" href="tel:380986020679">
+                        тел: 0(98)-602-06-79
+                        <span class="sr-only">Посилання на дзвінок</span>
+                    </a>
 
-                                <img class="artical__card-img catalog__card-img" src="images/door.png" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Дубові Двері</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">20</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">8000</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Ремонт">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Ремонт-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">1000</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">200</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Інструменти">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Інструменти-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">800</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">500</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Інструменти">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Інструменти-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">20</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">3500</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Покриття-для-підлоги">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Покриття для підлоги-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">800</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">13000</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Покриття-для-підлоги">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Покриття для підлоги-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">700</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">250</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Сантехніка">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Сантехніка-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">1</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">7520</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Сантехніка">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Сантехніка-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">900</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">2220</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Освітлення">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Освітлення-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">600</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">2220</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Освітлення">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Освітлення-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">800</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">420</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Сад-Город">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Сад Город-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">800</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1220</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Сад-Город">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Сад Город-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">400</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">9220</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">30</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">3200</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-7</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-7</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-4</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-26</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">30</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">3200</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-7</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-7</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-4</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-26</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-1</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">30</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">3200</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-2</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-7</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-7</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-4</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-                    <div class="artical catalog__card" id="Для-Дому">
-                        <div class="artical__card-absolute catalog__card-absolute">
-                            <button class="artical__card-like catalog__card-like">
-                                <span class="sr-only">кнопка для вподобання товару</span>
-                            </button>
-                        </div>
-                        <a class="artical__card-link catalog__card-link" href="product-page.html">
-                            <div class="artical__card-info catalog__card-info">
-
-                                <img class="artical__card-img catalog__card-img" src="" alt="фото товара">
-                                <span class="artical__card-instock catalog__card-instock">В наявності</span>
-                            </div>
-                            <div class="artical__card-flex catalog__card-flex">
-                                <span class="artical__card-name catalog__card-name">Для Дому-26</span>
-                                <span class="artical__card-description catalog__card-description">Опис</span>
-                                <span class="artical__card-popular catalog__card-popular sr-only">750</span>
-                            </div>
-                            <span class="artical__card-price catalog__card-price"><span
-                                    class="js-card-price">1100</span>грн</span>
-                        </a>
-                    </div>
-
+                    <ul class="footer__media media">
+                        <li class="footer__item media__item">
+                            <a class="footer__media-btn media__btn media__btn--facebook"
+                                href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
+                                target="_blank">
+                                <span class="sr-only">Посилання для Фейсбука</span>
+                            </a>
+                        </li>
+                        <li class="footer__item media__item">
+                            <a class="footer__media-btn media__btn media__btn--inst"
+                                href="https://www.instagram.com/budbazakam/" target="_blank">
+                                <span class="sr-only">Посилання для інстаграма</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="pagination__box">
-                    <!-- <button class="pagination__btn">1</button> -->
-                </div>
+            </div>
+            <div class="footer__privecy">
+                <span class="footer__privecy-text">© 2023 BudBaza. All rights reserved.</span>
+                <span class="footer__privecy-text"><a href="privecy-page.html">Privacy Policy</a> <a
+                        href="https://t.me/p_popov777" target="_blank">Розробка сайтів</a></span>
             </div>
         </div>
     </div>
-</section>
-        </main>
 
-     <div class="footer">
-    <div class="container">
-        <div class="footer__box">
-            <div class="footer__box-one">
-                <a href="index.html"><img class="footer__logo" src="images/logo.svg" alt="логотип магазину"></a>
-                <a class="footer__conect-btn" href="index.html#contact">Cконтактуйтесь з нами</a>
-            </div>
-            <div class="footer__box-one">
-                <ul class="footer__navigation">
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="catalog-page.html">Каталог</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="services-page.html">Сервіси</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="like-page.html">Вподобані товари</a>
-                    </li>
-                    <li class="footer__navigation-item">
-                        <a class="footer__navigation-btn" href="basket-page.html">Корзина</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer__box-one">
-                <a class="footer__location"
-                    href="https://www.google.com.ua/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%A4%D0%B5%D0%B4%D1%8C%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B0,+74,+%D0%9A%D0%B0%D0%BC'%D1%8F%D0%BD%D0%BA%D0%B0-%D0%91%D1%83%D0%B7%D1%8C%D0%BA%D0%B0,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+80400/@50.1211918,24.3460268,17z/data=!3m1!4b1!4m6!3m5!1s0x472532a2fa3c18bb:0x25316f8ab74aa12a!8m2!3d50.1211884!4d24.3486017!16s%2Fg%2F11g1lgtjwf?hl=ru&entry=ttu"
-                    target="_blank">м. Кам’янка-Бузька вул.Федьковича, №74
-                </a>
-                <a class="footer__tell" href="tel:380962770324">
-                    тел: 0(96)-277-03-24
-                    <span class="sr-only">Посилання на дзвінок</span>
-                </a>
-                <a class="footer__location"
-                    href="https://www.google.com.ua/maps/place/%D0%91%D1%83%D0%B4%D0%91%D0%B0%D0%B7%D0%B0/@50.2068476,24.3872429,19z/data=!4m9!1m2!2m1!1z0JvRjNCy0ZbQstGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCBj0LzRgi4g0JTQvtCx0YDQvtGC0LLRltGAINCy0YPQuy7QntC30LXRgNC90LAsIDI!3m5!1s0x47252e3c04484cf7:0x50f2bde53136ce2b!8m2!3d50.206977!4d24.3883516!16s%2Fg%2F11c46j749t?hl=ru&entry=ttu"
-                    target="_blank">
-                    cмт. Добротвір вул.Озерна, №2
-                </a>
-                <a class="footer__tell" href="tel:380986020679">
-                    тел: 0(98)-602-06-79
-                    <span class="sr-only">Посилання на дзвінок</span>
-                </a>
-                
-                <ul class="footer__media media">
-                    <li class="footer__item media__item">
-                        <a class="footer__media-btn media__btn media__btn--facebook"
-                            href="https://www.facebook.com/p/%D0%93%D1%83%D1%80%D1%82%D1%96%D0%B2%D0%BD%D1%8F-%D0%91%D1%83%D0%B4%D0%B1%D0%B0%D0%B7%D0%B0-100041764590083"
-                            target="_blank">
-                            <span class="sr-only">Посилання для Фейсбука</span>
-                        </a>
-                    </li>
-                    <li class="footer__item media__item">
-                        <a class="footer__media-btn media__btn media__btn--inst"
-                            href="https://www.instagram.com/budbazakam/" target="_blank">
-                            <span class="sr-only">Посилання для інстаграма</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer__privecy">
-            <span class="footer__privecy-text">© 2023 BudBaza. All rights reserved.</span>
-            <span class="footer__privecy-text"><a href="privecy-page.html">Privacy Policy</a> <a
-                    href="https://t.me/p_popov777" target="_blank">Розробка сайтів</a></span>
-        </div>
-    </div>
-</div> 
-        
-        
-        <script src="js/main.min.js"></script>
+
+    <script src="js/main.min.js"></script>
 
 
 
-    </body>
+</body>
 
 </html>
