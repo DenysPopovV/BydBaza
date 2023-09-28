@@ -1,4 +1,3 @@
-
 const contactsForm = document.forms.contactForm,
   questionTabBtns = document.querySelectorAll(".question__plus"),
   questionTabAnswer = document.querySelectorAll(".question__answer"),
@@ -848,11 +847,10 @@ function makeFilter() {
           );
         }
       });
-      
 
       if (targetFilter === "Усі") {
         let countOfEnd = filteredArr.length < 12 ? filteredArr.length : 12;
-        for(let i = 0; i < countOfEnd; i++) {
+        for (let i = 0; i < countOfEnd; i++) {
           makeCard(filteredArr[i]);
         }
         addPaginationDots(filteredArr);
@@ -862,7 +860,7 @@ function makeFilter() {
           (task) => task.id === targetFilter
         );
         countOfEnd = filteredArr.length < 12 ? filteredArr.length : 12;
-        for(let i = 0; i < countOfEnd; i++) {
+        for (let i = 0; i < countOfEnd; i++) {
           makeCard(filteredArr[i]);
         }
         addPaginationDots(filteredArr);
@@ -897,7 +895,7 @@ function makeSortingCheapDear() {
         );
       }
       let countOfEnd = sortResultNum.length < 12 ? sortResultNum.length : 12;
-      for(let i = 0; i < countOfEnd; i++) {
+      for (let i = 0; i < countOfEnd; i++) {
         makeCard(sortResultNum[i]);
       }
       updateLocalStorage(sortResultNum, "filteredArr");
@@ -1304,6 +1302,69 @@ function clickHandler(e) {
   }
 }
 
+function addActiveBtn(btnText, btnList) {
+  let findBtn = [...btnList].find(
+    (item) =>
+      item.textContent.toLowerCase().toString() ===
+      btnText.toLowerCase().toString()
+  );
+  findBtn.classList.add("active");
+}
+
+function addActiveOnScroll(section, btn) {
+  let pixelsScrolled = window.scrollY;
+  let endOfSection = section.offsetTop + section.offsetHeight;
+  let startOfSection = section.offsetTop - section.offsetHeight;
+
+  if (pixelsScrolled >= startOfSection && pixelsScrolled <= endOfSection) {
+    btn.classList.add("active");
+  } else {
+    btn.classList.remove("active");
+  }
+}
+
+function headerBtnActiveOnScrollHandler() {
+  addActiveOnScroll(
+    document.querySelector(".new-products"),
+    document.querySelector(".copy__btn--catalog")
+  );
+  addActiveOnScroll(
+    document.querySelector(".contacts"),
+    document.querySelector(".js-contacts-btn")
+  );
+}
+
+function addActiveOnHeaderMenu(btnList) {
+  const page =
+    document.querySelector(".hero") ||
+    document.querySelector(".catalog") ||
+    document.querySelector(".services") ||
+    document.querySelector(".blog-cards") ||
+    document.querySelector(".gallery");
+
+  switch (page.className.split(" ")[0]) {
+    case "hero":
+      window.addEventListener("scroll", () => {
+        headerBtnActiveOnScrollHandler()
+      });
+      break;
+    case "catalog":
+      addActiveBtn("каталог", btnList);
+      break;
+    case "services":
+      addActiveBtn("сервіси", btnList);
+      break;
+    case "blog-cards":
+      addActiveBtn("блог", btnList);
+      break;
+    case "gallery":
+      addActiveBtn("галерея", btnList);
+      break;
+  }
+}
+
+addActiveOnHeaderMenu(document.querySelectorAll(".header__btn"));
+
 document.addEventListener("click", (e) => {
   clickHandler(e);
 });
@@ -1336,15 +1397,13 @@ document.addEventListener("DOMContentLoaded", function () {
 // ---------------------------- Window Events --------------------------------
 
 function addDisabledStock() {
-  const stock = document.querySelector('.product__stock')
-console.log(stock.textContent.toLowerCase())
-  if(stock.textContent.toLowerCase() === 'немає в наявності'){
-    document.querySelector('.js-popup__form').setAttribute('disabled', '') 
-    document.querySelector('.js-popup__form').classList.add('disabled')
+  const stock = document.querySelector(".product__stock");
+  console.log(stock.textContent.toLowerCase());
+  if (stock.textContent.toLowerCase() === "немає в наявності") {
+    document.querySelector(".js-popup__form").setAttribute("disabled", "");
+    document.querySelector(".js-popup__form").classList.add("disabled");
   }
 }
-
-
 
 window.addEventListener("load", () => {
   if (document.querySelector(".basket")) {
@@ -1394,7 +1453,7 @@ window.addEventListener("load", () => {
       }
     });
 
-    addDisabledStock()
+    addDisabledStock();
   }
   countForLikeOrBasket(".js-basket__count", allProductsInBasket);
   countForLikeOrBasket(".js-like__count", allProductsInLiked);
@@ -1414,7 +1473,7 @@ const catalogList = document.querySelector(".catalog__card-list");
 function addPaginationDots(products) {
   let countBtn = Math.ceil(products.length / 12);
   paginationBtnsParent.innerHTML = "";
-  if(countBtn > 1) {
+  if (countBtn > 1) {
     for (let i = 0; i < countBtn; i++) {
       paginationBtnsParent.insertAdjacentHTML(
         "beforeend",
@@ -1428,19 +1487,18 @@ function addPaginationDots(products) {
 
 function addPaginationOnLoad(products) {
   if (products.length > 12) {
-    
     catalogList.innerHTML = "";
     for (let i = 0; i < 12; i++) {
       makeCard(allProductsInCatalog[i]);
     }
     addPaginationDots(allProductsInCatalog);
-    const paginationBtn = document.querySelectorAll('.pagination__btn');
-    paginationBtn[0].classList.add('active')
+    const paginationBtn = document.querySelectorAll(".pagination__btn");
+    paginationBtn[0].classList.add("active");
   }
 }
 
 function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' }); // "smooth" робить прокрутку плавною
+  window.scrollTo({ top: 0, behavior: "smooth" }); // "smooth" робить прокрутку плавною
 }
 
 function addPaginationToCatalog(products, target) {
@@ -1453,16 +1511,16 @@ function addPaginationToCatalog(products, target) {
   for (let i = start; i < end; i++) {
     makeCard(products[i]);
   }
-  const paginationBtn = document.querySelectorAll('.pagination__btn');
-  console.log(target)
-  if(!target.classList.contains('active')) {
-    [...paginationBtn].forEach(item => {
-      item.classList.remove('active')
-    })
-    target.classList.add('active')
+  const paginationBtn = document.querySelectorAll(".pagination__btn");
+  console.log(target);
+  if (!target.classList.contains("active")) {
+    [...paginationBtn].forEach((item) => {
+      item.classList.remove("active");
+    });
+    target.classList.add("active");
   }
-  
-  scrollToTop()
+
+  scrollToTop();
 }
 
 addPaginationOnLoad(allProductsInCatalog);
