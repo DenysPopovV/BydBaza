@@ -1340,27 +1340,29 @@ function addActiveOnHeaderMenu(btnList) {
     document.querySelector(".catalog") ||
     document.querySelector(".services") ||
     document.querySelector(".blog-cards") ||
-    document.querySelector(".gallery");
-
-  switch (page.className.split(" ")[0]) {
-    case "hero":
-      window.addEventListener("scroll", () => {
-        headerBtnActiveOnScrollHandler()
-      });
-      break;
-    case "catalog":
-      addActiveBtn("каталог", btnList);
-      break;
-    case "services":
-      addActiveBtn("сервіси", btnList);
-      break;
-    case "blog-cards":
-      addActiveBtn("блог", btnList);
-      break;
-    case "gallery":
-      addActiveBtn("галерея", btnList);
-      break;
+    document.querySelector(".gallery") || '';
+  if(page) {
+    switch (page.className.split(" ")[0]) {
+      case "hero":
+        window.addEventListener("scroll", () => {
+          headerBtnActiveOnScrollHandler()
+        });
+        break;
+      case "catalog":
+        addActiveBtn("каталог", btnList);
+        break;
+      case "services":
+        addActiveBtn("сервіси", btnList);
+        break;
+      case "blog-cards":
+        addActiveBtn("блог", btnList);
+        break;
+      case "gallery":
+        addActiveBtn("галерея", btnList);
+        break;
+    }
   }
+  
 }
 
 addActiveOnHeaderMenu(document.querySelectorAll(".header__btn"));
