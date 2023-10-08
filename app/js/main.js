@@ -337,6 +337,17 @@ productTabBtns.forEach((btn) => {
   });
 });
 
+function hideArrow() {
+  if(productReviewsList) {
+    if(productReviewsList.children.length === 0) {
+      document.querySelector('.tab-reviews__arrows').classList.add('hide')
+    }else {
+      document.querySelector('.tab-reviews__arrows').classList.remove('hide')
+    }
+  }
+}
+hideArrow()
+
 const productSwiper = new Swiper(".tab-reviews__swiper", {
   direction: "horizontal",
   spaceBetween: 10,
@@ -855,6 +866,7 @@ function makeFilter() {
         }
         addPaginationDots(filteredArr);
         updateLocalStorage(allProductsInCatalog, "filteredArr");
+        document.querySelectorAll('.pagination__btn')[0].classList.add('active')
       } else {
         filteredArr = [...filteredArr].filter(
           (task) => task.id === targetFilter

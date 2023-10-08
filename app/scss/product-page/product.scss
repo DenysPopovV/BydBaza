@@ -245,6 +245,7 @@
 
 .product-tabs {
     max-width: 900px;
+    width: 100%;
 
     @include mxw($vlg) {
         max-width: 600px;
@@ -324,13 +325,19 @@
 
         &.active {
             display: inline-block;
+            width: 100%;
         }
     }
 }
 
+
+
 .tab-about,
 .tab-characteristics {
     &__text {
+        display: block;
+        width: 100%;
+        max-width: 700px;
         p {
             margin-bottom: 20px;
 
@@ -381,6 +388,10 @@
         display: flex;
         position: relative;
         justify-content: center;
+        &.hide {
+            opacity: 0;
+            display: none;
+        }
     }
 
     &__arrow-prev {
