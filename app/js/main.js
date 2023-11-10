@@ -338,15 +338,15 @@ productTabBtns.forEach((btn) => {
 });
 
 function hideArrow() {
-  if(productReviewsList) {
-    if(productReviewsList.children.length === 0) {
-      document.querySelector('.tab-reviews__arrows').classList.add('hide')
-    }else {
-      document.querySelector('.tab-reviews__arrows').classList.remove('hide')
+  if (productReviewsList) {
+    if (productReviewsList.children.length === 0) {
+      document.querySelector(".tab-reviews__arrows").classList.add("hide");
+    } else {
+      document.querySelector(".tab-reviews__arrows").classList.remove("hide");
     }
   }
 }
-hideArrow()
+hideArrow();
 
 const productSwiper = new Swiper(".tab-reviews__swiper", {
   direction: "horizontal",
@@ -864,9 +864,11 @@ function makeFilter() {
         for (let i = 0; i < countOfEnd; i++) {
           makeCard(filteredArr[i]);
         }
-        addPaginationDots(filteredArr);
+        startPagination(filteredArr);
         updateLocalStorage(allProductsInCatalog, "filteredArr");
-        document.querySelectorAll('.pagination__btn')[0].classList.add('active')
+        document
+          .querySelectorAll(".pagination__btn")[0]
+          .classList.add("active");
       } else {
         filteredArr = [...filteredArr].filter(
           (task) => task.id === targetFilter
@@ -875,8 +877,12 @@ function makeFilter() {
         for (let i = 0; i < countOfEnd; i++) {
           makeCard(filteredArr[i]);
         }
-        addPaginationDots(filteredArr);
+        startPagination(filteredArr);
         updateLocalStorage(filteredArr, "filteredArr");
+      }
+      const paginationBtn = document.querySelectorAll(".pagination__btn");
+      if (paginationBtn[0]) {
+        paginationBtn[0].classList.add("active");
       }
     });
   });
@@ -1352,12 +1358,13 @@ function addActiveOnHeaderMenu(btnList) {
     document.querySelector(".catalog") ||
     document.querySelector(".services") ||
     document.querySelector(".blog-cards") ||
-    document.querySelector(".gallery") || '';
-  if(page) {
+    document.querySelector(".gallery") ||
+    "";
+  if (page) {
     switch (page.className.split(" ")[0]) {
       case "hero":
         window.addEventListener("scroll", () => {
-          headerBtnActiveOnScrollHandler()
+          headerBtnActiveOnScrollHandler();
         });
         break;
       case "catalog":
@@ -1374,7 +1381,6 @@ function addActiveOnHeaderMenu(btnList) {
         break;
     }
   }
-  
 }
 
 addActiveOnHeaderMenu(document.querySelectorAll(".header__btn"));
@@ -1484,19 +1490,100 @@ window.addEventListener("pageshow", function (e) {
 const paginationBtnsParent = document.querySelector(".pagination__box");
 const catalogList = document.querySelector(".catalog__card-list");
 
-function addPaginationDots(products) {
+function startPagination(products, centerDot) {
   let countBtn = Math.ceil(products.length / 12);
   paginationBtnsParent.innerHTML = "";
   if (countBtn > 1) {
-    for (let i = 0; i < countBtn; i++) {
+    if (countBtn <= 5) {
+      for (let i = 0; i < countBtn; i++) {
+        paginationBtnsParent.insertAdjacentHTML(
+          "beforeend",
+          `
+          <button class="pagination__btn js-pagination__btn">${i + 1}</button>
+        `
+        );
+      }
+    } else {
+      for (let i = 0; i < 5; i++) {
+        paginationBtnsParent.insertAdjacentHTML(
+          "beforeend",
+          `
+          <button class="pagination__btn js-pagination__btn">${i + 1}</button>
+        `
+        );
+      }
       paginationBtnsParent.insertAdjacentHTML(
         "beforeend",
         `
-        <button class="pagination__btn js-pagination__btn">${i + 1}</button>
+        <button class="pagination__btn js-pagination__btn right">...</button>
+        <button class="pagination__btn js-pagination__btn">${countBtn}</button>
       `
       );
     }
   }
+
+  document.querySelectorAll(".pagination__btn").forEach((dot) => {
+    if (+dot.textContent === centerDot) {
+      dot.classList.add("active");
+    }
+  });
+}
+
+function centerPagination(start, end, centerDot, products) {
+  paginationBtnsParent.innerHTML = "";
+  let countBtn = Math.ceil(products.length / 12);
+
+  paginationBtnsParent.insertAdjacentHTML(
+    "beforeend",
+    `
+    <button class="pagination__btn js-pagination__btn">${1}</button>
+    <button class="pagination__btn js-pagination__btn left">...</button>
+  `
+  );
+  for (let i = start; i <= end; i++) {
+    paginationBtnsParent.insertAdjacentHTML(
+      "beforeend",
+      `
+      <button class="pagination__btn js-pagination__btn">${i}</button>
+    `
+    );
+  }
+  paginationBtnsParent.insertAdjacentHTML(
+    "beforeend",
+    `
+    <button class="pagination__btn js-pagination__btn right">...</button>
+    <button class="pagination__btn js-pagination__btn">${countBtn}</button>
+  `
+  );
+  document.querySelectorAll(".pagination__btn").forEach((dot) => {
+    if (+dot.textContent === centerDot) {
+      dot.classList.add("active");
+    }
+  });
+}
+
+function endPagination(start, end, centerDot) {
+  paginationBtnsParent.innerHTML = "";
+  paginationBtnsParent.insertAdjacentHTML(
+    "beforeend",
+    `
+    <button class="pagination__btn js-pagination__btn">1</button>
+    <button class="pagination__btn js-pagination__btn left">...</button>
+  `
+  );
+  for (let i = start; i < end; i++) {
+    paginationBtnsParent.insertAdjacentHTML(
+      "beforeend",
+      `
+      <button class="pagination__btn js-pagination__btn">${i + 1}</button>
+    `
+    );
+  }
+  document.querySelectorAll(".pagination__btn").forEach((dot) => {
+    if (+dot.textContent === centerDot) {
+      dot.classList.add("active");
+    }
+  });
 }
 
 function addPaginationOnLoad(products) {
@@ -1505,7 +1592,7 @@ function addPaginationOnLoad(products) {
     for (let i = 0; i < 12; i++) {
       makeCard(allProductsInCatalog[i]);
     }
-    addPaginationDots(allProductsInCatalog);
+    startPagination(allProductsInCatalog);
     const paginationBtn = document.querySelectorAll(".pagination__btn");
     paginationBtn[0].classList.add("active");
   }
@@ -1515,26 +1602,134 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" }); // "smooth" робить прокрутку плавною
 }
 
-function addPaginationToCatalog(products, target) {
-  let start = +target.textContent * 12 - 12;
+function scrollProducts(products, target) {
+  let countBtn = Math.ceil(products.length / 12);
+  const activeDots =
+    countBtn > 5 ? document.querySelector(".pagination__btn.active") : target;
+  if (target === activeDots) {
+    document.querySelectorAll(".pagination__btn").forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    target.classList.add("active");
+  }
+  let start = +activeDots.textContent * 12 - 12;
   let end =
-    products.length < +target.textContent * 12
+    products.length < +activeDots.textContent * 12
       ? products.length
-      : +target.textContent * 12;
+      : +activeDots.textContent * 12;
   catalogList.innerHTML = "";
   for (let i = start; i < end; i++) {
     makeCard(products[i]);
   }
-  const paginationBtn = document.querySelectorAll(".pagination__btn");
-  console.log(target);
-  if (!target.classList.contains("active")) {
-    [...paginationBtn].forEach((item) => {
-      item.classList.remove("active");
-    });
-    target.classList.add("active");
-  }
+}
 
+function addPaginationToCatalog(products, target) {
+  let countBtn = Math.ceil(products.length / 12);
+  const activeDots = document.querySelector(".pagination__btn.active");
+  if (countBtn > 5) {
+    if (target.textContent === "...") {
+      if (target.classList.contains("left")) {
+        if (+activeDots.textContent - 3 <= 4) {
+          let centerDot = +activeDots.textContent - 3;
+          startPagination(products, centerDot);
+        } else {
+          let start = +activeDots.textContent - 4;
+          let end = +activeDots.textContent - 2;
+          let centerDot = +activeDots.textContent - 3;
+          centerPagination(start, end, centerDot, products);
+        }
+      }
+
+      if (target.classList.contains("right")) {
+        if (+activeDots.textContent < 4) {
+          let start = 4;
+          let end = 6;
+          let centerDot = 5;
+          centerPagination(start, end, centerDot, products);
+        } else if (+activeDots.textContent + 2 >= countBtn - 5) {
+          let start = countBtn - 5;
+          let end = countBtn;
+          let centerDot = +activeDots.textContent + 3;
+          endPagination(start, end, centerDot);
+        } else {
+          let start = +activeDots.textContent + 2;
+          let end = +activeDots.textContent + 4;
+          let centerDot = +activeDots.textContent + 3;
+          centerPagination(start, end, centerDot, products);
+        }
+      }
+    } else {
+      if (+target.textContent >= 5 && +target.textContent <= countBtn - 4) {
+        let start = +target.textContent - 1;
+        let end = +target.textContent + 1;
+        let centerDot = +target.textContent;
+        centerPagination(start, end, centerDot, products);
+      } else if (+target.textContent >= countBtn - 4) {
+        let start = countBtn - 5;
+        let end = countBtn;
+        let centerDot = +target.textContent;
+        endPagination(start, end, centerDot);
+      } else {
+        let centerDot = +target.textContent;
+        startPagination(products, centerDot);
+      }
+    }
+  }
+  scrollProducts(products, target);
   scrollToTop();
 }
 
 addPaginationOnLoad(allProductsInCatalog);
+
+//search
+
+const searchInput = document.querySelector(".js-catalogSearch");
+const searchBox = document.querySelector(".catalog__info-list");
+function catalogSearch(e) {
+  const allProducts = JSON.parse(localStorage.getItem("cardsInCatalog"));
+  let filteredSearch = allProducts.filter(
+    (product) =>
+      product.name.toLowerCase().search(e.target.value.toLowerCase()) !== -1
+  );
+  if (filteredSearch.length > 0 && e.target.value.length > 0) {
+    searchBox.style.opacity = "1";
+    searchBox.innerHTML = "";
+    filteredSearch.forEach((item) => {
+      searchBox.insertAdjacentHTML(
+        "beforeend",
+        `
+        <li >
+          <a class="catalog__info-item" href=${item.link}">
+            ${item.name}
+          </a>
+        </li>
+      `
+      );
+
+      console.log(item.link)
+    });
+  } else {
+    searchBox.style.opacity = "0";
+  }
+
+  document.querySelectorAll(".catalog__info-item").forEach((elem) => {
+    let str = elem.innerText;
+    elem.innerHTML = makeBoltOnText(
+      str,
+      elem.innerText.toLowerCase().search(e.target.value.toLowerCase()),
+      e.target.value.length
+    );
+  });
+}
+
+function makeBoltOnText(string, pos, len) {
+  return (
+    string.slice(0, pos) +
+    "<b>" +
+    string.slice(pos, pos + len) +
+    "</b>" +
+    string.slice(pos + len)
+  );
+}
+
+searchInput.addEventListener("input", catalogSearch);
